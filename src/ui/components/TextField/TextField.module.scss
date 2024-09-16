@@ -1,0 +1,63 @@
+@import "@/styles/global/mixins";
+
+.textField{
+		&-container{
+			position: relative;
+			display: inline-block;
+		}
+	
+		&-item{
+			height: 42rem;
+			padding: 15rem 16rem 7rem;
+			color: var(--color-black);
+			font: var(--font-body-md);
+			border: 1rem var(--color-gray-50) solid;
+			border-radius: 8px;
+			transition: border-color var(--transition-duration-button) var(--transition-easing-button);
+			
+				@include hover(990){
+					&:hover{
+						border-color: var(--color-black);
+					}
+				}
+			
+				&:focus{
+						& ~ .textField-placeholder{
+							top: 7rem;
+							font-size: 8rem;
+						}
+				}
+			
+				&:disabled{
+					background-color: var(--color-gray-10);
+					border-color: var(--color-gray-10);
+				}
+			
+				&.error{
+					border-color: var(--color-secondary-red);
+				}
+		}
+	
+		&-placeholder{
+			position: absolute;
+			top: 12rem;
+			left: 16rem;
+			color: var(--color-gray-70);
+			font: var(--font-body-md);
+			transition: font-size var(--transition-duration-button) var(--transition-easing-button), top var(--transition-duration-button) var(--transition-easing-button);
+			pointer-events: none;
+			
+				&-active{
+					top: 7rem;
+					font-size: 8rem;
+				}
+		}
+	
+		&-error{
+			position: absolute;
+			top: calc(100% + 3rem);
+			left: 0;
+			color: var(--color-secondary-red);
+			font: var(--font-body-sm);
+		}
+}

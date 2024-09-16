@@ -1,0 +1,56 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
+.heroDefault{
+	position: relative;
+	padding: 60rem 0;
+	
+		@include maxWidth($sm-max){
+			padding: 24rem 0 60rem;
+		}
+	
+		&-content{
+			& > *{
+				&:empty{
+					display: none;
+				}
+			}
+		}
+	
+		&-banner{
+				@include maxWidth($sm-max){
+					height: 184rem;
+					margin-top: 40rem;
+				}
+		}
+	
+		&-title{
+			margin-bottom: 24rem;
+			padding-right: 10rem;
+			
+				@include maxWidth($sm-max){
+					padding-right: 0;
+				}
+		}
+	
+		&-description{
+			margin-top: 24rem;
+		}
+	
+		&-actions{
+			display: flex;
+			gap: 16rem;
+			align-items: center;
+			margin-top: 40rem;
+			
+				@include maxWidth($sm-max){
+					margin-top: 32rem;
+				}
+		}
+	
+		& + section{
+			@include maxWidth($sm-max){
+				padding-top: 0;
+			}
+		}
+}

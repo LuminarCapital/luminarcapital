@@ -1,0 +1,70 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
+.header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+	padding: 17rem 0;
+	transition: background-color var(--transition-duration-button) var(--transition-easing-button), padding var(--transition-duration-button) var(--transition-easing-button);
+	
+		@include maxWidth($sm-max){
+			padding: 16rem 0;
+		}
+	
+		&.is-scrolling{
+			padding: 16rem 0;
+			background-color: var(--color-gray-10);
+		}
+	
+		&-panel{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			
+				&-logo{
+					position: relative;
+					width: 183rem;
+					height: 40rem;
+					
+						@include maxWidth($sm-max){
+							width: 137rem;
+							height: 30rem;
+						}
+				}
+			
+				&-nav{
+					display: flex;
+          gap: 25rem;
+					
+						@include maxWidth($md-max){
+							display: none;
+							
+						}
+				}
+		}
+	
+		&-navigation,
+		&-actions{
+			display: flex;
+			align-items: center;
+		}
+	
+		&-navigation{
+      gap: 20rem;
+    }
+	
+		&-actions{
+			gap: 8rem;
+		}
+	
+		& + main{
+			padding-top: 74rem;
+			
+				@include maxWidth($sm-max){
+					padding-top: 62rem;
+				}
+		}
+}

@@ -1,0 +1,37 @@
+.box{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 24rem 24rem 22rem;
+	border: 1rem var(--color-primary-dark-blue) solid;
+	border-radius: 20px;
+	row-gap: 24rem;
+
+		&-header{
+			display: flex;
+			gap: 12rem;
+			align-items: center;
+
+				&-avatar{
+					position: relative;
+					width: 40rem;
+					height: 40rem;
+					border-radius: 50%;
+				}
+			
+				&-title{
+					font-family: var(--font-primary-medium);
+				}
+		}
+	
+		&-body{
+				&-item{
+					display: -webkit-box;
+					min-height: 155rem;
+					overflow: hidden;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 6;
+				}
+		}
+}

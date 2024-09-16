@@ -1,0 +1,36 @@
+@import "global";
+@import "library";
+
+html{
+	font-size: calc(100vw / 1440);
+	
+		@media only screen and (width <= $lg-max) {
+			font-size: calc(100vw / 1380);
+		}
+	
+	@media only screen and (width <= $md-max) {
+		font-size: calc(100vw / 900);
+	}
+	
+		@media only screen and (width <= $sm-max) {
+			font-size: calc(100vw / 375);
+		}
+}
+
+body{
+	color: var(--color-black);
+	font: var(--font-body-xl);
+	background-color: var(--color-gray-5);
+}
+
+.content-block{
+	padding: 0 80rem;
+	
+		@include maxWidth($md-max){
+			padding: 0 16rem;
+		}
+	
+		@include maxWidth($sm-max){
+			padding: 0 16rem;
+		}
+}

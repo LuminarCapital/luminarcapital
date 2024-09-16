@@ -1,0 +1,20 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
+.navLink{
+	display: inline-block;
+	color: var(--color-black);
+	font-size: 14rem;
+	font-family: var(--font-primary-bold);
+	transition: color var(--transition-duration-button) var(--transition-easing-button);
+	
+		@include hover($md-max){
+			&:hover{
+				color: var(--color-primary-dark-blue);
+			}
+		}
+	
+		&.active{
+			color: var(--color-primary-dark-blue);
+		}
+}

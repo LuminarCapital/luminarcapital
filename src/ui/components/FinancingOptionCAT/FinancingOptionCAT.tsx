@@ -1,0 +1,23 @@
+import Button from '@/ui/components/Button/Button'
+import Image from 'next/image'
+import styles from './FinancingOptionCAT.module.scss'
+
+const FinancingOptionCAT = () => {
+  return (
+    <div className={styles['card']}>
+      <div className={styles['card-content']}>
+        <h3>Luminar Capital is here to help.</h3>
+        <Button>Apply for Financing</Button>
+      </div>
+      <div className={styles['card-banner']}>
+        <Image
+          src="/banners/financing-options-banner.svg"
+          alt="Luminar Capital is here to help."
+          fill
+        />
+      </div>
+    </div>
+  )
+}
+
+export default FinancingOptionCAT

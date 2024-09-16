@@ -1,0 +1,25 @@
+.card{
+	position: relative;
+	display: flex;
+	gap: 28rem;
+	align-items: center;
+	height: 100%;
+	padding: 58rem 24rem;
+	background-color: var(--color-gray-10);
+	border-radius: 20px;
+	
+		&-content{
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			max-width: 275rem;
+			row-gap: 32rem;
+		}
+	
+		&-banner{
+			position: relative;
+			width: 285rem;
+			height: 212rem;
+		}
+}
