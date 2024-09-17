@@ -11,5 +11,11 @@
 					width: auto;
 					margin: 0 -16rem;
 				}
+			
+				&-slide{
+					@include maxWidth($sm-max){
+						margin: 0 16rem;
+					}
+				}
 		}
 }

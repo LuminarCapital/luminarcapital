@@ -6,6 +6,10 @@
 	padding: 40rem 0 50rem;
 	background-color: var(--color-gray-10);
 	
+		@include maxWidth($sm-max){
+			padding: 40rem 0 28rem;
+		}
+	
 		&-body{
 			display: flex;
 			flex-direction: column;
@@ -15,8 +19,16 @@
 			max-width: 424rem;
 			padding-bottom: 32rem;
 			
+				@include maxWidth($sm-max){
+					row-gap: 41rem;
+				}
+			
 				&-description{
 					font: var(--font-body-lg);
+					
+						@include maxWidth($sm-max){
+							font: var(--font-body-md);
+						}
 				}
 		}
 	
@@ -25,6 +37,14 @@
 			justify-content: flex-end;
 			margin-bottom: 32rem;
 			column-gap: 100rem;
+			
+				@include maxWidth($md-max){
+					column-gap: 16rem;
+				}
+			
+				@include maxWidth($sm-max){
+					display: none;
+				}
 			
 				&-item{
 				
@@ -45,12 +65,22 @@
 			position: relative;
 			width: 173rem;
 			height: 37rem;
+			
+				@include maxWidth($sm-max){
+					margin: 0 auto;
+				}
 		}
 	
 		&-social{
 			display: flex;
 			gap: 12rem;
 			align-items: center;
+			
+				@include maxWidth($sm-max){
+					justify-content: space-between;
+					width: 100%;
+					margin-top: -17rem;
+				}
 			
 				&-icon{
 					display: inline-block;
@@ -84,10 +114,23 @@
 			margin-top: 32rem;
 			padding: 10rem 0;
 			color: var(--color-gray-70);
-			border-top: 1rem var(--color-gray-70) solid;
+			border-top: 1rem var(--color-gray-50) solid;
+			
+				@include maxWidth($sm-max){
+					flex-direction: column;
+					gap: 24rem;
+					margin-top: 7rem;
+					padding: 12rem 0;
+					text-align: center;
+				}
 			
 				&-item{
 					font: var(--font-body-md);
+					
+						@include maxWidth($sm-max){
+              order: 2;
+							font: var(--font-body-sm);
+            }
 				}
 		}
 	
@@ -96,6 +139,11 @@
 			gap: 24rem;
 			align-items: center;
 			font: var(--font-body-lg);
+			
+				@include maxWidth($sm-max){
+					order: 1;
+					font: var(--font-body-sm);
+				}
 		}
 	
 		&-link{

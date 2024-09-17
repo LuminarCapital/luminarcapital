@@ -26,7 +26,12 @@ const CallToAction = ({
           <p className={styles['section-description']}>{description}</p>
           {link ? (
             <div className={styles['section-action']}>
-              <Button href={link.href}>{link.label}</Button>
+              <Button
+                href={link.href}
+                className={styles['section-action-item']}
+              >
+                {link.label}
+              </Button>
             </div>
           ) : null}
         </div>

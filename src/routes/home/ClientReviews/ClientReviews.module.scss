@@ -1,6 +1,20 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
 .carousel{
 	margin-top: -8rem;
-	padding: 0 54rem 52rem;
+	margin-bottom: 52rem;
+	padding: 0 40rem;
+	
+		@include maxWidth($md-max){
+			margin: -8rem -16rem 52rem;
+			padding: 0;
+		}
+	
+		@include maxWidth($sm-max){
+			margin: -2rem -16rem 0;
+			padding: 0 0 88rem;
+		}
 	
 		&-arrows{
 			position: absolute;
@@ -37,8 +51,25 @@
 				}
 		}
 	
+		&-slide{
+			margin: 0 15rem;
+			
+				@include maxWidth($sm-max){
+					width: calc(100vw - 56rem);
+					margin: 0 6rem;
+				}
+		}
+	
 		&-action{
 			display: flex;
 			justify-content: center;
+		}
+	
+		&-arrow{
+				@include maxWidth($sm-max){
+					top: auto;
+					bottom: 0;
+					transform: none;
+				}
 		}
 }

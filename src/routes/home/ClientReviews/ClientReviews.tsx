@@ -1,11 +1,12 @@
+// import { useState } from 'react'
 import classNames from 'classnames'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { ReactGoogleReview } from 'react-google-reviews'
+import Slider from 'react-slick'
 import ReviewBox from '@/ui/components/ReviewBox/ReviewBox'
 import Button from '@/ui/components/Button/Button'
 import GoogleIcon from '@/ui/icons/Google'
-
-import '@splidejs/react-splide/css'
+import SlickNextArrow from '@/ui/components/Carousel/SlickArrow/SlickNextArrow'
+import SlickPrevArrow from '@/ui/components/Carousel/SlickArrow/SlickPrevArrow'
 import styles from './ClientReviews.module.scss'
 
 interface IClientReviews {
@@ -17,22 +18,30 @@ interface IClientReviews {
 }
 
 const ClientReviews = ({ className, data }: IClientReviews) => {
-  const options = {
-    type: 'loop',
-    perMove: 1,
-    perPage: 3,
-    updateOnMove: true,
-    speed: 1000,
-    easing: 'ease',
-    pagination: false,
-    gap: '30rem',
-    rewind: true,
-    classes: {
-      arrows: styles['carousel-arrows'],
-      arrow: styles['carousel-arrow'],
-      prev: styles['carousel-arrow_prev'],
-      next: styles['carousel-arrow_next'],
-    },
+  // const [activeSlide, setActiveSlide] = useState(0)
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    nextArrow: <SlickNextArrow />,
+    prevArrow: <SlickPrevArrow />,
+    responsive: [
+      {
+        breakpoint: 901,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 601,
+        settings: {
+          slidesToShow: 1,
+          variableWidth: true,
+        },
+      },
+    ],
   }
 
   return (
@@ -43,15 +52,18 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
         </h3>
         {data.success ? (
           <>
-            <div className={classNames(styles['carousel'], 'reviews-carousel')}>
-              <Splide options={options}>
-                {data.reviews.map((review, index) => (
-                  <SplideSlide key={`google-review-${index}`}>
-                    <ReviewBox data={review} />
-                  </SplideSlide>
-                ))}
-              </Splide>
-            </div>
+            <Slider
+              {...settings}
+              className={classNames(styles['carousel'], 'reviews-carousel')}
+            >
+              {data.reviews.map((review, index) => (
+                <ReviewBox
+                  key={`google-review-${index}`}
+                  data={review}
+                  className={styles['carousel-slide']}
+                />
+              ))}
+            </Slider>
             <div className={styles['carousel-action']}>
               <Button
                 href="/"

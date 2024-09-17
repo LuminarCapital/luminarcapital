@@ -40,9 +40,10 @@
 			background-size: auto 100%;
 			pointer-events: none;
 			
-			@include maxWidth($sm-max){
-				height: 374rem;
-				background-image: url('/abstract/footer-abstract-mobile.svg');
-			}
+				@include maxWidth($sm-max){
+					bottom: -145rem;
+					height: 374rem;
+					background-image: url('/abstract/footer-abstract-mobile.svg');
+				}
 		}
 }

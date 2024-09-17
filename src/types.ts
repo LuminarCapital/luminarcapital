@@ -20,3 +20,11 @@ export interface IGoogleReview {
   time: number
   translated: boolean
 }
+
+export interface ISlickArrow {
+  className?: string
+  onClick?: () => void
+  style?: {
+    [key: string]: string
+  }
+}

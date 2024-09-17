@@ -23,7 +23,7 @@ const PersonalizedExperience = ({ className }: IPersonalizedExperience) => {
               className={styles['section-list-item']}
             >
               <div className="row">
-                <div className="col-md-6 col-gutter-lr">
+                <div className="col-md-12 col-lg-6 col-gutter-lr">
                   <div className={styles['section-content']}>
                     <p className={styles['section-content-label']}>
                       Step {index + 1}
@@ -41,7 +41,7 @@ const PersonalizedExperience = ({ className }: IPersonalizedExperience) => {
                     </p>
                   </div>
                 </div>
-                <div className="col-md-6 col-gutter-lr">
+                <div className="col-md-12 col-lg-6 col-gutter-lr">
                   <div className={styles['section-banner']}>
                     <Image src={item.image} alt={item.title} fill />
                   </div>

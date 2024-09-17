@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
+import Slider from 'react-slick'
 import { IFinancingOptionCard } from '@/types'
 import FinancingOptionCard from '@/ui/components/FinancingOptionCard/FinancingOptionCard'
 import MoneyIcon from '@/ui/icons/Money'
@@ -37,26 +38,23 @@ const cards = [
 ] as IFinancingOptionCard[]
 
 const FinancingOptions = ({ className }: IFinancingOptions) => {
-  const options = {
-    type: 'slide',
-    perMove: 1,
-    perPage: 1,
-    updateOnMove: true,
-    speed: 1000,
-    easing: 'ease',
-    pagination: true,
+  const [isDesktop, setIsDesktop] = useState<boolean>(true)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsDesktop(window.innerWidth > 600)
+    }
+  }, [])
+
+  const settings = {
+    adaptiveHeight: true,
+    variableWidth: true,
+    dots: true,
     arrows: false,
-    gap: '16rem',
-    rewind: true,
-    padding: { left: '16rem', right: '16rem' },
-    autoWidth: true,
-    autoHeight: true,
-    destroy: true,
-    breakpoints: {
-      600: {
-        destroy: false,
-      },
-    },
+    centerMode: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    speed: 1000,
   }
 
   return (
@@ -66,19 +64,43 @@ const FinancingOptions = ({ className }: IFinancingOptions) => {
           <h2 className="h1">Our Financing Options</h2>
         </div>
         <div className={styles['finOptions-cards']}>
-          <Splide options={options}>
-            {cards.map(({ title, description, icon, href }, index) => (
-              <SplideSlide key={`financing-card-${index}`}>
-                <FinancingOptionCard
-                  title={title}
-                  description={description}
-                  icon={icon}
-                  href={href}
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
-          <FinancingOptionCAT />
+          {!isDesktop ? (
+            <>
+              <Slider {...settings}>
+                {cards.map(({ title, description, icon, href }, index) => (
+                  <FinancingOptionCard
+                    key={`financing-card-${index}`}
+                    title={title}
+                    description={description}
+                    icon={icon}
+                    href={href}
+                    className={styles['finOptions-cards-slide']}
+                  />
+                ))}
+              </Slider>
+              <FinancingOptionCAT />
+            </>
+          ) : (
+            <div className="row">
+              {cards.map(({ title, description, icon, href }, index) => (
+                <div
+                  className="col-sm-12 col-md-6"
+                  key={`financing-card-${index}`}
+                >
+                  <FinancingOptionCard
+                    title={title}
+                    description={description}
+                    icon={icon}
+                    href={href}
+                    className={styles['finOptions-cards-slide']}
+                  />
+                </div>
+              ))}
+              <div className="col-sm-12 col-md-6">
+                <FinancingOptionCAT />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

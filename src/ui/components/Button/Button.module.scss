@@ -4,8 +4,10 @@
 	display: inline-flex;
 	gap: 6rem;
 	align-items: center;
+	justify-content: center;
 	padding: 0 20rem;
 	white-space: nowrap;
+	text-align: center;
 	border: none;
 	border-radius: 9px;
 	transition: background-color var(--transition-duration-button) var(--transition-easing-button);

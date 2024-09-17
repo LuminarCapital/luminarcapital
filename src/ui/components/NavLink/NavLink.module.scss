@@ -6,7 +6,7 @@
 	color: var(--color-black);
 	font-size: 14rem;
 	font-family: var(--font-primary-bold);
-	transition: color var(--transition-duration-button) var(--transition-easing-button);
+	transition: color var(--transition-duration-button) var(--transition-easing-button), background-color var(--transition-duration-button) var(--transition-easing-button);
 	
 		@include hover($md-max){
 			&:hover{
@@ -14,7 +14,30 @@
 			}
 		}
 	
+		@include maxWidth($md-max){
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 16rem 12rem;
+			font-size: 18rem;
+			border-radius: 8px;
+		}
+	
 		&.active{
 			color: var(--color-primary-dark-blue);
+			
+				@include maxWidth($md-max){
+					color: inherit;
+					background-color: var(--color-gray-10);
+				}
+		}
+	
+		&-icon{
+			width: 24rem;
+			height: 24rem;
+			
+				@include minWidth($md-max + 1){
+					display: none;
+				}
 		}
 }

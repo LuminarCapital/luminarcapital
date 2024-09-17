@@ -1,3 +1,6 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
 .section{
 	padding-bottom: 60rem;
 	
@@ -7,7 +10,7 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			padding: 60rem 0 58rem;
+			padding: 60rem 24rem 58rem;
 			background-color: var(--color-white);
 			background-image: url('/abstract/CTA-abstract-desktop.svg');
 			background-repeat: no-repeat;
@@ -16,6 +19,11 @@
 			border: 1rem var(--color-primary-dark-blue) solid;
 			border-radius: 40px;
 			row-gap: 24rem;
+			
+				@include maxWidth($sm-max){
+					text-align: center;
+					row-gap: 23rem;
+				}
 		}
 	
 		&-title{
@@ -26,9 +34,23 @@
 			max-width: 600rem;
 			margin: 0 auto;
 			text-align: center;
+			
+				@include maxWidth($sm-max){
+					font: var(--font-body-lg);
+				}
 		}
 		
 		&-action{
 			margin-top: 16rem;
+			
+				@include maxWidth($sm-max){
+					width: 100%;
+				}
+			
+				&-item{
+						@include maxWidth($sm-max){
+							width: 100%;
+						}
+				}
 		}
 }

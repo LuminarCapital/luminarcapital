@@ -1,3 +1,6 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
 .box{
 	display: flex;
 	flex-direction: column;
@@ -32,6 +35,10 @@
 					overflow: hidden;
 					-webkit-box-orient: vertical;
 					-webkit-line-clamp: 6;
+					
+						@include maxWidth($sm-max){
+							font: var(--font-body-lg);
+						}
 				}
 		}
 }

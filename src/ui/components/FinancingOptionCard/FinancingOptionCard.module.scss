@@ -12,21 +12,28 @@
 	border: 1rem var(--color-primary-dark-blue) solid;
 	border-radius: 20px;
 	
-		@include maxWidth($sm-max){
+		@include maxWidth($md-max){
 			gap: 32rem;
-			width: calc(100vw - 32rem);
-			height: auto;
+			justify-content: flex-start;
 			padding: 23rem;
+		}
+	
+		@include maxWidth($sm-max){
+			width: calc(100vw - 32rem);
 		}
 	
 		&-title{
 			margin-bottom: 12rem;
+			
+			@include maxWidth($md-max){
+				font: var(--font-heading-h4);
+			}
 		}
 	
 		&-description{
 			margin: 12rem 0 31rem;
 			
-				@include maxWidth($sm-max){
+				@include maxWidth($md-max){
 					margin: 0;
 					font: var(--font-body-lg);
 				}
@@ -42,7 +49,7 @@
 			background-color: var(--color-primary-dark-blue);
 			border-radius: 10px;
 			
-				@include maxWidth($sm-max){
+				@include maxWidth($md-max){
 					position: relative;
 					top: 0;
 					left: 0;

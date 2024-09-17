@@ -34,3 +34,40 @@ body{
 			padding: 0 16rem;
 		}
 }
+
+.slick-dots{
+	display: flex !important;
+	gap: 6rem;
+	align-items: center;
+	justify-content: center;
+	margin-top: 23rem;
+	
+		li{
+			position: relative;
+			display: inline-block;
+			width: 30rem;
+			height: 4rem;
+			background-color: var(--color-gray-50);
+			border-radius: 30px;
+			transition: var(--transition-duration-button) var(--transition-easing-button);
+			
+				&.slick-active{
+					background-color: var(--color-primary-dark-blue);
+				}
+			
+				button{
+					position: absolute;
+					font-size: 0;
+					inset: 0;
+					opacity: 0;
+				}
+		}
+}
+
+.reviews-carousel{
+		.slick-list{
+			@include maxWidth($sm-max){
+				padding-left: 22rem !important;
+			}
+		}
+}
