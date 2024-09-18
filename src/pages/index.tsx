@@ -8,7 +8,7 @@ import {
   dangerouslyFetchPlaceReviews,
   ReactGoogleReview,
 } from 'react-google-reviews'
-import CallToAction from '@/components/CTA/CallToAction'
+import CallToAction from '@/ui/components/CTA/CallToAction'
 
 export default function Home({
   reviews,

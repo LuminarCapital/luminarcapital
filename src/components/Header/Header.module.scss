@@ -14,8 +14,8 @@
 			padding: 16rem 0;
 		}
 	
-		&.is-scrolling{
-			padding: 16rem 0;
+		&.scrolling{
+			padding: 10rem 0;
 			background-color: var(--color-gray-10);
 		}
 	
@@ -26,9 +26,9 @@
 			
 				&-logo{
 					position: relative;
+					z-index: 1;
 					width: 183rem;
 					height: 40rem;
-					z-index: 1;
 					
 						@include maxWidth($sm-max){
 							width: 137rem;
@@ -41,16 +41,20 @@
           gap: 25rem;
 					
 						@include maxWidth($md-max){
-							//display: none;
 							position: fixed;
 							top: 0;
 							left: 0;
-							width: 100%;
-							height: 100%;
-							background-color: var(--color-white);
+							display: none;
 							flex-direction: column;
 							justify-content: space-between;
+							width: 100%;
+							height: 100%;
 							padding: 62rem 16rem 40rem;
+							background-color: var(--color-white);
+						}
+					
+						&.active{
+							display: flex;
 						}
 				}
 		}
@@ -66,9 +70,9 @@
 			
 				@include maxWidth($md-max){
 					flex-direction: column;
+					gap: 0;
 					align-items: flex-start;
 					justify-content: flex-start;
-					gap: 0;
 				}
 			
 				li{
@@ -83,16 +87,24 @@
 			
 				@include maxWidth($sm-max){
 					flex-direction: column;
+					gap: 12rem;
 					align-items: flex-start;
 					justify-content: flex-start;
-					gap: 12rem;
 				}
 			
 				&-item{
-					
 						@include maxWidth($md-max){
 							width: 100%;
 						}
+				}
+		}
+	
+		&-burger{
+			position: relative;
+			z-index: 1;
+			
+				@include minWidth($md-max + 1){
+					display: none !important;
 				}
 		}
 	

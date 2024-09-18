@@ -10,7 +10,16 @@
 	border: 1rem var(--color-primary-dark-blue) solid;
 	border-radius: 20px;
 	row-gap: 24rem;
+	transition: border-color var(--transition-duration-button) var(--transition-easing-button);
 
+		@include maxWidth($md-max){
+			border-color: var(--color-gray-50);
+		}
+	
+		&.active{
+			border-color: var(--color-primary-dark-blue);
+		}
+	
 		&-header{
 			display: flex;
 			gap: 12rem;

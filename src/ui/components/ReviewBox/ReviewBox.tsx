@@ -6,11 +6,18 @@ import styles from './ReviewBox.module.scss'
 interface IReviewBox {
   className?: string
   data: ReactGoogleReview
+  isActive?: boolean
 }
 
-const ReviewBox = ({ className, data }: IReviewBox) => {
+const ReviewBox = ({ className, data, isActive }: IReviewBox) => {
   return (
-    <div className={classNames(styles['box'], className)}>
+    <div
+      className={classNames(
+        styles['box'],
+        isActive ? styles['active'] : null,
+        className,
+      )}
+    >
       <div className={styles['box-header']}>
         <div className={styles['box-header-avatar']}>
           <Image

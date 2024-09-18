@@ -7,11 +7,19 @@ import styles from './NavLink.module.scss'
 interface INavLink extends LinkProps {
   className?: string
   children?: string | ReactNode
+  isActive?: boolean
 }
 
-const NavLink = ({ className, children, ...props }: INavLink) => {
+const NavLink = ({ className, children, isActive, ...props }: INavLink) => {
   return (
-    <Link {...props} className={classNames(styles['navLink'], className)}>
+    <Link
+      {...props}
+      className={classNames(
+        styles['navLink'],
+        isActive ? styles['active'] : null,
+        className,
+      )}
+    >
       {children}
       <ArrowRightIcon className={styles['navLink-icon']} />
     </Link>

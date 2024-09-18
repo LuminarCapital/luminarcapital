@@ -23,6 +23,9 @@
 				@include maxWidth($sm-max){
 					text-align: center;
 					row-gap: 23rem;
+					background-image: url('/abstract/CTA-abstract-mobile.svg');
+					background-position: 0 0;
+					background-size: 83% 55%;
 				}
 		}
 	

@@ -71,3 +71,13 @@ body{
 			}
 		}
 }
+
+.informBox{
+	& + .footer-abstract{
+		bottom: -282rem;
+			
+			@include maxWidth($sm-max){
+				bottom: -145rem;
+			}
+	}
+}

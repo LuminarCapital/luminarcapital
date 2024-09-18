@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import classNames from 'classnames'
 import { ReactGoogleReview } from 'react-google-reviews'
 import Slider from 'react-slick'
@@ -18,7 +18,7 @@ interface IClientReviews {
 }
 
 const ClientReviews = ({ className, data }: IClientReviews) => {
-  // const [activeSlide, setActiveSlide] = useState(0)
+  const [activeSlide, setActiveSlide] = useState(0)
   const settings = {
     dots: false,
     infinite: true,
@@ -42,6 +42,7 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
         },
       },
     ],
+    afterChange: (current: number) => setActiveSlide(current),
   }
 
   return (
@@ -60,7 +61,8 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
                 <ReviewBox
                   key={`google-review-${index}`}
                   data={review}
-                  className={styles['carousel-slide']}
+                  className={classNames(styles['carousel-slide'])}
+                  isActive={index === activeSlide}
                 />
               ))}
             </Slider>

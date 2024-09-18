@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import classNames from 'classnames'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import MetaLayout from '@/layouts/MetaLayout/MetaLayout'
@@ -13,9 +14,13 @@ const DefaultLayout = ({ children }: IDefaultLayout) => {
     <MetaLayout>
       <Header />
       <main className={styles['main']}>
-        <div className={styles['layout-header-abstract']} />
         {children}
-        <div className={styles['layout-footer-abstract']} />
+        <div
+          className={classNames(
+            styles['layout-footer-abstract'],
+            'footer-abstract',
+          )}
+        />
       </main>
       <Footer />
     </MetaLayout>
