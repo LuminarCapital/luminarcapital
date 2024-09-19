@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
+import InformBox from '@/ui/components/InformBox/InformBox'
 
 export default function Partners() {
   return (
@@ -20,6 +21,10 @@ export default function Partners() {
             <Button>Become a Partner</Button>
           </>
         }
+      />
+      <InformBox
+        title="Coming Soon!"
+        description="Exciting things are on the way — stay tuned!"
       />
     </>
   )

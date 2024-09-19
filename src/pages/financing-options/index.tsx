@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
+import InformBox from '@/ui/components/InformBox/InformBox'
 
 export default function FinancingOptions() {
   return (
@@ -20,6 +21,10 @@ export default function FinancingOptions() {
             <Button>Apply for Financing</Button>
           </>
         }
+      />
+      <InformBox
+        title="Coming Soon!"
+        description="Exciting things are on the way — stay tuned!"
       />
     </>
   )

@@ -8,9 +8,9 @@ html{
 			font-size: calc(100vw / 1380);
 		}
 	
-	@media only screen and (width <= $md-max) {
-		font-size: calc(100vw / 900);
-	}
+		@media only screen and (width <= $md-max) {
+			font-size: calc(100vw / 900);
+		}
 	
 		@media only screen and (width <= $sm-max) {
 			font-size: calc(100vw / 375);
@@ -80,4 +80,19 @@ body{
 				bottom: -145rem;
 			}
 	}
+}
+
+.posts{
+	& + .footer-abstract{
+		bottom: -180rem;
+		
+			@include maxWidth($sm-max){
+        bottom: -115rem;
+      }
+	}
+}
+
+svg{
+	width: 100%;
+	height: 100%;
 }

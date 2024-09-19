@@ -1,0 +1,10 @@
+export const QUERY_PARAMETERS = {
+  LIMIT: 9,
+}
+
+export const STATUS = {
+  IDLE: 'IDLE',
+  PENDING: 'PENDING',
+  FULFILLED: 'FULFILLED',
+  REJECTED: 'REJECTED',
+}

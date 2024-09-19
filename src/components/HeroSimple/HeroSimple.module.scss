@@ -2,7 +2,7 @@
 @import "@/styles/library/grid/variables/grid-variables";
 
 .heroSimple{
-	padding: 60rem 0;
+	padding: 57rem 0;
 	text-align: center;
 	
 		@include maxWidth($sm-max){
@@ -13,9 +13,13 @@
 		&-box{
 			display: flex;
 			flex-direction: column;
-			gap: 24rem;
+			gap: 19rem;
 			align-items: center;
 			justify-content: flex-start;
+			
+				@include maxWidth($sm-max){
+					gap: 23rem;
+				}
 		}
 	
 		&-title{

@@ -12,8 +12,19 @@ const nextConfig = {
       {
         hostname: 'lh3.googleusercontent.com',
       },
+      {
+        hostname: 'images.pexels.com',
+        protocol: 'https',
+      },
+      {
+        hostname: 'www.luminarcapital.studiopresto.dev',
+        protocol: 'https',
+      },
     ]
   },
+  env: {
+    WORDPRESS_API_URL: process.env.WORDPRESS_API_URL
+  }
 };
 
 export default nextConfig;

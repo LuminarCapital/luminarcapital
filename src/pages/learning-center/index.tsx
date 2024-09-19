@@ -1,8 +1,18 @@
 import Head from 'next/head'
 import HeroSimple from '@/components/HeroSimple/HeroSimple'
-import InformBox from '@/ui/components/InformBox/InformBox'
+import Filters from '@/routes/learning-center/Filters/Filters'
+import Posts from '@/routes/learning-center/Posts/Posts'
+import { ICategory, IPageInfo } from '@/types'
+import { getCategories } from '@/utils/graphql/getCategories'
 
-export default function LearningCenter() {
+interface ILearningCenter {
+  categories: {
+    nodes: ICategory[]
+    pageInfo: IPageInfo
+  }
+}
+
+export default function LearningCenter({ categories }: ILearningCenter) {
   return (
     <>
       <Head>
@@ -16,16 +26,22 @@ export default function LearningCenter() {
         title="Luminar Learning Center"
         description="There are many options when it comes to financing for your business. We offer resources that can help take the complexity out of the process to ensure you find the best product suited for your needs."
       />
-      <InformBox
-        title="Coming Soon!"
-        description="Exciting things are on the way — stay tuned!"
-      />
+      {/*<InformBox*/}
+      {/*  title="Coming Soon!"*/}
+      {/*  description="Exciting things are on the way — stay tuned!"*/}
+      {/*/>*/}
+      <Filters categories={categories.nodes} />
+      <Posts />
     </>
   )
 }
 
 export const getStaticProps = async () => {
+  const { categories } = await getCategories()
+
   return {
-    props: {},
+    props: {
+      categories: categories || [],
+    },
   }
 }

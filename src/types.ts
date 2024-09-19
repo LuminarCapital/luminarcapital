@@ -28,3 +28,30 @@ export interface ISlickArrow {
     [key: string]: string
   }
 }
+
+export interface IPost {
+  id?: string
+  title: string
+  slug?: string
+  excerpt?: string
+  date?: string
+  featuredImage: {
+    node: {
+      sourceUrl: string
+    }
+  }
+  content?: string | TrustedHTML
+}
+
+export interface ICategory {
+  name: string
+  slug: string
+  id: string
+}
+
+export interface IPageInfo {
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+  startCursor: number
+  endCursor: number
+}

@@ -53,7 +53,7 @@ const Header = ({ className }: IHeader) => {
         window.removeEventListener('scroll', onScroll)
       }
     }
-  }, [])
+  }, [onScroll])
 
   return (
     <header
