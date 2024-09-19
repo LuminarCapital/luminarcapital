@@ -26,10 +26,6 @@ export default function LearningCenter({ categories }: ILearningCenter) {
         title="Luminar Learning Center"
         description="There are many options when it comes to financing for your business. We offer resources that can help take the complexity out of the process to ensure you find the best product suited for your needs."
       />
-      {/*<InformBox*/}
-      {/*  title="Coming Soon!"*/}
-      {/*  description="Exciting things are on the way — stay tuned!"*/}
-      {/*/>*/}
       <Filters categories={categories.nodes} />
       <Posts />
     </>
