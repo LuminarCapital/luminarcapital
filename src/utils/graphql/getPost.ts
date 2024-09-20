@@ -8,6 +8,7 @@ export const getPost = async (slug: string) => {
       query: `
         query GetPost {
           post(id:"${slug}", idType: SLUG) {
+            id
             title
             content
             featuredImage {

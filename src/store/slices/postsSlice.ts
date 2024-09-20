@@ -16,6 +16,12 @@ interface IState {
   }
 }
 
+interface IFetchPosts {
+  category: string
+  limit?: number
+  not?: string
+}
+
 const initialState = {
   data: {
     nodes: [],
@@ -36,17 +42,15 @@ export const fetchPosts = createAsyncThunk(
   async ({
     category = '',
     limit = QUERY_PARAMETERS.LIMIT,
-  }: {
-    category: string
-    limit?: number
-  }) => {
+    not = '',
+  }: IFetchPosts) => {
     // TODO: fix double request
     console.log('fetching posts')
     if (category === 'latest-posts') {
       category = ''
       limit = QUERY_PARAMETERS.LATEST
     }
-    const { posts } = await getPosts({ category, limit })
+    const { posts } = await getPosts({ category, limit, not })
     return posts
   },
 )
