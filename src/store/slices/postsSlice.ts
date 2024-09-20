@@ -1,4 +1,4 @@
-import { STATUS } from '@/config/constants'
+import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getPosts } from '@/utils/graphql/getPosts'
 import { IPageInfo, IPost } from '@/types'
@@ -33,10 +33,20 @@ export const postsKey = 'Posts'
 
 export const fetchPosts = createAsyncThunk(
   `${postsKey}/fetch`,
-  async ({ category = '' }: { category: string }) => {
+  async ({
+    category = '',
+    limit = QUERY_PARAMETERS.LIMIT,
+  }: {
+    category: string
+    limit?: number
+  }) => {
     // TODO: fix double request
     console.log('fetching posts')
-    const { posts } = await getPosts(category)
+    if (category === 'latest-posts') {
+      category = ''
+      limit = QUERY_PARAMETERS.LATEST
+    }
+    const { posts } = await getPosts({ category, limit })
     return posts
   },
 )

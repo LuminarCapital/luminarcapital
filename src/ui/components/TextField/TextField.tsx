@@ -7,7 +7,7 @@ interface ITextField {
   type?: 'text' | 'email' | 'password' | 'tel'
   placeholder?: string
   value?: string
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void // eslint-disable-line no-unused-vars
   disabled?: boolean
   readOnly?: boolean
   required?: boolean

@@ -1,5 +1,6 @@
 export const QUERY_PARAMETERS = {
   LIMIT: 9,
+  LATEST: 6,
 }
 
 export const STATUS = {

@@ -7,12 +7,15 @@ import InformBox from '@/ui/components/InformBox/InformBox'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { fetchPosts, selectPosts } from '@/store/slices/postsSlice'
 import styles from './Posts.module.scss'
+import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
+import PostsSkeleton from '@/ui/components/skeleton/PostsSkeleton/PostsSkeleton'
 
 const Posts = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch()
   const {
     data: { nodes: posts = [], pageInfo = null },
     filter: { category },
+    status,
   } = useAppSelector(selectPosts) as {
     data: {
       nodes: IPost[]
@@ -21,6 +24,7 @@ const Posts = ({ className }: { className?: string }) => {
     filter: {
       category: string
     }
+    status: string
   }
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const Posts = ({ className }: { className?: string }) => {
       <div className="content-block">
         <div className={styles['posts-list']}>
           <div className="row">
-            {posts.length ? (
+            {posts.length && status === STATUS.FULFILLED ? (
               posts.map((post) => (
                 <div
                   className="col-md-6 col-lg-4 col-gutter-lr"
@@ -42,17 +46,23 @@ const Posts = ({ className }: { className?: string }) => {
                   <Post data={post} />
                 </div>
               ))
-            ) : (
+            ) : posts.length === 0 && status === STATUS.FULFILLED ? (
               <div className="col-xs-12">
                 <InformBox
                   title="No articles"
                   description="Sorry, there is no data available"
                 />
               </div>
+            ) : (
+              <PostsSkeleton count={6} />
             )}
           </div>
         </div>
-        {pageInfo && pageInfo.hasNextPage ? <Pagination /> : null}
+        {pageInfo &&
+        pageInfo.hasNextPage &&
+        posts.length >= QUERY_PARAMETERS.LIMIT ? (
+          <Pagination />
+        ) : null}
       </div>
     </section>
   )

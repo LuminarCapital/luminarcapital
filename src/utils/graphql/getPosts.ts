@@ -1,6 +1,14 @@
 import { QUERY_PARAMETERS } from '@/config/constants'
 
-export const getPosts = async (category = '') => {
+interface IGetPosts {
+  category: string
+  limit?: number
+}
+
+export const getPosts = async ({
+  category = '',
+  limit = QUERY_PARAMETERS.LIMIT,
+}: IGetPosts) => {
   const res = await fetch(process.env.WORDPRESS_API_URL!, {
     method: 'POST',
     headers: {
@@ -9,7 +17,7 @@ export const getPosts = async (category = '') => {
     body: JSON.stringify({
       query: `
         query GetPosts {
-          posts(first: ${QUERY_PARAMETERS.LIMIT}, where: { categoryName: "${category}" }) {
+          posts(first: ${limit}, where: { categoryName: "${category}", orderby: { field: DATE, order: DESC } }) {
             nodes {
               id
               slug
