@@ -1,0 +1,15 @@
+.form{
+	max-width: 624rem;
+	margin: 0 auto;
+	
+		&-body{
+			display: flex;
+			flex-direction: column;
+			gap: 20rem;
+			align-items: center;
+		}
+		
+		&-action{
+			margin-top: 20rem;
+		}
+}

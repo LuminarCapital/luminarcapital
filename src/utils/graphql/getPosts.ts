@@ -28,7 +28,7 @@ export const getPosts = async ({
               date
               featuredImage {
                 node {
-                  sourceUrl(size: MEDIUM_LARGE)
+                  sourceUrl(size: LARGE)
                 }
               }
             }

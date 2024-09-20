@@ -13,87 +13,87 @@ const MetaLayout = ({ children }: { children: ReactNode }) => {
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="favicon/apple-touch-icon.png"
+          href="/favicon/apple-touch-icon.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href="favicon/favicon-32x32.png"
+          href="/favicon/favicon-32x32.png"
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href="favicon/favicon-16x16.png"
+          href="/favicon/favicon-16x16.png"
         />
-        <link rel="manifest" href="favicon/site.webmanifest" />
         <link
           rel="mask-icon"
-          href="favicon/safari-pinned-tab.svg"
+          href="/favicon/safari-pinned-tab.svg"
           color="#ffffff"
         />
         <link
           rel="shortcut icon"
-          href="favicon/favicon.ico"
+          href="/favicon/favicon.ico"
           type="image/x-icon"
         />
-        <link rel="icon" href="favicon/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
 
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Bold.woff"
+          href="/fonts/InstrumentSans-Bold.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Bold.woff2"
+          href="/fonts/InstrumentSans-Bold.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Medium.woff"
+          href="/fonts/InstrumentSans-Medium.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Medium.woff2"
+          href="/fonts/InstrumentSans-Medium.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Regular.woff"
+          href="/fonts/InstrumentSans-Regular.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-Regular.woff2"
+          href="/fonts/InstrumentSans-Regular.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-SemiBold.woff"
+          href="/fonts/InstrumentSans-SemiBold.woff"
           as="font"
           type="font/woff"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="fonts/InstrumentSans-SemiBold.woff2"
+          href="/fonts/InstrumentSans-SemiBold.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

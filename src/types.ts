@@ -37,9 +37,11 @@ export interface IPost {
   date?: string
   featuredImage: {
     node: {
-      sourceUrl: string
+      sourceUrl?: string
+      mediaItemUrl?: string
     }
   }
+  mediaItemUrl: string
   content?: string | TrustedHTML
 }
 
@@ -54,4 +56,9 @@ export interface IPageInfo {
   hasPreviousPage: boolean
   startCursor: number
   endCursor: number
+}
+
+export interface ITab {
+  title: string
+  value: string | number
 }

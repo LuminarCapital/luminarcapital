@@ -24,9 +24,10 @@ const Article = ({ className, data }: IArticle) => {
           <div className="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 col-gutter-lr">
             <div className={styles['article-banner']}>
               <Image
-                src={data.featuredImage.node.sourceUrl}
+                src={data.featuredImage.node.mediaItemUrl!}
                 alt={data.title}
                 fill
+                sizes="(min-width: 601px) 1000rem, (max-width: 600px) 350rem"
                 style={{ objectFit: 'cover', objectPosition: 'center' }}
               />
             </div>

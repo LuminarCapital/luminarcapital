@@ -1,0 +1,44 @@
+@import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
+
+.section{
+	position: relative;
+	
+		&-box{
+			padding: 60rem 40rem 58rem;
+			background-color: var(--color-white);
+			background-image: url('/abstract/form-abstract-desktop.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			border: 1rem var(--color-primary-dark-blue) solid;
+			border-radius: 40px;
+			
+				&-header{
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					row-gap: 16rem;
+					padding-bottom: 28rem;
+				}
+			
+				&-icon{
+					position: relative;
+					width: 90rem;
+					height: 90rem;
+					margin-bottom: 12rem;
+				}
+			
+				&-title{
+				
+				}
+			
+				&-description{
+				
+				}
+			
+				&-form{
+					padding-top: 40rem;
+				}
+		}
+}

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import HeroSimple from '@/components/HeroSimple/HeroSimple'
-import InformBox from '@/ui/components/InformBox/InformBox'
+import DefaultForms from '@/components/DefaultForms/DefaultForms'
 
 export default function Contact() {
   return (
@@ -16,10 +16,7 @@ export default function Contact() {
         title="Get In Touch"
         description="Ready to explore your financing options? Interested in becoming a partner? Need assistance with an existing account? Have a question you'd like answered? Reach out, we're here to help!"
       />
-      <InformBox
-        title="Coming Soon!"
-        description="Exciting things are on the way — stay tuned!"
-      />
+      <DefaultForms />
     </>
   )
 }
