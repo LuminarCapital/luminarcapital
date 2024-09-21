@@ -1,4 +1,4 @@
-import { QUERY_PARAMETERS } from '@/config/constants'
+import { QUERY_PARAMETERS, WORDPRESS_API_PATHS } from '@/config/constants'
 
 interface IGetPosts {
   category: string
@@ -11,13 +11,15 @@ export const getPosts = async ({
   limit = QUERY_PARAMETERS.LIMIT,
   not = '',
 }: IGetPosts) => {
-  const res = await fetch(process.env.WORDPRESS_API_URL!, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
+  const res = await fetch(
+    `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.graphql}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
         query GetPosts {
           posts(first: ${limit}, where: { categoryName: "${category}", orderby: { field: DATE, order: DESC }, notIn: "${not}" }) {
             nodes {
@@ -41,11 +43,12 @@ export const getPosts = async ({
           }
         }
     `,
-    }),
-    next: {
-      revalidate: 0,
+      }),
+      next: {
+        revalidate: 0,
+      },
     },
-  })
+  )
 
   const { data } = await res.json()
 

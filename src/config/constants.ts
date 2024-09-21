@@ -9,3 +9,8 @@ export const STATUS = {
   FULFILLED: 'FULFILLED',
   REJECTED: 'REJECTED',
 }
+
+export const WORDPRESS_API_PATHS = {
+  graphql: 'graphql',
+  rest: 'wp-json/api/v1',
+}

@@ -1,11 +1,15 @@
+import { WORDPRESS_API_PATHS } from '@/config/constants'
+
 export const getCategories = async () => {
-  const res = await fetch(process.env.WORDPRESS_API_URL!, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
+  const res = await fetch(
+    `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.graphql}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
         query GetCategories {
           categories{
 				    nodes{
@@ -22,11 +26,12 @@ export const getCategories = async () => {
 				  }
         }
     `,
-    }),
-    next: {
-      revalidate: 0,
+      }),
+      next: {
+        revalidate: 0,
+      },
     },
-  })
+  )
 
   const { data } = await res.json()
 

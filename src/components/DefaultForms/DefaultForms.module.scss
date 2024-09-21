@@ -3,9 +3,14 @@
 
 .section{
 	position: relative;
+	padding-bottom: 63rem;
+	
+		@include maxWidth($sm-max){
+			padding-bottom: 60rem;
+		}
 	
 		&-box{
-			padding: 60rem 40rem 58rem;
+			padding: 60rem 40rem;
 			background-color: var(--color-white);
 			background-image: url('/abstract/form-abstract-desktop.svg');
 			background-repeat: no-repeat;
@@ -13,6 +18,13 @@
 			background-size: cover;
 			border: 1rem var(--color-primary-dark-blue) solid;
 			border-radius: 40px;
+			
+				@include maxWidth($sm-max){
+					padding: 60rem 24rem;
+					background-image: url('/abstract/CTA-abstract-mobile.svg');
+					background-position: -48rem 0;
+					background-size: 83% auto;
+				}
 			
 				&-header{
 					display: flex;
@@ -34,7 +46,11 @@
 				}
 			
 				&-description{
-				
+					text-align: center;
+					
+						@include maxWidth($sm-max){
+              font: var(--font-body-lg);
+            }
 				}
 			
 				&-form{

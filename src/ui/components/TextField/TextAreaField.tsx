@@ -1,27 +1,36 @@
-import { forwardRef, InputHTMLAttributes } from 'react'
+import { ChangeEvent, forwardRef, TextareaHTMLAttributes } from 'react'
 import classNames from 'classnames'
 import styles from './TextField.module.scss'
 
-interface ITextField extends InputHTMLAttributes<HTMLInputElement> {
+interface ITextAreaField extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string
   placeholder?: string
   error?: string | null
   isFocused?: boolean
+  onBlur?: (e: ChangeEvent<HTMLTextAreaElement>) => void // eslint-disable-line no-unused-vars
 }
 
-const TextField = forwardRef<HTMLInputElement, ITextField>(
+const TextAreaField = forwardRef<HTMLTextAreaElement, ITextAreaField>(
   (
-    { className, placeholder, error = null, isFocused, ...props }: ITextField,
+    {
+      className,
+      placeholder,
+      error = null,
+      isFocused,
+      onBlur,
+      ...props
+    }: ITextAreaField,
     ref,
   ) => {
     return (
       <label className={classNames(styles['textField-container'], className)}>
-        <input
+        <textarea
           ref={ref}
           className={classNames(
-            styles['textField-item'],
+            styles['textField-area'],
             error ? styles['error'] : null,
           )}
+          onBlur={onBlur}
           {...props}
         />
         {placeholder ? (
@@ -42,4 +51,4 @@ const TextField = forwardRef<HTMLInputElement, ITextField>(
   },
 )
 
-export default TextField
+export default TextAreaField

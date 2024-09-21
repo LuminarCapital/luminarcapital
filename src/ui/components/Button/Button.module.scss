@@ -14,7 +14,9 @@
 
 		&-label{
 			position: relative;
-			display: inline-block;
+			display: inline-flex;
+			align-items: center;
+			column-gap: 6rem;
 			pointer-events: none;
 		}
 	

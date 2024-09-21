@@ -16,6 +16,7 @@ interface IButton {
   asDefaultLink?: boolean
   href?: string
   onClick?: () => void
+  type?: 'button' | 'submit'
 }
 
 const Button = ({
@@ -31,6 +32,7 @@ const Button = ({
   target,
   asDefaultLink = false,
   onClick,
+  type = 'button',
   ...props
 }: IButton) => {
   const classes = classNames(
@@ -73,7 +75,12 @@ const Button = ({
   }
 
   return (
-    <button className={classes} disabled={disabled} onClick={onClick}>
+    <button
+      className={classes}
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+    >
       {content}
     </button>
   )

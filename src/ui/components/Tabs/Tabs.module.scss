@@ -24,16 +24,22 @@
 .tab{
 	position: relative;
 	display: inline-block;
-	padding: 0 15rem;
+	padding: 0 12rem;
 	color: var(--color-gray-70);
 	font-size: 16rem;
 	font-family: var(--font-primary-bold);
 	line-height: 38rem;
+	white-space: nowrap;
 	text-align: center;
 	background-color: transparent;
 	border-radius: 10px;
 	transition: color var(--transition-duration-button) var(--transition-easing-button), background-color var(--transition-duration-button) var(--transition-easing-button);
 
+		@include maxWidth($sm-max){
+			padding: 0 8rem;
+			font-size: 14rem;
+		}
+	
 		@include hover($md-max){
 			&:hover{
 				color: var(--color-black);
