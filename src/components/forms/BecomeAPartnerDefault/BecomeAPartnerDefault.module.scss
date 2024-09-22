@@ -10,6 +10,10 @@
 			flex-direction: column;
 			gap: 20rem;
 			align-items: center;
+			
+				@include maxWidth($sm-max){
+					gap: 16rem;
+				}
 		}
 	
 		&-action{

@@ -48,4 +48,9 @@
 					height: 18rem;
 				}
 		}
+	
+		&-error{
+			color: var(--color-secondary-red);
+			font: var(--font-body-md);
+		}
 }

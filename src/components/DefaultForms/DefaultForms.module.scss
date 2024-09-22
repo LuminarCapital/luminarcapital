@@ -10,6 +10,7 @@
 		}
 	
 		&-box{
+			position: relative;
 			padding: 60rem 40rem;
 			background-color: var(--color-white);
 			background-image: url('/abstract/form-abstract-desktop.svg');
@@ -30,8 +31,8 @@
 					display: flex;
 					flex-direction: column;
 					align-items: center;
-					row-gap: 16rem;
 					padding-bottom: 28rem;
+					row-gap: 16rem;
 				}
 			
 				&-icon{

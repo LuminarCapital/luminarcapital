@@ -9,6 +9,7 @@ import { schema } from './schema'
 import TextAreaField from '@/ui/components/TextField/TextAreaField'
 import axios from 'axios'
 import { WORDPRESS_API_PATHS } from '@/config/constants'
+import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import styles from './ApplyForFinancingDefault.module.scss'
 
 interface IApplyForFinancingDefault {
@@ -40,6 +41,9 @@ const ApplyForFinancingDefaultForm = ({
   })
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [isSubmittedSuccess, setIsSubmittedSuccess] = useState<boolean>(false)
+  const [submittedError, setSubmittedError] = useState<string | null>(null)
+
   // State to track focus status for each field. Initially, all fields are not focused.
   const [isFocused, setIsFocused] = useState({
     name: false,
@@ -71,25 +75,33 @@ const ApplyForFinancingDefaultForm = ({
         data,
       )
       .then((response) => {
-        // TODO: display success message
-        console.log(response)
-        reset()
-        setIsFocused({
-          name: false,
-          business_name: false,
-          email: false,
-          amount_of_financing_requested: false,
-          average_of_monthly_sales: false,
-          phone: false,
-          business_objectives: false,
-        })
+        if (response.data.success && response.status === 200) {
+          setIsSubmittedSuccess(true)
+
+          setTimeout(() => {
+            reset()
+            setIsFocused({
+              name: false,
+              business_name: false,
+              email: false,
+              amount_of_financing_requested: false,
+              average_of_monthly_sales: false,
+              phone: false,
+              business_objectives: false,
+            })
+          }, 1000)
+        }
       })
       .catch((err) => {
-        // TODO: display error message
-        console.log('error', err)
+        // display error message
+        setSubmittedError(err.response.data.message)
+        // clear error message
+        setTimeout(() => setSubmittedError(null), 3000)
       })
       .finally(() => {
         setIsSubmitting(false)
+        // hide success message
+        setTimeout(() => setIsSubmittedSuccess(false), 8000)
       })
   }
 
@@ -102,11 +114,13 @@ const ApplyForFinancingDefaultForm = ({
       error: errors.business_name?.message,
     },
     { name: 'email', placeholder: 'Email', error: errors.email?.message },
+    // TODO: create select
     {
       name: 'amount_of_financing_requested',
       placeholder: 'Amount of financing requested',
       error: errors.amount_of_financing_requested?.message,
     },
+    // TODO: create select
     {
       name: 'average_of_monthly_sales',
       placeholder: "What's your average monthly sales?",
@@ -120,40 +134,44 @@ const ApplyForFinancingDefaultForm = ({
   ]
 
   return (
-    <div className={classNames(styles['form'], className)}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles['form-body']}>
-        <div className={styles['form-body-grid']}>
-          {fields.map((field) => (
-            <TextField
-              key={field.name}
-              {...register(field.name as keyof IFormInput)}
-              className={styles['form-body-grid-item']}
-              placeholder={field.placeholder}
-              error={field.error}
-              isFocused={isFocused[field.name as keyof IFormInput]}
-              onBlur={handleBlur}
-              disabled={isSubmitting}
-            />
-          ))}
-        </div>
+    <>
+      <div className={classNames(styles['form'], className)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles['form-body']}>
+          <div className={styles['form-body-grid']}>
+            {fields.map((field) => (
+              <TextField
+                key={field.name}
+                {...register(field.name as keyof IFormInput)}
+                className={styles['form-body-grid-item']}
+                placeholder={field.placeholder}
+                error={field.error}
+                isFocused={isFocused[field.name as keyof IFormInput]}
+                onBlur={handleBlur}
+              />
+            ))}
+          </div>
 
-        <TextAreaField
-          {...register('business_objectives')}
-          placeholder="Describe your business objectives!"
-          isFocused={isFocused.business_objectives}
-          onBlur={handleBlur}
-          disabled={isSubmitting}
-        />
-        <Button className={styles['form-action']} type="submit">
-          {isSubmitting ? (
-            <div className={styles['form-action-icon']}>
-              <Image src="/animated-spinner.svg" alt="submitting" fill />
-            </div>
+          <TextAreaField
+            {...register('business_objectives')}
+            placeholder="Describe your business objectives!"
+            isFocused={isFocused.business_objectives}
+            onBlur={handleBlur}
+          />
+          <Button className={styles['form-action']} type="submit">
+            {isSubmitting ? (
+              <div className={styles['form-action-icon']}>
+                <Image src="/animated-spinner.svg" alt="submitting" fill />
+              </div>
+            ) : null}
+            Submit
+          </Button>
+          {submittedError ? (
+            <p className={styles['form-error']}>{submittedError}</p>
           ) : null}
-          Submit
-        </Button>
-      </form>
-    </div>
+        </form>
+      </div>
+      {isSubmittedSuccess ? <SuccessMessage type="financing" /> : null}
+    </>
   )
 }
 

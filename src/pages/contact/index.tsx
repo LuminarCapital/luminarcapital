@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import HeroSimple from '@/components/HeroSimple/HeroSimple'
 import DefaultForms from '@/components/DefaultForms/DefaultForms'
+import ContactsData from '@/routes/contact/ContactsData/ContactsData'
 
 export default function Contact() {
   return (
@@ -16,6 +17,7 @@ export default function Contact() {
         title="Get In Touch"
         description="Ready to explore your financing options? Interested in becoming a partner? Need assistance with an existing account? Have a question you'd like answered? Reach out, we're here to help!"
       />
+      <ContactsData />
       <DefaultForms />
     </>
   )
