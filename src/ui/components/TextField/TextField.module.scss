@@ -1,4 +1,5 @@
 @import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
 
 .textField{
 		&-container{
@@ -72,5 +73,9 @@
 			left: 0;
 			color: var(--color-secondary-red);
 			font: var(--font-body-sm);
+			
+				@include maxWidth($sm-max){
+					top: 100%;
+				}
 		}
 }

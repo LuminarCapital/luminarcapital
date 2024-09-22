@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -8,8 +8,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import TextAreaField from '@/ui/components/TextField/TextAreaField'
 import axios from 'axios'
-import { WORDPRESS_API_PATHS } from '@/config/constants'
+import { AMOUNT_OPTIONS, WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
+import SelectField from '@/ui/components/SelectField/SelectField'
+import { IOption } from '@/types'
+import { MultiValue, SingleValue } from 'react-select'
 import styles from './ApplyForFinancingDefault.module.scss'
 
 interface IApplyForFinancingDefault {
@@ -36,6 +39,8 @@ const ApplyForFinancingDefaultForm = ({
     getValues,
     formState: { errors },
     reset,
+    setValue,
+    clearErrors,
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
   })
@@ -93,62 +98,95 @@ const ApplyForFinancingDefaultForm = ({
         }
       })
       .catch((err) => {
-        // display error message
+        // Set error message and clear it after 3 seconds
         setSubmittedError(err.response.data.message)
-        // clear error message
         setTimeout(() => setSubmittedError(null), 3000)
       })
       .finally(() => {
         setIsSubmitting(false)
-        // hide success message
-        setTimeout(() => setIsSubmittedSuccess(false), 8000)
+        // Automatically hide the success message after 8 seconds
+        // setTimeout(() => setIsSubmittedSuccess(false), 8000)
       })
   }
 
-  // Array of field configurations. Each object contains the field's name, placeholder text, and any error messages.
-  const fields: { name: string; placeholder: string; error?: string }[] = [
-    { name: 'name', placeholder: 'Full Name', error: errors.name?.message },
-    {
-      name: 'business_name',
-      placeholder: 'Business Name',
-      error: errors.business_name?.message,
+  const handleSelectChange = useCallback(
+    (
+      newValue: SingleValue<IOption> | MultiValue<IOption>,
+      fieldName: keyof IFormInput,
+    ) => {
+      if (Array.isArray(newValue)) {
+        // Check if the value is an array (MultiValue), iterate through each option
+        newValue.forEach((option) => {
+          if ('value' in option) {
+            setValue(fieldName, option.value)
+          }
+        })
+      } else {
+        // For SingleValue option, log the value
+        if (newValue && 'value' in newValue) {
+          setValue(fieldName, newValue.value)
+        }
+      }
+      clearErrors(fieldName)
     },
-    { name: 'email', placeholder: 'Email', error: errors.email?.message },
-    // TODO: create select
-    {
-      name: 'amount_of_financing_requested',
-      placeholder: 'Amount of financing requested',
-      error: errors.amount_of_financing_requested?.message,
-    },
-    // TODO: create select
-    {
-      name: 'average_of_monthly_sales',
-      placeholder: "What's your average monthly sales?",
-      error: errors.average_of_monthly_sales?.message,
-    },
-    {
-      name: 'phone',
-      placeholder: 'Phone Number',
-      error: errors.phone?.message,
-    },
-  ]
+    [clearErrors, setValue],
+  )
 
   return (
     <>
       <div className={classNames(styles['form'], className)}>
         <form onSubmit={handleSubmit(onSubmit)} className={styles['form-body']}>
           <div className={styles['form-body-grid']}>
-            {fields.map((field) => (
-              <TextField
-                key={field.name}
-                {...register(field.name as keyof IFormInput)}
-                className={styles['form-body-grid-item']}
-                placeholder={field.placeholder}
-                error={field.error}
-                isFocused={isFocused[field.name as keyof IFormInput]}
-                onBlur={handleBlur}
-              />
-            ))}
+            <TextField
+              {...register('name')}
+              className={styles['form-body-grid-item']}
+              placeholder="Full Name"
+              error={errors.name?.message}
+              isFocused={isFocused['name']}
+              onBlur={handleBlur}
+            />
+            <TextField
+              {...register('business_name')}
+              className={styles['form-body-grid-item']}
+              placeholder="Business Name"
+              error={errors.business_name?.message}
+              isFocused={isFocused['business_name']}
+              onBlur={handleBlur}
+            />
+            <TextField
+              {...register('email')}
+              className={styles['form-body-grid-item']}
+              placeholder="Email"
+              error={errors.email?.message}
+              isFocused={isFocused['email']}
+              onBlur={handleBlur}
+            />
+            <SelectField
+              className={styles['form-body-grid-item']}
+              options={AMOUNT_OPTIONS}
+              placeholder="Amount of financing requested"
+              onChange={(newValue) =>
+                handleSelectChange(newValue, 'amount_of_financing_requested')
+              }
+              error={errors.amount_of_financing_requested?.message}
+            />
+            <SelectField
+              className={styles['form-body-grid-item']}
+              options={AMOUNT_OPTIONS}
+              placeholder="What's your average monthly sales?"
+              onChange={(newValue) =>
+                handleSelectChange(newValue, 'average_of_monthly_sales')
+              }
+              error={errors.average_of_monthly_sales?.message}
+            />
+            <TextField
+              {...register('phone')}
+              className={styles['form-body-grid-item']}
+              placeholder="Phone Number"
+              error={errors.phone?.message}
+              isFocused={isFocused['phone']}
+              onBlur={handleBlur}
+            />
           </div>
 
           <TextAreaField

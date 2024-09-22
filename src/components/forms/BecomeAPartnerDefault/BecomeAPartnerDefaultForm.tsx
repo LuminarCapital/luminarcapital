@@ -87,7 +87,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
       .finally(() => {
         setIsSubmitting(false)
         // hide success message
-        setTimeout(() => setIsSubmittedSuccess(false), 8000)
+        // setTimeout(() => setIsSubmittedSuccess(false), 8000)
       })
   }
 

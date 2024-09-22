@@ -19,6 +19,7 @@
 					display: flex;
 					flex-wrap: wrap;
 					gap: 20rem;
+					width: 100%;
 					
 						@include maxWidth($sm-max){
 							gap: 16rem;

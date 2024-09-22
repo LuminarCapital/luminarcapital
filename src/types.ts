@@ -62,3 +62,11 @@ export interface ITab {
   title: string
   value: string | number
 }
+
+export interface IOption {
+  value: string
+  label: string
+  isDisabled?: boolean
+  isFocused?: boolean
+  isSelected?: boolean
+}
