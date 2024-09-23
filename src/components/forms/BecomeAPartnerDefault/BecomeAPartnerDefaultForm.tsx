@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from 'react'
+import Image from 'next/image'
 import classNames from 'classnames'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import TextField from '@/ui/components/TextField/TextField'
@@ -9,7 +10,6 @@ import { WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from './schema'
 import styles from './BecomeAPartnerDefault.module.scss'
-import Image from 'next/image'
 
 interface IBecomeAPartnerDefault {
   className?: string
@@ -87,7 +87,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
       .finally(() => {
         setIsSubmitting(false)
         // hide success message
-        // setTimeout(() => setIsSubmittedSuccess(false), 8000)
+        setTimeout(() => setIsSubmittedSuccess(false), 8000)
       })
   }
 

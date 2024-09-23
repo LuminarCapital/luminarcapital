@@ -1,4 +1,5 @@
 import { ChangeEvent, useCallback, useState } from 'react'
+import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -32,6 +33,7 @@ interface IFormInput {
 const ApplyForFinancingDefaultForm = ({
   className,
 }: IApplyForFinancingDefault) => {
+  const router = useRouter()
   // Using useForm hook with yupResolver to validate the form based on a schema
   const {
     register,
@@ -105,7 +107,10 @@ const ApplyForFinancingDefaultForm = ({
       .finally(() => {
         setIsSubmitting(false)
         // Automatically hide the success message after 8 seconds
-        // setTimeout(() => setIsSubmittedSuccess(false), 8000)
+        setTimeout(() => {
+          setIsSubmittedSuccess(false)
+          router.reload()
+        }, 8000)
       })
   }
 
