@@ -70,3 +70,14 @@ export interface IOption {
   isFocused?: boolean
   isSelected?: boolean
 }
+
+export interface IModalState {
+  isOpen: boolean
+  modal: 'partner' | 'financing' | null
+  size: 'xl' | 'lg' | 'md'
+}
+
+export interface IModalPayload {
+  modal: 'partner' | 'financing'
+  size: 'xl' | 'lg' | 'md'
+}

@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { useAppDispatch } from '@/hooks'
 import classNames from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/ui/components/Button/Button'
 import NavLink from '@/ui/components/NavLink/NavLink'
 import Burger from '@/ui/components/Burger/Burger'
+import { openModal } from '@/store/slices/modalSlice'
 import styles from './Header.module.scss'
 
 interface IHeader {
@@ -37,6 +39,7 @@ const nav = [
 
 const Header = ({ className }: IHeader) => {
   const router = useRouter()
+  const dispatch = useAppDispatch()
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isScrolling, setIsScrolling] = useState<boolean>(false)
 
@@ -90,10 +93,18 @@ const Header = ({ className }: IHeader) => {
               <Button
                 variant="outlined"
                 className={styles['header-actions-item']}
+                onClick={() =>
+                  dispatch(openModal({ modal: 'partner', size: 'lg' }))
+                }
               >
                 Become a Partner
               </Button>
-              <Button className={styles['header-actions-item']}>
+              <Button
+                className={styles['header-actions-item']}
+                onClick={() =>
+                  dispatch(openModal({ modal: 'financing', size: 'xl' }))
+                }
+              >
                 Apply for Financing
               </Button>
             </div>

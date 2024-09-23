@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
 import MetaLayout from '@/layouts/MetaLayout/MetaLayout'
+import ModalWindow from '@/components/ModalWindow/ModalWindow'
 import styles from './DefaultLayout.module.scss'
 
 interface IDefaultLayout {
@@ -23,6 +24,7 @@ const DefaultLayout = ({ children }: IDefaultLayout) => {
         />
       </main>
       <Footer />
+      <ModalWindow />
     </MetaLayout>
   )
 }
