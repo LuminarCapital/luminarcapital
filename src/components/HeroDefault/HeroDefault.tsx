@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import Image from 'next/image'
 import classNames from 'classnames'
 import styles from './HeroDefault.module.scss'
 
@@ -7,7 +8,7 @@ interface IHeroDefault {
   title?: string
   description?: string
   actions?: ReactNode
-  banner?: ReactNode
+  banner?: string
 }
 
 const HeroDefault = ({
@@ -35,7 +36,11 @@ const HeroDefault = ({
               </div>
             </div>
             <div className="col-xs-12 col-lg-6 col-gutter-lr">
-              <div className={styles['heroDefault-banner']}>{banner}</div>
+              <div className={styles['heroDefault-banner']}>
+                {banner ? (
+                  <Image src={banner} alt={title!} loading="lazy" fill />
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

@@ -34,6 +34,12 @@
 			border: 1rem var(--color-primary-dark-blue) solid;
 			border-radius: 40px;
 			
+				@include maxWidth($sm-max){
+					padding: 80rem 24rem 60rem;
+					background-image: url('/abstract/modal-abstract-mobile.svg');
+					background-size: 100% 100%;
+				}
+			
 				// Modal box sizes
 				&.xl{
 					max-width: 1062rem;
@@ -57,6 +63,11 @@
 			height: 24rem;
 			color: var(--color-black);
 			transition: color var(--transition-duration-button) var(--transition-easing-button);
+			
+				@include maxWidth($sm-max){
+					top: 23rem;
+					right: 23rem;
+				}
 			
 				@include hover($md-max){
 					&:hover{

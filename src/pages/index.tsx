@@ -27,6 +27,7 @@ export default function Home({
       <HeroDefault
         title="Flexible financing options that fuel the growth of small businesses."
         description="Do you find yourself seeking capital to expand your small business? We believe every business should have the opportunity to access the financing they need to grow."
+        banner="/banners/hero-home-banner.svg"
         actions={
           <>
             <Button variant="outlined">Become a Partner</Button>

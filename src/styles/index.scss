@@ -114,6 +114,10 @@ svg{
 							width: 100rem;
 							height: 1rem;
 							content: '';
+							
+								@include maxWidth($sm-max){
+									width: 60rem;
+								}
 						}
 					
 						&::before{

@@ -15,9 +15,17 @@
 			justify-content: center;
 			padding-top: 70rem;
 			
+				@include maxWidth($sm-max){
+					padding-top: 62rem;
+				}
+			
 				&-title{
 					font: var(--font-heading-h4);
 					text-align: center;
+					
+						@include maxWidth($sm-max){
+							font: var(--font-heading-h5);
+						}
 				}
 
 				&-body{
@@ -29,6 +37,10 @@
 					margin: 0 auto;
 					padding: 40rem 0;
 					
+						@include maxWidth($sm-max){
+							padding: 31rem 0 20rem;
+						}
+					
 						&.checkboxes{
 							gap: 12rem;
 						}
@@ -39,6 +51,10 @@
 			position: relative;
 			padding: 0 0 38rem;
 			
+				@include maxWidth($sm-max){
+					padding: 0 0 20rem;
+				}
+			
 				&-dots{
 					position: absolute;
 					top: -5rem;
@@ -48,6 +64,10 @@
 					align-items: center;
 					transform: translateX(-50%);
 					pointer-events: none;
+					
+						@include maxWidth($sm-max){
+							gap: 50rem;
+						}
 					
 						li{
 							position: relative;
@@ -62,12 +82,26 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			
+				@include maxWidth($sm-max) {
+					gap: 24rem;
+				}
+			
+				&-item{
+					@include maxWidth($sm-max){
+						width: 100%;
+					}
+				}
 		}
 	
 		&-action{
 			position: absolute;
 			right: 0;
 			bottom: 0;
+			
+				@include maxWidth($sm-max){
+					width: calc(50% - 12rem);
+				}
 			
 				&-icon{
 					position: relative;
@@ -81,7 +115,11 @@
 			bottom: 16rem;
 			color: var(--color-secondary-red);
 			font: var(--font-body-sm);
-				
+			
+				@include maxWidth($sm-max){
+					bottom: 0;
+				}
+			
 				&.static{
 					position: relative;
 					bottom: 0;
@@ -110,4 +148,10 @@
 	opacity: 0;
 	transition: opacity var(--transition-duration-button) var(--transition-easing-button);
 	pointer-events: none;
+	
+		&.prev{
+			@include maxWidth($sm-max){
+				display: none;
+			}
+		}
 }

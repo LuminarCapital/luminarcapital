@@ -18,7 +18,13 @@
 		}
 	
 		&-banner{
+			position: relative;
+			width: 610rem;
+			height: 376rem;
+			margin: 0 auto;
+
 				@include maxWidth($sm-max){
+					width: 100%;
 					height: 184rem;
 					margin-top: 40rem;
 				}

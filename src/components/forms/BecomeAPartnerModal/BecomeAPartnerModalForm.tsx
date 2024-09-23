@@ -230,13 +230,21 @@ const BecomeAPartnerModalForm = ({
           <Button
             variant="outlined"
             onClick={handlePrevious}
-            className={currentSlide === 0 ? styles['hidden'] : ''}
+            className={classNames(
+              styles['form-navigation-item'],
+              styles['prev'],
+              currentSlide === 0 ? styles['hidden'] : '',
+            )}
           >
             Back
           </Button>
           <Button
             onClick={handleNext}
-            className={currentSlide === 2 ? styles['hidden'] : ''}
+            className={classNames(
+              styles['form-navigation-item'],
+              styles['next'],
+              currentSlide === 2 ? styles['hidden'] : '',
+            )}
           >
             Next
           </Button>
