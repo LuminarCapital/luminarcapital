@@ -52,6 +52,9 @@
 			position: absolute;
 			top: 34rem;
 			right: 34rem;
+			z-index: 1;
+			width: 24rem;
+			height: 24rem;
 			color: var(--color-black);
 			transition: color var(--transition-duration-button) var(--transition-easing-button);
 			
