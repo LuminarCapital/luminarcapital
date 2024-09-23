@@ -58,6 +58,7 @@ const Posts = ({ className }: { className?: string }) => {
             )}
           </div>
         </div>
+        {/*TODO: fix pagination*/}
         {pageInfo &&
         pageInfo.hasNextPage &&
         posts.length >= QUERY_PARAMETERS.LIMIT ? (

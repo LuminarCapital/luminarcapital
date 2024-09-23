@@ -7,6 +7,7 @@ import MoneyIcon from '@/ui/icons/Money'
 import DiscountIcon from '@/ui/icons/Discount'
 import CreditCardIcon from '@/ui/icons/CreditCard'
 import FinancingOptionCAT from '@/ui/components/FinancingOptionCAT/FinancingOptionCAT'
+import { cardsCarouselSettings } from '@/config/constants'
 import styles from './FinancingOptions.module.scss'
 
 interface IFinancingOptions {
@@ -46,17 +47,6 @@ const FinancingOptions = ({ className }: IFinancingOptions) => {
     }
   }, [])
 
-  const settings = {
-    adaptiveHeight: true,
-    variableWidth: true,
-    dots: true,
-    arrows: false,
-    centerMode: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    speed: 1000,
-  }
-
   return (
     <section className={classNames(styles['finOptions'], 'p-100-0', className)}>
       <div className="content-block">
@@ -66,7 +56,7 @@ const FinancingOptions = ({ className }: IFinancingOptions) => {
         <div className={styles['finOptions-cards']}>
           {!isDesktop ? (
             <>
-              <Slider {...settings}>
+              <Slider {...cardsCarouselSettings}>
                 {cards.map(({ title, description, icon, href }, index) => (
                   <FinancingOptionCard
                     key={`financing-card-${index}`}

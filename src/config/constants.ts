@@ -25,3 +25,14 @@ export const AMOUNT_OPTIONS: IOption[] = [
   { label: '$125,000 - $200,000', value: '$125,000 - $200,000' },
   { label: '> $200,000', value: '> $200,000' },
 ]
+
+export const cardsCarouselSettings = {
+  adaptiveHeight: true,
+  variableWidth: true,
+  dots: true,
+  arrows: false,
+  centerMode: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  speed: 1000,
+}

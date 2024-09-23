@@ -9,12 +9,16 @@ import {
 } from 'react-google-reviews'
 import CallToAction from '@/ui/components/CTA/CallToAction'
 import HeroHome from '@/components/HeroHome/HeroHome'
+import { useAppDispatch } from '@/hooks'
+import { openModal } from '@/store/slices/modalSlice'
 
 export default function Home({
   reviews,
 }: {
   reviews: { reviews: ReactGoogleReview[]; success: boolean }
 }) {
+  const dispatch = useAppDispatch()
+
   return (
     <>
       <Head>
@@ -30,8 +34,21 @@ export default function Home({
         banner="/banners/hero-home-banner.svg"
         actions={
           <>
-            <Button variant="outlined">Become a Partner</Button>
-            <Button>Apply for Financing</Button>
+            <Button
+              variant="outlined"
+              onClick={() =>
+                dispatch(openModal({ modal: 'partner', size: 'lg' }))
+              }
+            >
+              Become a Partner
+            </Button>
+            <Button
+              onClick={() =>
+                dispatch(openModal({ modal: 'financing', size: 'xl' }))
+              }
+            >
+              Apply for Financing
+            </Button>
           </>
         }
       />

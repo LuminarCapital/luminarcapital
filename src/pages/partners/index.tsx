@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
-import InformBox from '@/ui/components/InformBox/InformBox'
+import DefaultForms from '@/components/DefaultForms/DefaultForms'
+import Partnership from '@/routes/partners/Partnership/Partnership'
+import Portfolio from '@/routes/partners/Portfolio/Portfolio'
 
 export default function Partners() {
   return (
@@ -16,16 +18,16 @@ export default function Partners() {
       <HeroDefault
         title="Partner with Luminar"
         description="Join us in our mission to empower small businesses with the financing they deserve, backed by a trusted partner."
+        banner="/banners/hero-partners-banner.svg"
         actions={
           <>
             <Button>Become a Partner</Button>
           </>
         }
       />
-      <InformBox
-        title="Coming Soon!"
-        description="Exciting things are on the way — stay tuned!"
-      />
+      <Partnership />
+      <Portfolio />
+      <DefaultForms />
     </>
   )
 }
