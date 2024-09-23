@@ -81,3 +81,9 @@ export interface IModalPayload {
   modal: 'partner' | 'financing'
   size: 'xl' | 'lg' | 'md'
 }
+
+export interface IBenefit {
+  title: string
+  description: string
+  banner: string
+}

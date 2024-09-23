@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import HeroDefault from '@/components/HeroDefault/HeroDefault'
 import FinancingOptions from '@/routes/home/FinancingOptions/FinancingOptions'
 import PersonalizedExperience from '@/routes/home/PersonalizedExperience/PersonalizedExperience'
 import Button from '@/ui/components/Button/Button'
@@ -9,6 +8,7 @@ import {
   ReactGoogleReview,
 } from 'react-google-reviews'
 import CallToAction from '@/ui/components/CTA/CallToAction'
+import HeroHome from '@/components/HeroHome/HeroHome'
 
 export default function Home({
   reviews,
@@ -24,7 +24,7 @@ export default function Home({
           content="Flexible financing options that fuel the growth of small businesses."
         />
       </Head>
-      <HeroDefault
+      <HeroHome
         title="Flexible financing options that fuel the growth of small businesses."
         description="Do you find yourself seeking capital to expand your small business? We believe every business should have the opportunity to access the financing they need to grow."
         banner="/banners/hero-home-banner.svg"

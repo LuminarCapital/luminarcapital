@@ -77,6 +77,7 @@ const Header = ({ className }: IHeader) => {
               isMenuOpen ? styles['active'] : null,
             )}
           >
+            {/*TODO: add animation*/}
             <ul className={styles['header-navigation']}>
               {nav.map((link, index) => (
                 <li key={`nav-${index}`}>

@@ -46,6 +46,12 @@
 					margin-bottom: 40rem;
 				}
 		}
+		&-description{
+			
+				@include maxWidth($sm-max){
+					font: var(--font-body-lg);
+				}
+		}
 		&-bg{
 			position: relative;
 			

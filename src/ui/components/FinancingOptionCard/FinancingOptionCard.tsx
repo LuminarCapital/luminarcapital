@@ -21,7 +21,12 @@ const FinancingOptionCard = ({
         <p className={styles['card-description']}>{description}</p>
       </div>
       {href ? (
-        <Button variant="outlined" size="lg" className={styles['card-action']}>
+        <Button
+          href={href}
+          variant="outlined"
+          size="lg"
+          className={styles['card-action']}
+        >
           Learn more
         </Button>
       ) : null}

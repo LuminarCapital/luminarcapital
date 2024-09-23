@@ -1,4 +1,5 @@
 @import "@/styles/global/mixins";
+@import "@/styles/library/grid/variables/grid-variables";
 
 .button{
 	display: inline-flex;
@@ -38,7 +39,7 @@
 				color: var(--color-white);
 				background-color: var(--color-primary-dark-blue);
 				
-					@include hover(990){
+					@include hover($md-max){
 						&:hover{
 							background-color: var(--color-primary-blue);
 						}
@@ -48,6 +49,27 @@
 						background-color: var(--color-primary-light-blue);
 					}
 				
+					&:disabled,
+					&.disabled{
+						background-color: var(--color-gray-50);
+					}
+			}
+
+			&.white{
+				color: var(--color-primary-dark-blue);
+				background-color: var(--color-white);
+				
+					@include hover($md-max){
+						&:hover{
+							color: var(--color-white);
+							background-color: var(--color-primary-dark-blue);
+						}
+					}
+				
+					&:active{
+						background-color: var(--color-primary-light-blue);
+					}
+					
 					&:disabled,
 					&.disabled{
 						background-color: var(--color-gray-50);

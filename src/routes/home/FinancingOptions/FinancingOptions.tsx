@@ -18,21 +18,21 @@ const cards = [
     title: 'Revenue Based Financing',
     description:
       'Financial institutions supported small businesses well in the 20th Century. In the 21st Century, they have become too slow, bureaucratic, and very challenging to truly meet their customers needs. We offer innovative financing options that are fast, simple, and collaborative.',
-    href: '/',
+    href: '/financing-options?origin=0&scroll=true',
     icon: MoneyIcon,
   },
   {
     title: 'Early Repayment Discounts',
     description:
       'Expecting an influx of cash flow in the near term? Utilize our competitive discounts that allow you to take advantage of significant savings if your financing is repaid early.',
-    href: '/',
+    href: '/financing-options?origin=1&scroll=true',
     icon: DiscountIcon,
   },
   {
     title: 'Revolving Working Capital',
     description:
       'We believe in offering financing that is flexible and tailored to your needs. Revolving working capital enables you to quickly access the capital required, instead of committing to a large sum immediately. This cost friendly solution can be utilized on multiple occasions and integrates into your cash flow.',
-    href: '/',
+    href: '/financing-options?origin=2&scroll=true',
     icon: CreditCardIcon,
   },
 ] as IFinancingOptionCard[]

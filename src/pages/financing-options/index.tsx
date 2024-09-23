@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
-import InformBox from '@/ui/components/InformBox/InformBox'
+import Benefits from '@/routes/financing-options/Benefits/Benefits'
+import CallToAction from '@/ui/components/CTA/CallToAction'
+import CTASolid from '@/ui/components/CTASolid/CTASolid'
 
 export default function FinancingOptions() {
   return (
@@ -16,15 +18,19 @@ export default function FinancingOptions() {
       <HeroDefault
         title="Financing Options"
         description="Looking for financing catered to your business needs? Our personalized solutions factor incoming revenue and cash flow, not just your credit which provides a different approach compared to conventional products."
+        banner="/banners/hero-financing-options-banner.svg"
         actions={
           <>
             <Button>Apply for Financing</Button>
           </>
         }
       />
-      <InformBox
-        title="Coming Soon!"
-        description="Exciting things are on the way — stay tuned!"
+      <Benefits />
+      <CTASolid />
+      <CallToAction
+        title="Want to learn more about our financing options?"
+        description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
+        link={{ label: 'Get in Touch', href: '/' }}
       />
     </>
   )

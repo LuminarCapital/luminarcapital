@@ -5,7 +5,7 @@ import styles from './Button.module.scss'
 
 interface IButton {
   variant?: 'solid' | 'outlined' | 'link'
-  color?: 'primary' | 'secondary'
+  color?: 'primary' | 'secondary' | 'white'
   size?: 'xl' | 'lg' | 'md'
   disabled?: boolean
   icon?: FC<SVGProps<SVGSVGElement>>
