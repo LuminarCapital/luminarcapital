@@ -154,6 +154,15 @@ const ApplyForFinancingModalForm = ({
     }
   }, [errors])
 
+  const handleCheckboxChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      setValue(name as keyof IFormInput, value)
+      clearErrors(name as keyof IFormInput)
+    },
+    [clearErrors, setValue],
+  )
+
   return (
     <>
       <form
@@ -181,7 +190,7 @@ const ApplyForFinancingModalForm = ({
                   {...register('amount_of_financing_requested')}
                   key={`financing-checkbox-0-${index}`}
                   option={option}
-                  onChange={() => clearErrors('amount_of_financing_requested')}
+                  onChange={handleCheckboxChange}
                 />
               ))}
               {errors.amount_of_financing_requested?.message ? (
@@ -189,9 +198,6 @@ const ApplyForFinancingModalForm = ({
                   {errors.amount_of_financing_requested.message}
                 </span>
               ) : null}
-              <p style={{ fontSize: '10rem', wordWrap: 'break-word' }}>
-                {JSON.stringify(getValues())}
-              </p>
             </div>
           </div>
           <div className={styles['form-step']}>
