@@ -1,11 +1,15 @@
 import Head from 'next/head'
+import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
 import DefaultForms from '@/components/DefaultForms/DefaultForms'
 import Partnership from '@/routes/partners/Partnership/Partnership'
 import Portfolio from '@/routes/partners/Portfolio/Portfolio'
+import { openModal } from '@/store/slices/modalSlice'
 
 export default function Partners() {
+  const dispatch = useAppDispatch()
+
   return (
     <>
       <Head>
@@ -21,7 +25,13 @@ export default function Partners() {
         banner="/banners/hero-partners-banner.svg"
         actions={
           <>
-            <Button>Become a Partner</Button>
+            <Button
+              onClick={() =>
+                dispatch(openModal({ modal: 'partner', size: 'lg' }))
+              }
+            >
+              Become a Partner
+            </Button>
           </>
         }
       />

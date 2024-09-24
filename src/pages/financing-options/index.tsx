@@ -1,11 +1,15 @@
 import Head from 'next/head'
+import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
 import Benefits from '@/routes/financing-options/Benefits/Benefits'
 import CallToAction from '@/ui/components/CTA/CallToAction'
 import CTASolid from '@/ui/components/CTASolid/CTASolid'
+import { openModal } from '@/store/slices/modalSlice'
 
 export default function FinancingOptions() {
+  const dispatch = useAppDispatch()
+
   return (
     <>
       <Head>
@@ -21,7 +25,13 @@ export default function FinancingOptions() {
         banner="/banners/hero-financing-options-banner.svg"
         actions={
           <>
-            <Button>Apply for Financing</Button>
+            <Button
+              onClick={() =>
+                dispatch(openModal({ modal: 'financing', size: 'xl' }))
+              }
+            >
+              Apply for Financing
+            </Button>
           </>
         }
       />
@@ -30,7 +40,7 @@ export default function FinancingOptions() {
       <CallToAction
         title="Want to learn more about our financing options?"
         description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
-        link={{ label: 'Get in Touch', href: '/' }}
+        link={{ label: 'Get in Touch', href: '/contact?origin=1&scroll=true' }}
       />
     </>
   )

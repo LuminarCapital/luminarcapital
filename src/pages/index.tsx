@@ -58,7 +58,7 @@ export default function Home({
       <CallToAction
         title="Ready To Secure Business Financing?"
         description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
-        link={{ label: 'Get in Touch', href: '/' }}
+        link={{ label: 'Get in Touch', href: '/contact?scroll=true' }}
       />
     </>
   )

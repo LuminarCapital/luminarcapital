@@ -1,13 +1,17 @@
-import styles from './Portfolio.module.scss'
 import classNames from 'classnames'
 import Image from 'next/image'
+import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
+import styles from './Portfolio.module.scss'
+import { openModal } from '@/store/slices/modalSlice'
 
 interface IPortfolio {
   className?: string
 }
 
 const Portfolio = ({ className }: IPortfolio) => {
+  const dispatch = useAppDispatch()
+
   return (
     <section className={classNames(styles['section'], className)}>
       <div className="content-block">
@@ -35,7 +39,12 @@ const Portfolio = ({ className }: IPortfolio) => {
                   financing opportunities for your clients.
                 </p>
               </div>
-              <Button className={styles['section-action']}>
+              <Button
+                className={styles['section-action']}
+                onClick={() =>
+                  dispatch(openModal({ modal: 'partner', size: 'lg' }))
+                }
+              >
                 Become a Partner
               </Button>
             </div>

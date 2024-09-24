@@ -57,15 +57,15 @@ const navMain: { title: string; nav: { label: string; href: string }[] }[] = [
     nav: [
       {
         label: 'Revenue Based Financing',
-        href: '/',
+        href: '/financing-options?origin=0',
       },
       {
         label: 'Early Repayment Discounts',
-        href: '/',
+        href: '/financing-options?origin=1',
       },
       {
         label: 'Revolving Working Capital',
-        href: '/',
+        href: '/financing-options?origin=2',
       },
     ],
   },
@@ -74,15 +74,15 @@ const navMain: { title: string; nav: { label: string; href: string }[] }[] = [
     nav: [
       {
         label: 'Why Luminar',
-        href: '/',
+        href: '/why-luminar',
       },
       {
         label: 'Partners',
-        href: '/',
+        href: '/partners',
       },
       {
         label: 'Learning Center',
-        href: '/',
+        href: '/learning-center',
       },
     ],
   },
@@ -91,8 +91,9 @@ const navMain: { title: string; nav: { label: string; href: string }[] }[] = [
     nav: [
       {
         label: 'Contact Us',
-        href: '/',
+        href: '/contact',
       },
+      // TODO: open modal here
       {
         label: 'Become a Partner',
         href: '/',

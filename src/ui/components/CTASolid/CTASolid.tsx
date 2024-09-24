@@ -1,14 +1,18 @@
-import styles from './CTASolid.module.scss'
 import classNames from 'classnames'
 import Image from 'next/image'
+import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import ArrowRightIcon from '@/ui/icons/ArrowRight'
+import styles from './CTASolid.module.scss'
+import { openModal } from '@/store/slices/modalSlice'
 
 interface ICTASolid {
   className?: string
 }
 
 const CTASolid = ({ className }: ICTASolid) => {
+  const dispatch = useAppDispatch()
+
   return (
     <section className={classNames(styles['section'], className)}>
       <div className="content-block">
@@ -33,7 +37,13 @@ const CTASolid = ({ className }: ICTASolid) => {
                     Fico score exceeding 520
                   </li>
                 </ul>
-                <Button color="white" className={styles['section-action']}>
+                <Button
+                  color="white"
+                  className={styles['section-action']}
+                  onClick={() =>
+                    dispatch(openModal({ modal: 'financing', size: 'xl' }))
+                  }
+                >
                   Apply for Financing
                 </Button>
               </div>
