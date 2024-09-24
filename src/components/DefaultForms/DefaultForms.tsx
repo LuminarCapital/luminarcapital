@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import Image from 'next/image'
@@ -29,7 +29,13 @@ const DefaultForms = ({ className }: IDefaultForms) => {
   } = router
   const activeIndex = Number(origin)
 
-  // TODO: add scroll to forms if ?scroll=true
+  const ref = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    if (router.query.scroll) {
+      ref.current?.scrollIntoView()
+    }
+  }, [router.query.scroll])
 
   const handleFormSwitch = useCallback(
     (index: string) => {
@@ -46,7 +52,7 @@ const DefaultForms = ({ className }: IDefaultForms) => {
   )
 
   return (
-    <section className={classNames(styles['section'], className)}>
+    <section ref={ref} className={classNames(styles['section'], className)}>
       <div className="content-block">
         <div className={styles['section-box']}>
           <div className={styles['section-box-header']}>
