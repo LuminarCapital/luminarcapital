@@ -189,6 +189,9 @@ const ApplyForFinancingModalForm = ({
                   {errors.amount_of_financing_requested.message}
                 </span>
               ) : null}
+              <p style={{ fontSize: '10rem', wordWrap: 'break-word' }}>
+                {JSON.stringify(getValues())}
+              </p>
             </div>
           </div>
           <div className={styles['form-step']}>
