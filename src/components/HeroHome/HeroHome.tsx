@@ -5,7 +5,6 @@ import styles from './HeroHome.module.scss'
 
 const HeroBanner = dynamic(
   () => import('@/ui/components/HeroBanner/HeroBanner'),
-  { ssr: false },
 )
 
 interface IHeroDefault {
