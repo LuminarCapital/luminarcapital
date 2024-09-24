@@ -56,6 +56,14 @@
 						&.active{
 							display: flex;
 						}
+					
+						li,
+						button{
+							@include minWidth($md-max + 1){
+								transform: none !important;
+								opacity: 1 !important;
+							}
+						}
 				}
 		}
 	
