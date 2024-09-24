@@ -215,7 +215,7 @@ const ApplyForFinancingModalForm = ({
                   {...register('average_of_monthly_sales')}
                   key={`financing-checkbox-1-${index}`}
                   option={option}
-                  onChange={() => clearErrors('average_of_monthly_sales')}
+                  onChange={handleCheckboxChange}
                 />
               ))}
               {errors.average_of_monthly_sales?.message ? (
