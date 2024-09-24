@@ -1,7 +1,12 @@
 import { ReactNode } from 'react'
-import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import classNames from 'classnames'
 import styles from './HeroHome.module.scss'
+
+const HeroBanner = dynamic(
+  () => import('@/ui/components/HeroBanner/HeroBanner'),
+  { ssr: false },
+)
 
 interface IHeroDefault {
   className?: string
@@ -37,9 +42,7 @@ const HeroHome = ({
             </div>
             <div className="col-xs-12 col-lg-6 col-gutter-lr">
               <div className={styles['heroDefault-banner']}>
-                {banner ? (
-                  <Image src={banner} alt={title!} loading="lazy" fill />
-                ) : null}
+                {banner ? <HeroBanner src={banner} title={title!} /> : null}
               </div>
             </div>
           </div>

@@ -74,5 +74,6 @@
 			border-radius: 8px;
 			inset: 0;
 			transition: all var(--transition-duration-button) var(--transition-easing-button);
+			pointer-events: none;
 		}
 }
