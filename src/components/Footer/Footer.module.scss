@@ -165,6 +165,7 @@
 				@include hover($md-max){
 					&:hover{
 						color: var(--color-primary-dark-blue);
+						cursor: pointer;
 					}
 				}
 		}

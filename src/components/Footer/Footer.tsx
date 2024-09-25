@@ -1,123 +1,61 @@
-import { createElement, FC, SVGProps } from 'react'
+import { createElement, useCallback } from 'react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
-import GoogleMinifyIcon from '@/ui/icons/GoogleMinify'
-import LinkedinIcon from '@/ui/icons/Linkedin'
+import { useAppDispatch } from '@/hooks'
+import { IModalPayload } from '@/types'
+import { openModal } from '@/store/slices/modalSlice'
+import { navData } from './navData'
 import styles from './Footer.module.scss'
-import TrustPilotIcon from '@/ui/icons/TrustPilot'
-import FacebookIcon from '@/ui/icons/Facebook'
-import InstagramIcon from '@/ui/icons/Instagram'
-import TwitterIcon from '@/ui/icons/Twitter'
 
 interface IFooter {
   className?: string
 }
 
-const socials: {
-  title: string
-  icon: FC<SVGProps<SVGSVGElement>>
-  href: string
-}[] = [
-  {
-    title: 'Google',
-    icon: GoogleMinifyIcon,
-    href: '/',
-  },
-  {
-    title: 'LinkedIn',
-    icon: LinkedinIcon,
-    href: '/',
-  },
-  {
-    title: 'TrustPilot',
-    icon: TrustPilotIcon,
-    href: '/',
-  },
-  {
-    title: 'Facebook',
-    icon: FacebookIcon,
-    href: '/',
-  },
-  {
-    title: 'Instagram',
-    icon: InstagramIcon,
-    href: '/',
-  },
-  {
-    title: 'Twitter',
-    icon: TwitterIcon,
-    href: '/',
-  },
-]
-
-const navMain: { title: string; nav: { label: string; href: string }[] }[] = [
-  {
-    title: 'Financing Options',
-    nav: [
-      {
-        label: 'Revenue Based Financing',
-        href: '/financing-options?origin=0',
-      },
-      {
-        label: 'Early Repayment Discounts',
-        href: '/financing-options?origin=1',
-      },
-      {
-        label: 'Revolving Working Capital',
-        href: '/financing-options?origin=2',
-      },
-    ],
-  },
-  {
-    title: 'Discover',
-    nav: [
-      {
-        label: 'Why Luminar',
-        href: '/why-luminar',
-      },
-      {
-        label: 'Partners',
-        href: '/partners',
-      },
-      {
-        label: 'Learning Center',
-        href: '/learning-center',
-      },
-    ],
-  },
-  {
-    title: 'Resources',
-    nav: [
-      {
-        label: 'Contact Us',
-        href: '/contact',
-      },
-      // TODO: open modal here
-      {
-        label: 'Become a Partner',
-        href: '/',
-      },
-      {
-        label: 'Apply for Financing',
-        href: '/',
-      },
-    ],
-  },
-]
-
-const navSecondary: { title: string; href: string }[] = [
-  {
-    title: 'Privacy Policy',
-    href: '/',
-  },
-  {
-    title: 'Terms and Service',
-    href: '/',
-  },
-]
+const renderLink = (
+  link: { href?: string; modal?: IModalPayload; label: string },
+  // eslint-disable-next-line no-unused-vars
+  handleModalTrigger: (payload: IModalPayload) => void,
+) => {
+  if (link.href) {
+    return (
+      <Link
+        href={link.href}
+        title={link.label}
+        className={styles['footer-link']}
+      >
+        {link.label}
+      </Link>
+    )
+  }
+  if (link.modal) {
+    return (
+      <span
+        className={styles['footer-link']}
+        onClick={() =>
+          handleModalTrigger({
+            modal: link.modal!.modal,
+            size: link.modal!.size,
+          })
+        }
+      >
+        {link.label}
+      </span>
+    )
+  }
+  return null
+}
 
 const Footer = ({ className }: IFooter) => {
+  const dispatch = useAppDispatch()
+
+  const handleModalTrigger = useCallback(
+    ({ modal, size }: IModalPayload) => {
+      dispatch(openModal({ modal, size }))
+    },
+    [dispatch],
+  )
+
   return (
     <footer className={classNames(styles['footer'], className)}>
       <div className="content-block">
@@ -135,7 +73,7 @@ const Footer = ({ className }: IFooter) => {
                 and not a transaction.
               </p>
               <div className={styles['footer-social']}>
-                {socials.map((social, index) => (
+                {navData.socials.map((social, index) => (
                   <a
                     key={`social-icon-${index}`}
                     href={social.href}
@@ -151,7 +89,7 @@ const Footer = ({ className }: IFooter) => {
           </div>
           <div className="col-md-7 col-gutter-lr">
             <div className={styles['footer-nav']}>
-              {navMain.map((navGroup, index) => (
+              {navData.main.map((navGroup, index) => (
                 <div
                   key={`footer-nav-group-${index}`}
                   className={styles['footer-nav-item']}
@@ -162,13 +100,7 @@ const Footer = ({ className }: IFooter) => {
                   <ul className={styles['footer-nav-group']}>
                     {navGroup.nav.map((link, i) => (
                       <li key={`footer-link-${i}`}>
-                        <Link
-                          href={link.href}
-                          title={link.label}
-                          className={styles['footer-link']}
-                        >
-                          {link.label}
-                        </Link>
+                        {renderLink(link, handleModalTrigger)}
                       </li>
                     ))}
                   </ul>
@@ -182,7 +114,7 @@ const Footer = ({ className }: IFooter) => {
             Copyright &copy; 2024 Luminar Capital LLC. All rights reserved.
           </p>
           <div className={styles['footer-secondaryNav']}>
-            {navSecondary.map((link, index) => (
+            {navData.secondary.map((link, index) => (
               <Link
                 key={`footer-link-secondary-${index}`}
                 href={link.href}
