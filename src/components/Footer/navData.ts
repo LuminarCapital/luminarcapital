@@ -109,11 +109,11 @@ export const navData: INavData = {
   secondary: [
     {
       title: 'Privacy Policy',
-      href: '/',
+      href: '/privacy-policy',
     },
     {
       title: 'Terms and Service',
-      href: '/',
+      href: '/terms-of-service',
     },
   ],
 }

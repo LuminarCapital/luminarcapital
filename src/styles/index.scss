@@ -112,6 +112,12 @@ body{
 	}
 }
 
+.text-template{
+	& ~ .footer-abstract{
+		display: none;
+	}
+}
+
 svg{
 	width: 100%;
 	height: 100%;
