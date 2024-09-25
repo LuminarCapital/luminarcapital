@@ -2,8 +2,6 @@
 @import "@/styles/library/grid/variables/grid-variables";
 
 .section{
-	padding-bottom: 100rem;
-		
 		@include maxWidth($sm-max){
 			padding-bottom: 60rem;
 		}

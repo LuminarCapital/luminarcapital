@@ -3,9 +3,10 @@ import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
 import DefaultForms from '@/components/DefaultForms/DefaultForms'
-import Partnership from '@/routes/partners/Partnership/Partnership'
 import Portfolio from '@/routes/partners/Portfolio/Portfolio'
 import { openModal } from '@/store/slices/modalSlice'
+import BoardOfCards from '@/components/BoardOfCards/BoardOfCards'
+import { partnershipData } from '../../routes/partners/partnershipData'
 
 export default function Partners() {
   const dispatch = useAppDispatch()
@@ -35,7 +36,7 @@ export default function Partners() {
           </>
         }
       />
-      <Partnership />
+      <BoardOfCards title="The Luminar Partnership" cards={partnershipData} />
       <Portfolio />
       <DefaultForms />
     </>

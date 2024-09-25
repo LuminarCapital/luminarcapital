@@ -87,3 +87,10 @@ export interface IBenefit {
   description: string
   banner: string
 }
+
+export interface IBoardChessOrderCard {
+  title: string
+  description: string
+  image: string
+  label?: string
+}

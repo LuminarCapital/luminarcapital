@@ -4,6 +4,10 @@
 html{
 	font-size: calc(100vw / 1440);
 	
+		//@media only screen and (width > 1540px) {
+		//	font-size: calc(100vw / 2056);
+		//}
+	
 		@media only screen and (width <= $lg-max) {
 			font-size: calc(100vw / 1380);
 		}
@@ -89,6 +93,22 @@ body{
 			@include maxWidth($sm-max){
         bottom: -115rem;
       }
+	}
+}
+
+.advantage{
+	& ~ .footer-abstract{
+		@include minWidth($sm-max){
+			bottom: -280rem;
+		}
+	}
+}
+
+.portfolio{
+	& ~ .footer-abstract{
+		@include minWidth($sm-max){
+			bottom: -270rem;
+		}
 	}
 }
 

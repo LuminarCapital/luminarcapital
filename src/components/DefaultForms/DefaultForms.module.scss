@@ -3,11 +3,7 @@
 
 .section{
 	position: relative;
-	padding-bottom: 63rem;
-	
-		@include maxWidth($sm-max){
-			padding-bottom: 60rem;
-		}
+	padding-bottom: 60rem;
 	
 		&-box{
 			position: relative;

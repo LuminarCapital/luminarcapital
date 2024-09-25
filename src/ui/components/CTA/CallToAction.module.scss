@@ -2,7 +2,11 @@
 @import "@/styles/library/grid/variables/grid-variables";
 
 .section{
-	padding-bottom: 60rem;
+	padding: 100rem 0 60rem;
+	
+		@include maxWidth($sm-max){
+			padding: 60rem 0;
+		}
 	
 		&-box{
 			position: relative;

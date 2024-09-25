@@ -1,6 +1,12 @@
 @import "@/styles/global/mixins";
 @import "@/styles/library/grid/variables/grid-variables";
 
+.section{
+		@include minWidth($sm-max){
+			padding-bottom: 0;
+		}
+}
+
 .carousel{
 	margin-top: -8rem;
 	margin-bottom: 52rem;

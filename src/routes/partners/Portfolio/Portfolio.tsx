@@ -13,7 +13,7 @@ const Portfolio = ({ className }: IPortfolio) => {
   const dispatch = useAppDispatch()
 
   return (
-    <section className={classNames(styles['section'], className)}>
+    <section className={classNames(styles['section'], 'portfolio', className)}>
       <div className="content-block">
         <div className="row">
           <div className="col-xs-12 col-lg-6 col-gutter-lr">

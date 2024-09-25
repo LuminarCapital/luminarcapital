@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import FinancingOptions from '@/routes/home/FinancingOptions/FinancingOptions'
-import PersonalizedExperience from '@/routes/home/PersonalizedExperience/PersonalizedExperience'
 import Button from '@/ui/components/Button/Button'
 import ClientReviews from '@/routes/home/ClientReviews/ClientReviews'
 import {
@@ -11,6 +10,9 @@ import CallToAction from '@/ui/components/CTA/CallToAction'
 import HeroHome from '@/components/HeroHome/HeroHome'
 import { useAppDispatch } from '@/hooks'
 import { openModal } from '@/store/slices/modalSlice'
+import BoardChessOrder from '@/components/BoardChessOrder/BoardChessOrder'
+import { personalizedExperienceData } from '@/routes/home/personalizedExperienceData'
+import CTAStyles from '@/routes/home/CTA/CallToAction.module.scss'
 
 export default function Home({
   reviews,
@@ -53,12 +55,17 @@ export default function Home({
         }
       />
       <FinancingOptions />
-      <PersonalizedExperience />
+      <BoardChessOrder
+        title="A Personalized Experience"
+        data={personalizedExperienceData}
+        order="even"
+      />
       <ClientReviews data={reviews} />
       <CallToAction
         title="Ready To Secure Business Financing?"
         description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
         link={{ label: 'Get in Touch', href: '/contact?scroll=true' }}
+        className={CTAStyles['section']}
       />
     </>
   )
