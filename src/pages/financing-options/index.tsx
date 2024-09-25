@@ -40,7 +40,7 @@ export default function FinancingOptions() {
       <CallToAction
         title="Want to learn more about our financing options?"
         description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
-        link={{ label: 'Get in Touch', href: '/contact?origin=1&scroll=true' }}
+        link={{ label: 'Get in Touch', href: '/contact?origin=1' }}
       />
     </>
   )

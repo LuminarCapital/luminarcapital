@@ -161,6 +161,15 @@ const ApplyForFinancingDefaultForm = ({
               autoComplete="off"
             />
             <TextField
+              {...register('phone')}
+              className={styles['form-body-grid-item']}
+              placeholder="Phone Number"
+              error={errors.phone?.message}
+              isFocused={isFocused['phone']}
+              onBlur={handleBlur}
+              autoComplete="off"
+            />
+            <TextField
               {...register('email')}
               className={styles['form-body-grid-item']}
               placeholder="Email"
@@ -186,15 +195,6 @@ const ApplyForFinancingDefaultForm = ({
                 handleSelectChange(newValue, 'average_of_monthly_sales')
               }
               error={errors.average_of_monthly_sales?.message}
-            />
-            <TextField
-              {...register('phone')}
-              className={styles['form-body-grid-item']}
-              placeholder="Phone Number"
-              error={errors.phone?.message}
-              isFocused={isFocused['phone']}
-              onBlur={handleBlur}
-              autoComplete="off"
             />
           </div>
 

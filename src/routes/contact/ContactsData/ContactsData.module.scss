@@ -30,6 +30,13 @@
 	align-items: center;
 	color: var(--color-black);
 	font: var(--font-body-lg);
+	transition: color var(--transition-duration-button) var(--transition-easing-button);
+	
+		@include hover($md-max){
+			&:hover{
+				color: var(--color-primary-dark-blue);
+			}
+		}
 	
 		&-icon{
 			display: inline-flex;

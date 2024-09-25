@@ -27,6 +27,10 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
     slidesToScroll: 1,
     nextArrow: <SlickNextArrow />,
     prevArrow: <SlickPrevArrow />,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    pauseOnHover: true,
+    pauseOnFocus: true,
     responsive: [
       {
         breakpoint: 901,
@@ -68,7 +72,7 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
             </Slider>
             <div className={styles['carousel-action']}>
               <Button
-                href="/"
+                href="https://www.google.com/maps/search/?api=1&query=Google&query_place_id=ChIJN1t_tDeuEmsRUsoyG83frY4"
                 icon={GoogleIcon}
                 variant="outlined"
                 size="xl"
