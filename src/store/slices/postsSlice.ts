@@ -1,28 +1,13 @@
-import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
+import {
+  QUERY_PARAMETERS,
+  STATUS,
+  WORDPRESS_API_PATHS,
+} from '@/config/constants'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getPosts } from '@/utils/graphql/getPosts'
-import { IPageInfo, IPost } from '@/types'
+import { IFetchPosts, IPageInfo, IPostsState } from '@/types'
+import axios from 'axios'
 
-interface IState {
-  data: {
-    nodes: IPost[]
-    pageInfo: IPageInfo
-  }
-  status: string
-  error: string | null | unknown
-  filter: {
-    category: string
-    page: number
-  }
-}
-
-interface IFetchPosts {
-  category: string
-  limit?: number
-  not?: string
-}
-
-const initialState = {
+const initialState: IPostsState = {
   data: {
     nodes: [],
     pageInfo: {} as IPageInfo,
@@ -30,8 +15,11 @@ const initialState = {
   status: STATUS.IDLE,
   error: null,
   filter: {
-    category: '',
+    categories: null,
     page: 1,
+    per_page: QUERY_PARAMETERS.LIMIT,
+    order: null,
+    order_by: null,
   },
 }
 
@@ -40,18 +28,26 @@ export const postsKey = 'Posts'
 export const fetchPosts = createAsyncThunk(
   `${postsKey}/fetch`,
   async ({
-    category = '',
-    limit = QUERY_PARAMETERS.LIMIT,
-    not = '',
+    categories,
+    page,
+    per_page = QUERY_PARAMETERS.LIMIT,
+    order,
+    order_by,
   }: IFetchPosts) => {
     // TODO: fix double request
     console.log('fetching posts')
-    if (category === 'latest-posts') {
-      category = ''
-      limit = QUERY_PARAMETERS.LATEST
+    const { data, headers } = await axios.get(
+      `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.fetch}/posts`,
+      { params: { page, per_page, categories, order_by, order } },
+    )
+
+    return {
+      nodes: data,
+      pageInfo: {
+        total: Number(headers['x-wp-total']),
+        totalPages: Number(headers['x-wp-totalpages']),
+      },
     }
-    const { posts } = await getPosts({ category, limit, not })
-    return posts
   },
 )
 
@@ -59,22 +55,49 @@ export const postsSlice = createSlice({
   name: postsKey,
   initialState,
   reducers: {
-    setCategory: (state: IState, action) => {
-      state.filter = { category: action.payload, page: 1 }
+    setCategory: (state: IPostsState, action) => {
+      state.filter = {
+        ...state.filter,
+        categories: action.payload,
+        page: 1,
+        order: null,
+        order_by: null,
+      }
+    },
+    setPage: (state: IPostsState, action) => {
+      state.filter = { ...state.filter, page: action.payload }
+    },
+    setOrder: (state: IPostsState, action) => {
+      state.filter = {
+        ...state.filter,
+        page: 1,
+        categories: null,
+        order: action.payload.order,
+        order_by: action.payload.order_by,
+      }
+    },
+    resetFilter: (state: IPostsState) => {
+      state.filter = {
+        ...state.filter,
+        page: 1,
+        categories: null,
+        order: null,
+        order_by: null,
+      }
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPosts.pending, (state: IState) => {
+      .addCase(fetchPosts.pending, (state: IPostsState) => {
         state.status = STATUS.PENDING
         state.error = null
         state.data = { nodes: [], pageInfo: {} as IPageInfo }
       })
-      .addCase(fetchPosts.fulfilled, (state: IState, action) => {
+      .addCase(fetchPosts.fulfilled, (state: IPostsState, action) => {
         state.status = STATUS.FULFILLED
         state.data = action.payload
       })
-      .addCase(fetchPosts.rejected, (state: IState, action) => {
+      .addCase(fetchPosts.rejected, (state: IPostsState, action) => {
         state.data = { nodes: [], pageInfo: {} as IPageInfo }
         state.error = action.payload
         state.status = STATUS.REJECTED
@@ -82,7 +105,8 @@ export const postsSlice = createSlice({
   },
 })
 
-export const { setCategory } = postsSlice.actions
+export const { setCategory, setPage, setOrder, resetFilter } =
+  postsSlice.actions
 
 export const selectPosts = (state: { [key: string]: unknown }) =>
   state[postsKey]

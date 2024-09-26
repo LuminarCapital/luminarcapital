@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import FinancingOptions from '@/routes/home/FinancingOptions/FinancingOptions'
 import Button from '@/ui/components/Button/Button'
-import ClientReviews from '@/routes/home/ClientReviews/ClientReviews'
-import {
-  dangerouslyFetchPlaceReviews,
-  ReactGoogleReview,
-} from 'react-google-reviews'
+// import ClientReviews from '@/routes/home/ClientReviews/ClientReviews'
+// import {
+//   dangerouslyFetchPlaceReviews,
+//   ReactGoogleReview,
+// } from 'react-google-reviews'
 import CallToAction from '@/ui/components/CTA/CallToAction'
 import HeroHome from '@/components/HeroHome/HeroHome'
 import { useAppDispatch } from '@/hooks'
@@ -14,11 +14,12 @@ import BoardChessOrder from '@/components/BoardChessOrder/BoardChessOrder'
 import { personalizedExperienceData } from '@/routes/home/personalizedExperienceData'
 import CTAStyles from '@/routes/home/CTA/CallToAction.module.scss'
 
-export default function Home({
-  reviews,
-}: {
-  reviews: { reviews: ReactGoogleReview[]; success: boolean }
-}) {
+// export default function Home({
+//   reviews,
+// }: {
+//   reviews: { reviews: ReactGoogleReview[]; success: boolean }
+// }) {
+export default function Home() {
   const dispatch = useAppDispatch()
 
   return (
@@ -60,7 +61,7 @@ export default function Home({
         data={personalizedExperienceData}
         order="even"
       />
-      <ClientReviews data={reviews} />
+      {/*<ClientReviews data={reviews} />*/}
       <CallToAction
         title="Ready To Secure Business Financing?"
         description="Contact us and connect with one of our financing professionals that can help you navigate through the steps!"
@@ -72,14 +73,17 @@ export default function Home({
 }
 
 export const getStaticProps = async () => {
-  const placeId = process.env.GOOGLE_PLACE_ID!
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY!
+  // const placeId = process.env.GOOGLE_PLACE_ID!
+  // const apiKey = process.env.GOOGLE_MAPS_API_KEY!
+  //
+  // const reviews = await dangerouslyFetchPlaceReviews(placeId, apiKey)
 
-  const reviews = await dangerouslyFetchPlaceReviews(placeId, apiKey)
-
+  // return {
+  //   props: {
+  //     reviews,
+  //   },
+  // }
   return {
-    props: {
-      reviews,
-    },
+    props: {},
   }
 }

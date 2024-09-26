@@ -30,32 +30,123 @@ export interface ISlickArrow {
 }
 
 export interface IPost {
-  id?: string
-  title: string
-  slug?: string
-  excerpt?: string
-  date?: string
-  featuredImage: {
-    node: {
-      sourceUrl?: string
-      mediaItemUrl?: string
-    }
+  id: number
+  date: string
+  date_gmt: string
+  guid: {
+    rendered: string
   }
-  mediaItemUrl: string
-  content?: string | TrustedHTML
+  modified: string
+  modified_gmt: string
+  slug: string
+  status: string
+  type: string
+  link: string
+  title: {
+    rendered: string
+  }
+  excerpt: {
+    rendered: string
+    protected: boolean
+  }
+  author: number
+  featured_media: number
+  comment_status: string
+  ping_status: string
+  sticky: boolean
+  template: string
+  format: string
+  meta: {
+    footnotes: string
+  }
+  categories: number[]
+  tags: unknown[]
+  class_list: string[]
+  featured_image_src: string
+  post_categories: {
+    term_id: number
+    name: string
+    link: string
+    slug: string
+  }[]
+  _links: {
+    self: { href: string }[]
+    collection: { href: string }[]
+    about: { href: string }[]
+    author: {
+      embeddable: boolean
+      href: string
+    }[]
+    replies: {
+      embeddable: boolean
+      href: string
+    }[]
+    'version-history': {
+      count: number
+      href: string
+    }[]
+    'predecessor-version': {
+      id: number
+      href: string
+    }[]
+    'wp:featuredmedia': {
+      embeddable: boolean
+      href: string
+    }[]
+    'wp:attachment': {
+      href: string
+    }[]
+    'wp:term': {
+      taxonomy: string
+      embeddable: boolean
+      href: string
+    }[]
+    curies: {
+      name: string
+      href: string
+      templated: boolean
+    }[]
+  }
+  content: {
+    rendered: string | TrustedHTML
+    protected: boolean
+  }
 }
 
 export interface ICategory {
+  id: number | string | null
+  count?: number
+  description?: string
+  link?: string
   name: string
   slug: string
-  id: string
+  taxonomy?: string
+  parent?: number
+  meta?: unknown[]
+  _links?: {
+    self: {
+      href: string
+    }[]
+    collection: {
+      href: string
+    }[]
+    about: {
+      href: string
+    }[]
+    'wp:post_type': {
+      href: string
+    }[]
+    curies: {
+      name: string
+      href: string
+      templated: boolean
+    }[]
+  }
 }
 
 export interface IPageInfo {
-  hasNextPage: boolean
-  hasPreviousPage: boolean
-  startCursor: number
-  endCursor: number
+  total: string | number
+  totalPages: string | number
 }
 
 export interface ITab {
@@ -93,4 +184,22 @@ export interface IBoardChessOrderCard {
   description: string
   image: string
   label?: string
+}
+
+export interface IPostsState {
+  data: {
+    nodes: IPost[]
+    pageInfo: IPageInfo
+  }
+  status: string
+  error: string | null | unknown
+  filter: IFetchPosts
+}
+
+export interface IFetchPosts {
+  categories?: number | string | null
+  page: number
+  per_page?: number
+  order_by?: string | null
+  order?: string | null
 }

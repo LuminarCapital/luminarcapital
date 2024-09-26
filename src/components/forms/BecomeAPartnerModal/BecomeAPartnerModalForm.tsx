@@ -100,7 +100,7 @@ const BecomeAPartnerModalForm = ({
     setIsSubmitting(true)
     axios
       .post(
-        `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.rest}/save-partner`,
+        `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-partner`,
         data,
       )
       .then((response) => {

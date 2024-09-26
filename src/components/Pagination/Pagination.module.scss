@@ -11,15 +11,13 @@
 			display: flex;
 			gap: 12rem;
 			align-items: center;
+			list-style: none;
 		}
 	
 		&-page{
 			position: relative;
 			
-				&-active{}
-			
-				&-next,
-				&-previous{
+				&:empty{
 					display: none;
 				}
 			
@@ -43,25 +41,16 @@
 								cursor: pointer;
 							}
 
-							&:not(.pagination-page-link-active):hover{
+							&:not(.pagination-page-link.active):hover{
 								color: var(--color-gray-90);
+								border-color: var(--color-gray-90);
 							}
 						}
 					
-						&-active{
+						&.active{
 							color: var(--color-white);
 							background-color: var(--color-primary-dark-blue);
 						}
-				}
-		}
-	
-		&-break{
-				&-link{
-					display: inline-block;
-					width: 34rem;
-					height: 34rem;
-					line-height: 34rem;
-					text-align: center;
 				}
 		}
 }

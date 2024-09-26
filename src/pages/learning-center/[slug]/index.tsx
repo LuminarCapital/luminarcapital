@@ -1,32 +1,29 @@
 import { GetStaticPaths, GetStaticPropsContext } from 'next'
 import Head from 'next/head'
 import Article from '@/routes/article/Article/Article'
-import { getPost } from '@/utils/graphql/getPost'
-import { IPageInfo, IPost } from '@/types'
+import { IPost } from '@/types'
+import { getPost } from '@/utils/axios/getPost'
+import { getPosts } from '@/utils/axios/getPosts'
 import RecentArticles from '@/routes/article/RecentArticles/RecentArticles'
-import { getPosts } from '@/utils/graphql/getPosts'
 
 export default function ArticlePage({
   article,
   recentArticles,
 }: {
   article: IPost
-  recentArticles: {
-    nodes: IPost[]
-    pageInfo: IPageInfo | null
-  }
+  recentArticles: IPost[]
 }) {
   return (
     <>
       <Head>
-        <title>{article.title}</title>
+        <title>{article.title.rendered}</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."
         />
       </Head>
       <Article data={article} />
-      {recentArticles.nodes.length ? (
+      {recentArticles.length ? (
         <RecentArticles posts={recentArticles} title="Recent Articles" />
       ) : null}
     </>
@@ -36,11 +33,11 @@ export default function ArticlePage({
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params!
 
-  const { post } = await getPost(slug as string)
-  const { posts } = await getPosts({ category: '', limit: 3, not: post.id })
+  const { data: article } = await getPost(Number(slug))
+  const { data: recentArticles } = await getPosts({ page: 1, per_page: 3 })
 
   return {
-    props: { article: post, recentArticles: posts },
+    props: { article, recentArticles },
   }
 }
 

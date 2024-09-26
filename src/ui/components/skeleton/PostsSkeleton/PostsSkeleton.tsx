@@ -14,7 +14,7 @@ const PostsSkeleton = ({ className, count = 3 }: IPostsSkeleton) => {
           <div key={`post-skeleton-${index}`} className="col-md-6 col-lg-4">
             <Skeleton
               borderRadius={10}
-              height="450rem"
+              height="448rem"
               className={className}
               baseColor="#EDEFF7"
             />

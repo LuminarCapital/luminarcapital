@@ -1,22 +1,15 @@
 import classNames from 'classnames'
-import { IPageInfo, IPost } from '@/types'
-import styles from './RecentArticles.module.scss'
+import { IPost } from '@/types'
 import Post from '@/ui/components/Post/Post'
+import styles from './RecentArticles.module.scss'
 
 interface IRecentArticles {
   className?: string
   title?: string
-  posts: {
-    nodes: IPost[]
-    pageInfo: IPageInfo | null
-  }
+  posts: IPost[]
 }
 
-const RecentArticles = ({
-  className,
-  title,
-  posts: { nodes: posts = [] },
-}: IRecentArticles) => {
+const RecentArticles = ({ className, title, posts = [] }: IRecentArticles) => {
   return (
     <section className={classNames(styles['section'], className)}>
       <div className="content-block">

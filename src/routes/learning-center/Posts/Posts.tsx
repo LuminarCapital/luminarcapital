@@ -1,43 +1,80 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState, ChangeEvent, useRef } from 'react'
 import classNames from 'classnames'
 import Post from '@/ui/components/Post/Post'
-import Pagination from '@/routes/learning-center/Pagination/Pagination'
-import { IPageInfo, IPost } from '@/types'
+import Pagination from '@/components/Pagination/Pagination'
+import { IPostsState } from '@/types'
 import InformBox from '@/ui/components/InformBox/InformBox'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { fetchPosts, selectPosts } from '@/store/slices/postsSlice'
-import styles from './Posts.module.scss'
-import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
+import {
+  fetchPosts,
+  resetFilter,
+  selectPosts,
+  setPage,
+} from '@/store/slices/postsSlice'
+import { STATUS } from '@/config/constants'
 import PostsSkeleton from '@/ui/components/skeleton/PostsSkeleton/PostsSkeleton'
+import styles from './Posts.module.scss'
 
 const Posts = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch()
   const {
-    data: { nodes: posts = [], pageInfo = null },
-    filter: { category },
+    data: { nodes: posts = [], pageInfo },
+    filter: { page, categories, order, order_by },
     status,
-  } = useAppSelector(selectPosts) as {
-    data: {
-      nodes: IPost[]
-      pageInfo: IPageInfo | null
-    }
-    filter: {
-      category: string
-    }
-    status: string
-  }
+  } = useAppSelector(selectPosts) as IPostsState
+  const [totalPages, setTotalPages] = useState<number>(0)
+  const ref = useRef<HTMLElement | null>(null)
+  const [isFirstRender, setIsFirstRender] = useState<boolean>(true)
 
   useEffect(() => {
-    dispatch(fetchPosts({ category }))
-  }, [dispatch, category])
+    return () => {
+      dispatch(resetFilter())
+    }
+  }, [dispatch])
 
-  // TODO: add detector for empty data
+  useEffect(() => {
+    dispatch(fetchPosts({ page: page as number, categories, order, order_by }))
+  }, [dispatch, categories, page, order, order_by])
+
+  useEffect(() => {
+    if (isFirstRender) {
+      setIsFirstRender(false)
+      return
+    }
+
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page])
+
+  // Save totalPages in state
+  useEffect(() => {
+    if (
+      (pageInfo.totalPages && totalPages !== pageInfo.totalPages) ||
+      pageInfo.totalPages === 0
+    ) {
+      setTotalPages(pageInfo.totalPages as number)
+    }
+  }, [pageInfo.totalPages, totalPages])
+
+  const handlePageChange = useCallback(
+    (event: ChangeEvent<unknown>, newPage: number) => {
+      dispatch(setPage(newPage))
+    },
+    [dispatch],
+  )
+
+  const isDataLoaded = posts.length > 0 && status === STATUS.FULFILLED
+  const isEmptyData = posts.length === 0 && status === STATUS.FULFILLED
+
   return (
-    <section className={classNames(styles['posts'], 'posts', className)}>
+    <section
+      ref={ref}
+      className={classNames(styles['posts'], 'posts', className)}
+    >
       <div className="content-block">
         <div className={styles['posts-list']}>
           <div className="row">
-            {posts.length && status === STATUS.FULFILLED ? (
+            {isDataLoaded ? (
               posts.map((post) => (
                 <div
                   className="col-md-6 col-lg-4 col-gutter-lr"
@@ -46,7 +83,7 @@ const Posts = ({ className }: { className?: string }) => {
                   <Post data={post} />
                 </div>
               ))
-            ) : posts.length === 0 && status === STATUS.FULFILLED ? (
+            ) : isEmptyData ? (
               <div className="col-xs-12">
                 <InformBox
                   title="No articles"
@@ -54,16 +91,15 @@ const Posts = ({ className }: { className?: string }) => {
                 />
               </div>
             ) : (
-              <PostsSkeleton count={6} />
+              <PostsSkeleton count={3} />
             )}
           </div>
         </div>
-        {/*TODO: fix pagination*/}
-        {pageInfo &&
-        pageInfo.hasNextPage &&
-        posts.length >= QUERY_PARAMETERS.LIMIT ? (
-          <Pagination />
-        ) : null}
+        <Pagination
+          page={page}
+          onChange={handlePageChange}
+          count={totalPages}
+        />
       </div>
     </section>
   )

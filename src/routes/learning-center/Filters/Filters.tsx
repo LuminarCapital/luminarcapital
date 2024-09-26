@@ -1,9 +1,9 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
-import styles from './Filters.module.scss'
-import { ICategory } from '@/types'
+import { ICategory, IPostsState } from '@/types'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import { selectPosts, setCategory } from '@/store/slices/postsSlice'
+import { selectPosts, setCategory, setOrder } from '@/store/slices/postsSlice'
+import styles from './Filters.module.scss'
 
 interface IFilters {
   className?: string
@@ -12,12 +12,12 @@ interface IFilters {
 
 const defaultCategories: ICategory[] = [
   {
-    id: 'all',
+    id: null,
     name: 'All',
-    slug: '',
+    slug: 'all',
   },
   {
-    id: 'finance',
+    id: 'latest',
     name: 'Latest Posts',
     slug: 'latest-posts',
   },
@@ -25,25 +25,42 @@ const defaultCategories: ICategory[] = [
 
 const Filters = ({ className, categories }: IFilters) => {
   const dispatch = useAppDispatch()
-
   const {
-    filter: { category: selectedCategory },
-  } = useAppSelector(selectPosts) as {
-    filter: { category: string }
-  }
+    filter: { categories: selectedCategory },
+  } = useAppSelector(selectPosts) as IPostsState
+
   const completedCategories = useMemo(() => {
     return [...defaultCategories, ...categories]
   }, [categories])
 
+  const [currentCategory, setCurrentCategory] = useState(
+    completedCategories.filter((c) => c.id === selectedCategory)[0],
+  )
+
+  useEffect(() => {
+    //   Reset filters on first render
+    return () => {
+      setCurrentCategory(completedCategories[0])
+    }
+  }, [completedCategories])
+
   const handleSelect = useCallback(
     (category: ICategory) => {
-      dispatch(setCategory(category.slug))
+      if (category.id === 'latest') {
+        dispatch(setOrder({ order: 'desc', order_by: 'date' }))
+      } else {
+        dispatch(setCategory(category.id))
+      }
+      setCurrentCategory(category)
     },
     [dispatch],
   )
 
   return (
-    <section className={classNames(styles['filters'], className)}>
+    <section
+      className={classNames(styles['filters'], className)}
+      id="posts-filters"
+    >
       <div className="content-block">
         <div className={styles['filters-box']}>
           <div className={styles['filters-panel']}>
@@ -52,7 +69,9 @@ const Filters = ({ className, categories }: IFilters) => {
                 key={`filter-${category.slug}-${index}`}
                 className={classNames(
                   styles['filters-button'],
-                  selectedCategory === category.slug ? styles['active'] : null,
+                  currentCategory.name === category.name
+                    ? styles['active']
+                    : null,
                 )}
                 onClick={() => handleSelect(category)}
               >

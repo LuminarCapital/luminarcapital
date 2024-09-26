@@ -78,7 +78,7 @@ const ApplyForFinancingDefaultForm = ({
     setIsSubmitting(true)
     axios
       .post(
-        `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.rest}/save-financial`,
+        `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-financial`,
         data,
       )
       .then((response) => {

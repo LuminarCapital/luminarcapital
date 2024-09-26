@@ -1,7 +1,7 @@
 import { IOption } from '@/types'
 
 export const QUERY_PARAMETERS = {
-  LIMIT: 9,
+  LIMIT: 3,
   LATEST: 6,
 }
 
@@ -14,7 +14,8 @@ export const STATUS = {
 
 export const WORDPRESS_API_PATHS = {
   graphql: 'graphql',
-  rest: 'wp-json/api/v1',
+  save: 'wp-json/api/v1',
+  fetch: 'wp-json/wp/v2',
 }
 
 export const AMOUNT_OPTIONS: IOption[] = [
