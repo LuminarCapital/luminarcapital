@@ -1,7 +1,7 @@
 import { IOption } from '@/types'
 
 export const QUERY_PARAMETERS = {
-  LIMIT: 3,
+  LIMIT: 9,
   LATEST: 6,
 }
 
