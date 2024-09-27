@@ -11,6 +11,7 @@ import CheckboxField from '@/ui/components/CheckboxField/CheckboxField'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from '../ApplyForFinancingDefault/schema'
 import Button from '@/ui/components/Button/Button'
+import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './ApplyForFinancingModalForm.module.scss'
 
 interface IApplyForFinancingModalForm {
@@ -110,8 +111,10 @@ const ApplyForFinancingModalForm = ({
         `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-financial`,
         data,
       )
-      .then((response) => {
+      .then(async (response) => {
         if (response.data.success && response.status === 200) {
+          await browserSendEmail({ subject: 'Apply for Financing' })
+
           setIsSubmittedSuccess(true)
 
           setTimeout(() => {

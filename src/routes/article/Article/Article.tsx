@@ -27,8 +27,6 @@ const Article = ({ className, data }: IArticle) => {
     fetchFeaturedMedia()
   }, [data])
 
-  // TODO: add detector for empty data
-  console.log(data)
   return (
     <section className={classNames(styles['article'], className)}>
       <div className="content-block">
@@ -40,13 +38,15 @@ const Article = ({ className, data }: IArticle) => {
           </div>
           <div className="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 col-gutter-lr">
             <div className={styles['article-banner']}>
-              <Image
-                src={thumb}
-                alt={data.title.rendered}
-                fill
-                sizes="(min-width: 601px) 1000rem, (max-width: 600px) 350rem"
-                style={{ objectFit: 'cover', objectPosition: 'center' }}
-              />
+              {thumb ? (
+                <Image
+                  src={thumb}
+                  alt={data.title.rendered}
+                  fill
+                  sizes="(min-width: 601px) 1000rem, (max-width: 600px) 350rem"
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                />
+              ) : null}
             </div>
             {data.content ? (
               <div

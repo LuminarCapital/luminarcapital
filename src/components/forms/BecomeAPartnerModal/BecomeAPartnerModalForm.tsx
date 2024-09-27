@@ -10,6 +10,7 @@ import { WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from '../BecomeAPartnerDefault/schema'
 import Button from '@/ui/components/Button/Button'
+import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from '../ApplyForFinancingModal/ApplyForFinancingModalForm.module.scss'
 
 interface IApplyForFinancingModalForm {
@@ -103,8 +104,10 @@ const BecomeAPartnerModalForm = ({
         `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-partner`,
         data,
       )
-      .then((response) => {
+      .then(async (response) => {
         if (response.data.success && response.status === 200) {
+          await browserSendEmail({ subject: 'Become A Partner' })
+
           setIsSubmittedSuccess(true)
 
           setTimeout(() => {

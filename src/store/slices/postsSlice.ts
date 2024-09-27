@@ -34,8 +34,6 @@ export const fetchPosts = createAsyncThunk(
     order,
     order_by,
   }: IFetchPosts) => {
-    // TODO: fix double request
-    console.log('fetching posts')
     const { data, headers } = await axios.get(
       `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.fetch}/posts`,
       { params: { page, per_page, categories, order_by, order } },

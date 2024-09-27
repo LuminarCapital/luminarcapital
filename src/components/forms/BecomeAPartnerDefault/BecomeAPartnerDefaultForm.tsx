@@ -9,6 +9,7 @@ import axios from 'axios'
 import { WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from './schema'
+import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './BecomeAPartnerDefault.module.scss'
 
 interface IBecomeAPartnerDefault {
@@ -58,13 +59,16 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
   // Function that handles form submission
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     setIsSubmitting(true)
+
     axios
       .post(
         `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-partner`,
         data,
       )
-      .then((response) => {
+      .then(async (response) => {
         if (response.data.success && response.status === 200) {
+          await browserSendEmail({ subject: 'Become A Partner' })
+
           setIsSubmittedSuccess(true)
 
           setTimeout(() => {

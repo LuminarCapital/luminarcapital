@@ -16,7 +16,7 @@ export default function ArticlePage({
   return (
     <>
       <Head>
-        <title>{article.title.rendered}</title>
+        <title>{article.title.rendered || 'Luminar Capital'}</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."
@@ -32,7 +32,7 @@ export default function ArticlePage({
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params!
-
+  // TODO: get article by slug, not by ID
   const { data: article } = await getPost(Number(slug))
   const { data: recentArticles } = await getPosts({ page: 1, per_page: 3 })
 
