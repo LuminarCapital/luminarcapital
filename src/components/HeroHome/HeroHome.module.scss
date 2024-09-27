@@ -6,7 +6,7 @@
 	padding: 60rem 0;
 	
 		@include maxWidth($sm-max){
-			padding: 24rem 0 60rem;
+			padding: 24rem 0 48rem;
 		}
 	
 		&-content{
@@ -35,8 +35,9 @@
 				}
 			
 				@include maxWidth($sm-max){
-					width: 100%;
-					height: 184rem;
+					width: auto;
+					height: 206rem;
+					margin: 30rem -15rem 0;
 				}
 		}
 	

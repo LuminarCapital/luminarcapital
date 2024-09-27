@@ -3,8 +3,9 @@ import dynamic from 'next/dynamic'
 import classNames from 'classnames'
 import styles from './HeroHome.module.scss'
 
-const HeroBanner = dynamic(
-  () => import('@/ui/components/HeroBanner/HeroBanner'),
+const LottieFrame = dynamic(
+  () => import('@/ui/components/LottieFrame/LottieFrame'),
+  { ssr: false },
 )
 
 interface IHeroDefault {
@@ -41,7 +42,7 @@ const HeroHome = ({
             </div>
             <div className="col-xs-12 col-lg-6 col-gutter-lr">
               <div className={styles['heroDefault-banner']}>
-                {banner ? <HeroBanner src={banner} title={title!} /> : null}
+                <LottieFrame data={banner} />
               </div>
             </div>
           </div>
