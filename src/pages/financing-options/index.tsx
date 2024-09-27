@@ -13,7 +13,7 @@ export default function FinancingOptions() {
   return (
     <>
       <Head>
-        <title>Financing Options</title>
+        <title>Financing Options - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

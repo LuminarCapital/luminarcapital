@@ -13,7 +13,7 @@ export default function LearningCenter({ categories }: ILearningCenter) {
   return (
     <>
       <Head>
-        <title>Learning Center</title>
+        <title>Learning Center - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

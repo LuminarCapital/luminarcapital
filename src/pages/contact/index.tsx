@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Get In Touch</title>
+        <title>Get In Touch - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

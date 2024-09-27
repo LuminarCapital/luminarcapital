@@ -6,7 +6,7 @@ export default function TermsOfService() {
   return (
     <>
       <Head>
-        <title>Terms Of Service</title>
+        <title>Terms Of Service - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

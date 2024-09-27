@@ -6,7 +6,7 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Head>
-        <title>Privacy Policy</title>
+        <title>Privacy Policy - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

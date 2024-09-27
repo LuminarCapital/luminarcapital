@@ -15,7 +15,7 @@ export default function WhyLuminar() {
   return (
     <>
       <Head>
-        <title>Why Luminar Luminar</title>
+        <title>Why Luminar</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."

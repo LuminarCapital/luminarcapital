@@ -14,7 +14,7 @@ export default function Partners() {
   return (
     <>
       <Head>
-        <title>Partners</title>
+        <title>Partners - Luminar Capital</title>
         <meta
           name="description"
           content="Flexible financing options that fuel the growth of small businesses."
