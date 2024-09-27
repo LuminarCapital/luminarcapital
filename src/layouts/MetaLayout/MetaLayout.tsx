@@ -9,6 +9,7 @@ const MetaLayout = ({ children }: { children: ReactNode }) => {
           name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
         />
+        <meta property="og:image" content="/og.jpg" />
 
         <link
           rel="apple-touch-icon"
