@@ -137,18 +137,16 @@ const BecomeAPartnerModalForm = ({
 
     const isValid = await trigger(currentFields)
 
-    if (isValid && Object.keys(errors).length === 0) {
+    if (isValid) {
       sliderRef.current?.slickNext()
       setCurrentSlide((prevState) => prevState + 1)
     }
-  }, [currentSlide, errors, trigger])
+  }, [currentSlide, trigger])
 
   const handlePrevious = useCallback(() => {
-    if (Object.keys(errors).length === 0) {
-      sliderRef.current?.slickPrev()
-      setCurrentSlide((prevState) => prevState - 1)
-    }
-  }, [errors])
+    sliderRef.current?.slickPrev()
+    setCurrentSlide((prevState) => prevState - 1)
+  }, [])
 
   return (
     <>

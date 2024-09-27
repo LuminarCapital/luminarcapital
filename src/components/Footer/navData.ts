@@ -59,15 +59,15 @@ export const navData: INavData = {
       nav: [
         {
           label: 'Revenue Based Financing',
-          href: '/financing-options?origin=0',
+          href: '/financing-options?origin=0&scroll=true',
         },
         {
           label: 'Early Repayment Discounts',
-          href: '/financing-options?origin=1',
+          href: '/financing-options?origin=1&scroll=true',
         },
         {
           label: 'Revolving Working Capital',
-          href: '/financing-options?origin=2',
+          href: '/financing-options?origin=2&scroll=true',
         },
       ],
     },
