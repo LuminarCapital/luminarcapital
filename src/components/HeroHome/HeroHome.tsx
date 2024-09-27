@@ -1,11 +1,17 @@
 import { ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import classNames from 'classnames'
+import HeroBanner from '@/ui/components/HeroBanner/HeroBanner'
 import styles from './HeroHome.module.scss'
 
 const LottieFrame = dynamic(
   () => import('@/ui/components/LottieFrame/LottieFrame'),
-  { ssr: false },
+  {
+    ssr: false,
+    loading: () => (
+      <HeroBanner src="/banners/hero-home-banner.svg" title="Luminar Capital" />
+    ),
+  },
 )
 
 interface IHeroDefault {
