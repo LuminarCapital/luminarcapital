@@ -95,11 +95,13 @@ const Posts = ({ className }: { className?: string }) => {
             )}
           </div>
         </div>
-        <Pagination
-          page={page}
-          onChange={handlePageChange}
-          count={totalPages}
-        />
+        {!order && !order_by ? (
+          <Pagination
+            page={page}
+            onChange={handlePageChange}
+            count={totalPages}
+          />
+        ) : null}
       </div>
     </section>
   )
