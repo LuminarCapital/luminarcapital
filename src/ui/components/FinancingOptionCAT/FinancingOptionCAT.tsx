@@ -23,7 +23,9 @@ const FinancingOptionCAT = () => {
         <Image
           src="/banners/financing-options-banner.svg"
           alt="Luminar Capital is here to help."
-          fill
+          width={0}
+          height={0}
+          className={styles['card-banner-item']}
         />
       </div>
     </div>

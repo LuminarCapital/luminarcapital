@@ -24,7 +24,7 @@
 				}
 			
 				&-description{
-					font: var(--font-body-lg);
+					font: var(--font-body-md);
 					
 						@include maxWidth($sm-max){
 							font: var(--font-body-md);
@@ -138,7 +138,7 @@
 			display: flex;
 			gap: 24rem;
 			align-items: center;
-			font: var(--font-body-lg);
+			font: var(--font-body-md);
 			
 				@include maxWidth($sm-max){
 					order: 1;
@@ -148,7 +148,7 @@
 	
 		&-link{
 			color: var(--color-black);
-			font: var(--font-body-lg);
+			font: var(--font-body-md);
 			transition: color var(--transition-duration-button) var(--transition-easing-button);
 			
 				&-secondary{

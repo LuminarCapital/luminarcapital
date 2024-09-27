@@ -1,7 +1,10 @@
 .content-block{
 	padding: 0 $gutter;
-	//max-width: 1540rem;
-	//margin: 0 auto;
+	
+		@media only screen and (width > 1540px) {
+			max-width: 1540rem;
+			margin: 0 auto;
+		}
 }
 
 .row{

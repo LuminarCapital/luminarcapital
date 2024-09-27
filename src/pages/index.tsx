@@ -60,6 +60,7 @@ export default function Home() {
         title="A Personalized Experience"
         data={personalizedExperienceData}
         order="even"
+        className="personalized-experience"
       />
       {/*<ClientReviews data={reviews} />*/}
       <CallToAction

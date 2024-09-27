@@ -4,9 +4,9 @@
 html{
 	font-size: calc(100vw / 1440);
 	
-		//@media only screen and (width > 1540px) {
-		//	font-size: calc(100vw / 2056);
-		//}
+		@media only screen and (width > 1540px) {
+			font-size: calc(100vw / 2056);
+		}
 	
 		@media only screen and (width <= $lg-max) {
 			font-size: calc(100vw / 1380);
@@ -23,7 +23,7 @@ html{
 
 body{
 	color: var(--color-black);
-	font: var(--font-body-xl);
+	font: var(--font-body-lg);
 	background-color: var(--color-gray-5);
 }
 
@@ -110,6 +110,14 @@ body{
 			bottom: -270rem;
 		}
 	}
+}
+
+.personalized-experience{
+	& ~ .footer-abstract{
+    @include minWidth($sm-max){
+      bottom: -280rem;
+    }
+  }
 }
 
 .text-template{
