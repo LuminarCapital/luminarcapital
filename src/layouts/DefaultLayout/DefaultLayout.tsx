@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import classNames from 'classnames'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
@@ -25,6 +26,7 @@ const DefaultLayout = ({ children }: IDefaultLayout) => {
       </main>
       <Footer />
       <ModalWindow />
+      <GoogleAnalytics gaId="G-M9ZF18E4ER" />
     </MetaLayout>
   )
 }
