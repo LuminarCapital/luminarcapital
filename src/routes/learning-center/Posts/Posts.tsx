@@ -91,7 +91,7 @@ const Posts = ({ className }: { className?: string }) => {
                 />
               </div>
             ) : (
-              <PostsSkeleton count={3} />
+              <PostsSkeleton count={6} />
             )}
           </div>
         </div>

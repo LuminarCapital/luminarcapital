@@ -63,6 +63,7 @@ export interface IPost {
   tags: unknown[]
   class_list: string[]
   featured_image_src: string
+  featured_image_src_medium: string
   post_categories: {
     term_id: number
     name: string

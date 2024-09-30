@@ -32,12 +32,12 @@ export default function ArticlePage({
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { slug } = context.params!
-  // TODO: get article by slug, not by ID
-  const { data: article } = await getPost(Number(slug))
+
+  const { data: articles = {} } = await getPost(slug as string)
   const { data: recentArticles } = await getPosts({ page: 1, per_page: 3 })
 
   return {
-    props: { article, recentArticles },
+    props: { article: articles[0], recentArticles },
   }
 }
 
