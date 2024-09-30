@@ -33,9 +33,12 @@ export const cardsCarouselSettings = {
   dots: true,
   arrows: false,
   centerMode: true,
+  centerPadding: '16rem',
   slidesToShow: 1,
   slidesToScroll: 1,
+  focusOnSelect: true,
   speed: 1000,
+  infinite: true,
 }
 
 const LOCALSTORAGE_HOURS = 48
