@@ -20,6 +20,7 @@ const Post = ({ className, data }: { className?: string; data: IPost }) => {
     source_url: null,
     alt: '',
   })
+
   // TODO: important, fix this moment on Backend side
   useEffect(() => {
     const fetchFeaturedMedia = async () => {

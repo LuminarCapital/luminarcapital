@@ -37,3 +37,6 @@ export const cardsCarouselSettings = {
   slidesToScroll: 1,
   speed: 1000,
 }
+
+const LOCALSTORAGE_HOURS = 48
+export const LOCALSTORAGE_EXPIRY = LOCALSTORAGE_HOURS * 60 * 60 * 1000
