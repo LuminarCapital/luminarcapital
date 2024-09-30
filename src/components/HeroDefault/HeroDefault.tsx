@@ -1,7 +1,14 @@
 import { ReactNode } from 'react'
-import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import classNames from 'classnames'
 import styles from './HeroDefault.module.scss'
+
+const LottieFrame = dynamic(
+  () => import('@/ui/components/LottieFrame/LottieFrame'),
+  {
+    ssr: false,
+  },
+)
 
 interface IHeroDefault {
   className?: string
@@ -37,16 +44,7 @@ const HeroDefault = ({
             </div>
             <div className="col-xs-12 col-lg-6 col-gutter-lr">
               <div className={styles['heroDefault-banner']}>
-                {banner ? (
-                  <Image
-                    src={banner}
-                    alt={title!}
-                    loading="lazy"
-                    width={0}
-                    height={0}
-                    className={styles['heroDefault-banner-item']}
-                  />
-                ) : null}
+                <LottieFrame data={banner} />
               </div>
             </div>
           </div>

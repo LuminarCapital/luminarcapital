@@ -6,7 +6,7 @@ import DefaultForms from '@/components/DefaultForms/DefaultForms'
 import Portfolio from '@/routes/partners/Portfolio/Portfolio'
 import { openModal } from '@/store/slices/modalSlice'
 import BoardOfCards from '@/components/BoardOfCards/BoardOfCards'
-import { partnershipData } from '../../routes/partners/partnershipData'
+import { partnershipData } from '@/routes/partners/partnershipData'
 
 export default function Partners() {
   const dispatch = useAppDispatch()
@@ -23,7 +23,7 @@ export default function Partners() {
       <HeroDefault
         title="Partner with Luminar"
         description="Join us in our mission to empower small businesses with the financing they deserve, backed by a trusted partner."
-        banner="/banners/hero-partners-banner.svg"
+        banner="/json/partners.json"
         actions={
           <>
             <Button

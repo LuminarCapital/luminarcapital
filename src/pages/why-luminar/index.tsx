@@ -24,7 +24,7 @@ export default function WhyLuminar() {
       <HeroDefault
         title="Why Luminar Capital"
         description="There are many options when it comes to financing for your business, customers choose us as we seek long term partners, helping you to surpass your goals."
-        banner="/banners/hero-why-luminar-banner.svg"
+        banner="/json/why_lum.json"
         actions={
           <>
             <Button

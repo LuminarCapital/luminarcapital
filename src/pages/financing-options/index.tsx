@@ -22,7 +22,7 @@ export default function FinancingOptions() {
       <HeroDefault
         title="Financing Options"
         description="Looking for financing catered to your business needs? Our personalized solutions factor incoming revenue and cash flow, not just your credit which provides a different approach compared to conventional products."
-        banner="/banners/hero-financing-options-banner.svg"
+        banner="/json/financing.json"
         actions={
           <>
             <Button
