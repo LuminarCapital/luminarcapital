@@ -11,7 +11,7 @@ import {
   selectPosts,
   setPage,
 } from '@/store/slices/postsSlice'
-import { STATUS } from '@/config/constants'
+import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
 import PostsSkeleton from '@/ui/components/skeleton/PostsSkeleton/PostsSkeleton'
 import styles from './Posts.module.scss'
 
@@ -91,7 +91,7 @@ const Posts = ({ className }: { className?: string }) => {
                 />
               </div>
             ) : (
-              <PostsSkeleton count={6} />
+              <PostsSkeleton count={QUERY_PARAMETERS.LIMIT} />
             )}
           </div>
         </div>
