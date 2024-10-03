@@ -5,7 +5,7 @@ $headings: (1, 2, 3, 4, 5, 6);
 $font-sizes: xl, lg, md, sm;
 
 :root{
-	--font-heading-h1: 500 38rem / 1.333em var(--font-primary-medium);
+	--font-heading-h1: 500 42rem / 1.333em var(--font-primary-medium);
 	--font-heading-h2: 500 30rem / 1.333em var(--font-primary-medium);
 	--font-heading-h3: 600 25rem / 1.357em var(--font-primary-semibold);
 	--font-heading-h4: 500 22rem / 1.333em var(--font-primary-medium);
@@ -19,7 +19,7 @@ $font-sizes: xl, lg, md, sm;
 	--font-body-sm: 400 12rem / 1.333em var(--font-primary-regular);
 	
 	--font-button-lg: 700 16rem var(--font-primary-bold);
-	--font-button-md: 700 14rem var(--font-primary-bold);
+	--font-button-md: 700 15rem var(--font-primary-bold);
 	--font-button-sm: 700 12rem var(--font-primary-bold);
 }
 
@@ -43,6 +43,8 @@ $font-sizes: xl, lg, md, sm;
 		--font-heading-h5: 500 18rem / 1.444em var(--font-primary-medium);
 		--font-heading-h6: 500 14rem / 1.250em var(--font-primary-medium);
 		--font-heading-display: 500 32rem / 1.35em var(--font-primary-medium);
+		
+		--font-button-md: 700 14rem var(--font-primary-bold);
 	}
 }
 

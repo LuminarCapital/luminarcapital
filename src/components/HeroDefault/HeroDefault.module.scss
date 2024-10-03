@@ -30,9 +30,7 @@
 		}
 	
 		&-description{
-				@include maxWidth($sm-max){
-					font: var(--font-body-lg);
-				}
+			font: var(--font-body-lg);
 		}
 	
 		&-banner{

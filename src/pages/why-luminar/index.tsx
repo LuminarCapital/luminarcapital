@@ -45,7 +45,7 @@ export default function WhyLuminar() {
           </>
         }
       />
-      <BoardOfCards title="Our values" cards={valuesData} />
+      <BoardOfCards title="Our Values" cards={valuesData} />
       <BoardChessOrder
         title="The Luminar Advantage"
         data={advantageData}

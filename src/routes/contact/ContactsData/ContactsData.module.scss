@@ -32,12 +32,6 @@
 	font: var(--font-body-lg);
 	transition: color var(--transition-duration-button) var(--transition-easing-button);
 	
-		@include hover($md-max){
-			&:hover{
-				color: var(--color-primary-dark-blue);
-			}
-		}
-	
 		&-icon{
 			display: inline-flex;
 			align-items: center;
@@ -53,4 +47,12 @@
 					height: 16rem;
 				}
 		}
+}
+
+a[href].link{
+	@include hover($md-max){
+		&:hover{
+			color: var(--color-primary-dark-blue);
+		}
+	}
 }

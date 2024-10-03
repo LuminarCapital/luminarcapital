@@ -24,7 +24,7 @@
 				}
 			
 				&-description{
-					font: var(--font-body-md);
+					font: var(--font-body-lg);
 					
 						@include maxWidth($sm-max){
 							font: var(--font-body-md);
@@ -63,8 +63,8 @@
 	
 		&-logo{
 			position: relative;
-			width: 173rem;
-			height: 37rem;
+			width: 193rem;
+			height: 57rem;
 			
 				@include maxWidth($sm-max){
 					margin: 0 auto;
@@ -148,7 +148,7 @@
 	
 		&-link{
 			color: var(--color-black);
-			font: var(--font-body-md);
+			font: var(--font-body-lg);
 			transition: color var(--transition-duration-button) var(--transition-easing-button);
 			
 				&-secondary{

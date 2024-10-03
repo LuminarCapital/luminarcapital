@@ -27,16 +27,18 @@
 		&-banner{
 			position: relative;
 			width: auto;
-			height: 376rem;
-			margin: 0 -30px 0 -12px;
+			//height: auto;
+			margin: 0 -65rem 0 -12rem;
+			height: 425rem;
 
 				@include maxWidth($md-max){
 					margin: 40rem auto 0;
+					height: auto;
 				}
 			
 				@include maxWidth($sm-max){
 					width: auto;
-					height: 206rem;
+					//height: 206rem;
 					margin: 30rem -15rem 0;
 				}
 		}
@@ -51,7 +53,7 @@
 		}
 	
 		&-description{
-			//margin-top: 24rem;
+			font: var(--font-body-lg);
 		}
 	
 		&-actions{
