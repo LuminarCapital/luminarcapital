@@ -53,6 +53,13 @@ yarn build
 Environment variables in ```.env```
 * ``GOOGLE_MAPS_API_KEY``
 * ``GOOGLE_PLACE_ID``
+* ``WORDPRESS_API_URL``
+* ``SMTP_HOST``
+* ``SMTP_PORT``
+* ``SMTP_USER``
+* ``SMTP_PASS``
+* ``RECIPIENT_EMAIL``
+* ``SENDER_EMAIL``
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/**/*.ts](http://localhost:3000/api/**/*.ts). This endpoint can be edited in `pages/api/**/*.ts`.
 
