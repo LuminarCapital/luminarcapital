@@ -20,6 +20,10 @@ const nextConfig = {
         hostname: 'www.luminarcapital.studiopresto.dev',
         protocol: 'https',
       },
+      {
+        hostname: 'admin.luminarcapital.com',
+        protocol: 'https',
+      },
     ]
   },
   env: {

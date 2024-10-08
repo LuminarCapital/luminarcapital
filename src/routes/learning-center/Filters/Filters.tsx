@@ -27,6 +27,7 @@ const Filters = ({ className, categories }: IFilters) => {
   const dispatch = useAppDispatch()
   const {
     filter: { categories: selectedCategory },
+    data: { nodes: posts },
   } = useAppSelector(selectPosts) as IPostsState
 
   const completedCategories = useMemo(() => {
@@ -56,33 +57,37 @@ const Filters = ({ className, categories }: IFilters) => {
     [dispatch],
   )
 
-  return (
-    <section
-      className={classNames(styles['filters'], className)}
-      id="posts-filters"
-    >
-      <div className="content-block">
-        <div className={styles['filters-box']}>
-          <div className={styles['filters-panel']}>
-            {completedCategories.map((category, index) => (
-              <button
-                key={`filter-${category.slug}-${index}`}
-                className={classNames(
-                  styles['filters-button'],
-                  currentCategory.name === category.name
-                    ? styles['active']
-                    : null,
-                )}
-                onClick={() => handleSelect(category)}
-              >
-                {category.name}
-              </button>
-            ))}
+  if (posts.length > 0) {
+    return (
+      <section
+        className={classNames(styles['filters'], className)}
+        id="posts-filters"
+      >
+        <div className="content-block">
+          <div className={styles['filters-box']}>
+            <div className={styles['filters-panel']}>
+              {completedCategories.map((category, index) => (
+                <button
+                  key={`filter-${category.slug}-${index}`}
+                  className={classNames(
+                    styles['filters-button'],
+                    currentCategory.name === category.name
+                      ? styles['active']
+                      : null,
+                  )}
+                  onClick={() => handleSelect(category)}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
+      </section>
+    )
+  }
+
+  return null
 }
 
 export default Filters
