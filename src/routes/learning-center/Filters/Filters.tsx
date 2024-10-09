@@ -4,6 +4,7 @@ import { ICategory, IPostsState } from '@/types'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import { selectPosts, setCategory, setOrder } from '@/store/slices/postsSlice'
 import styles from './Filters.module.scss'
+import { STATUS } from '@/config/constants'
 
 interface IFilters {
   className?: string
@@ -27,6 +28,8 @@ const Filters = ({ className, categories }: IFilters) => {
   const dispatch = useAppDispatch()
   const {
     filter: { categories: selectedCategory },
+    data: { nodes: posts },
+    status,
   } = useAppSelector(selectPosts) as IPostsState
 
   const completedCategories = useMemo(() => {
@@ -55,6 +58,8 @@ const Filters = ({ className, categories }: IFilters) => {
     },
     [dispatch],
   )
+
+  if (posts.length == 0 && status === STATUS.FULFILLED) return null
 
   return (
     <section
