@@ -2,7 +2,12 @@
 @import "@/styles/library/grid/variables/grid-variables";
 
 .section{
-	padding-bottom: 100rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	padding: 100rem 0;
 	
 		@include maxWidth($sm-max){
 			padding-bottom: 60rem;
@@ -27,10 +32,10 @@
 				@include maxWidth($sm-max){
 					padding: 57rem 24rem 60rem;
 					text-align: center;
-					row-gap: 30rem;
 					background-image: url('/abstract/inform-abstract-mobile.svg');
 					background-position: 0 0;
 					background-size: 70% 70%;
+					row-gap: 30rem;
 				}
 			
 				&-icon{

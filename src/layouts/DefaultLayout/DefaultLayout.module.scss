@@ -12,7 +12,7 @@
 	
 		&-footer-abstract{
 			position: absolute;
-			bottom: -202rem;
+			bottom: 0;
 			left: 0;
 			z-index: -1;
 			width: 100%;
@@ -25,7 +25,6 @@
 			pointer-events: none;
 			
 				@include maxWidth($sm-max){
-					bottom: -145rem;
 					height: 374rem;
 					background-image: url('/abstract/footer-abstract-mobile.svg');
 				}
