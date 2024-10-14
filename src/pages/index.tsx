@@ -11,7 +11,7 @@ export default function Home() {
           content="Flexible financing options that fuel the growth of small businesses."
         />
       </Head>
-      <InformBox description="Coming Soon" title="Luminar Capital" />
+      <InformBox description="Coming Soon..." title="Luminar Capital" />
     </>
   )
 }
