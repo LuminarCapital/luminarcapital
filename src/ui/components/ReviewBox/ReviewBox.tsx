@@ -10,7 +10,6 @@ interface IReviewBox {
 }
 
 const ReviewBox = ({ className, data, isActive }: IReviewBox) => {
-  console.log('data ', data)
   return (
     <div
       className={classNames(
