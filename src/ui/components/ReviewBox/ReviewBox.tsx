@@ -10,6 +10,7 @@ interface IReviewBox {
 }
 
 const ReviewBox = ({ className, data, isActive }: IReviewBox) => {
+  console.log('data ', data)
   return (
     <div
       className={classNames(
@@ -32,7 +33,9 @@ const ReviewBox = ({ className, data, isActive }: IReviewBox) => {
         </p>
       </div>
       <div className={styles['box-body']}>
-        <p className={styles['box-body-item']}>{data.comment}</p>
+        <p className={styles['box-body-item']}>
+          Rating: {data.starRating} {data.comment}
+        </p>
       </div>
     </div>
   )
