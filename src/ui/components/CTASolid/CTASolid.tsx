@@ -34,7 +34,7 @@ const CTASolid = ({ className }: ICTASolid) => {
                   </li>
                   <li className={styles['section-list-item']}>
                     <ArrowRightIcon className={styles['section-list-icon']} />
-                    Fico score exceeding 520
+                    Credit score exceeding 520
                   </li>
                 </ul>
                 <Button
