@@ -75,16 +75,16 @@ export const navData: INavData = {
       title: 'Discover',
       nav: [
         {
-          label: 'Why Luminar',
-          href: '/why-luminar',
+          label: 'Learning Center',
+          href: '/learning-center',
         },
         {
           label: 'Partners',
           href: '/partners',
         },
         {
-          label: 'Learning Center',
-          href: '/learning-center',
+          label: 'Why Luminar',
+          href: '/why-luminar',
         },
       ],
     },
