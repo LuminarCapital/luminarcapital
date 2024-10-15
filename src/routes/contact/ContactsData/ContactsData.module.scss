@@ -42,10 +42,20 @@
 			background-color: var(--color-primary-dark-blue);
 			border-radius: 10rem;
 			
+				@include hover($md-max){
+					&:hover{
+						cursor: pointer;
+					}
+				}
+			
 				svg{
 					width: 16rem;
 					height: 16rem;
 				}
+		}
+	
+		&-label{
+			user-select: all;
 		}
 }
 
