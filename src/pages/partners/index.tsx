@@ -1,12 +1,17 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
 import DefaultForms from '@/components/DefaultForms/DefaultForms'
 import Portfolio from '@/routes/partners/Portfolio/Portfolio'
 import { openModal } from '@/store/slices/modalSlice'
-import BoardOfCards from '@/components/BoardOfCards/BoardOfCards'
 import { partnershipData } from '@/routes/partners/partnershipData'
+
+const BoardOfCards = dynamic(
+  () => import('@/components/BoardOfCards/BoardOfCards'),
+  { ssr: false },
+)
 
 export default function Partners() {
   const dispatch = useAppDispatch()

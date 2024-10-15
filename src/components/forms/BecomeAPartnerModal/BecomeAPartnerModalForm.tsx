@@ -6,7 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import Slider from 'react-slick'
 import { yupResolver } from '@hookform/resolvers/yup'
 import TextField from '@/ui/components/TextField/TextField'
-import { WORDPRESS_API_PATHS } from '@/config/constants'
+import { EMAIL_SUBJECT, WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from '../BecomeAPartnerDefault/schema'
 import Button from '@/ui/components/Button/Button'
@@ -106,7 +106,7 @@ const BecomeAPartnerModalForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: 'Become A Partner' })
+          await browserSendEmail({ subject: EMAIL_SUBJECT.PARTNER })
 
           setIsSubmittedSuccess(true)
 
@@ -255,6 +255,7 @@ const BecomeAPartnerModalForm = ({
               currentSlide !== 2 ? styles['hidden'] : '',
             )}
             type="submit"
+            disabled={isSubmitting}
           >
             {isSubmitting ? (
               <div className={styles['form-action-icon']}>

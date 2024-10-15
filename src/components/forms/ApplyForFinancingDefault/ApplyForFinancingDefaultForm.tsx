@@ -10,7 +10,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from './schema'
 import TextAreaField from '@/ui/components/TextField/TextAreaField'
 import axios from 'axios'
-import { AMOUNT_OPTIONS, WORDPRESS_API_PATHS } from '@/config/constants'
+import {
+  AMOUNT_OPTIONS,
+  EMAIL_SUBJECT,
+  WORDPRESS_API_PATHS,
+} from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import SelectField from '@/ui/components/SelectField/SelectField'
 import { IOption } from '@/types'
@@ -84,7 +88,7 @@ const ApplyForFinancingDefaultForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: 'Apply for Financing' })
+          await browserSendEmail({ subject: EMAIL_SUBJECT.FINANCING })
 
           setIsSubmittedSuccess(true)
 
@@ -207,7 +211,11 @@ const ApplyForFinancingDefaultForm = ({
             isFocused={isFocused.business_objectives}
             onBlur={handleBlur}
           />
-          <Button className={styles['form-action']} type="submit">
+          <Button
+            className={styles['form-action']}
+            type="submit"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               <div className={styles['form-action-icon']}>
                 <Image src="/animated-spinner.svg" alt="submitting" fill />

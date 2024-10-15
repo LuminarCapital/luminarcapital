@@ -6,7 +6,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import Slider from 'react-slick'
 import { yupResolver } from '@hookform/resolvers/yup'
 import TextField from '@/ui/components/TextField/TextField'
-import { AMOUNT_OPTIONS, WORDPRESS_API_PATHS } from '@/config/constants'
+import {
+  AMOUNT_OPTIONS,
+  EMAIL_SUBJECT,
+  WORDPRESS_API_PATHS,
+} from '@/config/constants'
 import CheckboxField from '@/ui/components/CheckboxField/CheckboxField'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from '../ApplyForFinancingDefault/schema'
@@ -113,7 +117,7 @@ const ApplyForFinancingModalForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: 'Apply for Financing' })
+          await browserSendEmail({ subject: EMAIL_SUBJECT.FINANCING })
 
           setIsSubmittedSuccess(true)
 
@@ -314,6 +318,7 @@ const ApplyForFinancingModalForm = ({
               currentSlide !== 3 ? styles['hidden'] : '',
             )}
             type="submit"
+            disabled={isSubmitting}
           >
             {isSubmitting ? (
               <div className={styles['form-action-icon']}>

@@ -1,13 +1,18 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { useAppDispatch } from '@/hooks'
 import Button from '@/ui/components/Button/Button'
 import HeroDefault from '@/components/HeroDefault/HeroDefault'
-import BoardOfCards from '@/components/BoardOfCards/BoardOfCards'
 import { valuesData } from '@/routes/why-luminar/valuesData'
 import BoardChessOrder from '@/components/BoardChessOrder/BoardChessOrder'
 import { advantageData } from '@/routes/why-luminar/advantageData'
 import CallToAction from '@/ui/components/CTA/CallToAction'
 import { openModal } from '@/store/slices/modalSlice'
+
+const BoardOfCards = dynamic(
+  () => import('@/components/BoardOfCards/BoardOfCards'),
+  { ssr: false },
+)
 
 export default function WhyLuminar() {
   const dispatch = useAppDispatch()

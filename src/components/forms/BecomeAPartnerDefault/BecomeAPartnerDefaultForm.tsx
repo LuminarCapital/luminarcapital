@@ -6,7 +6,7 @@ import TextField from '@/ui/components/TextField/TextField'
 import Button from '@/ui/components/Button/Button'
 import { yupResolver } from '@hookform/resolvers/yup'
 import axios from 'axios'
-import { WORDPRESS_API_PATHS } from '@/config/constants'
+import { EMAIL_SUBJECT, WORDPRESS_API_PATHS } from '@/config/constants'
 import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from './schema'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
@@ -67,7 +67,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: 'Become A Partner' })
+          await browserSendEmail({ subject: EMAIL_SUBJECT.PARTNER })
 
           setIsSubmittedSuccess(true)
 
@@ -127,7 +127,11 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
               autoComplete="off"
             />
           ))}
-          <Button className={styles['form-action']} type="submit">
+          <Button
+            className={styles['form-action']}
+            type="submit"
+            disabled={isSubmitting}
+          >
             {isSubmitting ? (
               <div className={styles['form-action-icon']}>
                 <Image src="/animated-spinner.svg" alt="submitting" fill />

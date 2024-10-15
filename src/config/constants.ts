@@ -43,3 +43,8 @@ export const cardsCarouselSettings = {
 
 const LOCALSTORAGE_HOURS = 48
 export const LOCALSTORAGE_EXPIRY = LOCALSTORAGE_HOURS * 60 * 60 * 1000
+
+export const EMAIL_SUBJECT = {
+  FINANCING: 'Apply for Financing',
+  PARTNER: 'Become A Partner',
+}
