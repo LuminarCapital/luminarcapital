@@ -35,7 +35,6 @@
 	
 		&-text{
 			padding: 61rem 0 40rem;
-			font: var(--font-body-lg);
 			
 				@include maxWidth($sm-max){
 					padding: 40rem 0;
