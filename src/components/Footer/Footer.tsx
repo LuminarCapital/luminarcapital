@@ -111,7 +111,8 @@ const Footer = ({ className }: IFooter) => {
         </div>
         <div className={styles['footer-copyright']}>
           <p className={styles['footer-copyright-item']}>
-            Copyright &copy; 2024 Luminar Capital LLC. All rights reserved.
+            Copyright &copy; {new Date().getFullYear()} Luminar Capital LLC. All
+            rights reserved.
           </p>
           <div className={styles['footer-secondaryNav']}>
             {navData.secondary.map((link, index) => (

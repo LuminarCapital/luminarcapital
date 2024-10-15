@@ -16,7 +16,7 @@
 			align-items: flex-start;
 			justify-content: flex-start;
 			row-gap: 36rem;
-			max-width: 424rem;
+			max-width: 450rem;
 			padding-bottom: 32rem;
 			
 				@include maxWidth($sm-max){
@@ -24,7 +24,7 @@
 				}
 			
 				&-description{
-					font: var(--font-body-lg);
+					font-size: 17rem;
 					
 						@include maxWidth($sm-max){
 							font: var(--font-body-md);
@@ -36,7 +36,7 @@
 			display: flex;
 			justify-content: flex-end;
 			margin-bottom: 32rem;
-			column-gap: 100rem;
+			column-gap: 120rem;
 			
 				@include maxWidth($md-max){
 					column-gap: 16rem;
