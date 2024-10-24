@@ -2,24 +2,17 @@ import Head from 'next/head'
 import FinancingOptions from '@/routes/home/FinancingOptions/FinancingOptions'
 import Button from '@/ui/components/Button/Button'
 import ClientReviews from '@/routes/home/ClientReviews/ClientReviews'
-import {
-  dangerouslyFetchPlaceReviews,
-  ReactGoogleReview,
-} from 'react-google-reviews'
 import CallToAction from '@/ui/components/CTA/CallToAction'
 import HeroHome from '@/components/HeroHome/HeroHome'
 import { useAppDispatch } from '@/hooks'
 import { openModal } from '@/store/slices/modalSlice'
 import BoardChessOrder from '@/components/BoardChessOrder/BoardChessOrder'
 import { personalizedExperienceData } from '@/routes/home/personalizedExperienceData'
+import { getReviews } from '@/utils/axios/getReviews'
+import { IGoogleReview } from '@/types'
 import CTAStyles from '@/routes/home/CTA/CallToAction.module.scss'
 
-export default function Home({
-  reviews,
-}: {
-  reviews: { reviews: ReactGoogleReview[]; success: boolean }
-}) {
-  // export default function Home() {
+export default function Home({ reviews }: { reviews: IGoogleReview[] }) {
   const dispatch = useAppDispatch()
 
   return (
@@ -74,18 +67,11 @@ export default function Home({
 }
 
 export const getStaticProps = async () => {
-  const placeId = process.env.GOOGLE_PLACE_ID!
-  const apiKey = process.env.GOOGLE_MAPS_API_KEY!
-
-  const reviews = await dangerouslyFetchPlaceReviews(placeId, apiKey)
+  const { data: reviews = [] } = await getReviews()
 
   return {
     props: {
       reviews,
     },
   }
-
-  // return {
-  //   props: {},
-  // }
 }

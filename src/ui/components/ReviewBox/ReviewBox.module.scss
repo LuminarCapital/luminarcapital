@@ -25,6 +25,12 @@
 			gap: 12rem;
 			align-items: center;
 
+				&-content{
+					display: flex;
+					flex-direction: column;
+					gap: 0;
+				}
+			
 				&-avatar{
 					position: relative;
 					width: 40rem;
@@ -34,6 +40,10 @@
 			
 				&-title{
 					font-family: var(--font-primary-medium);
+				}
+			
+				&-rating{
+					font-size: 16rem;
 				}
 		}
 	

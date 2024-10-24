@@ -9,6 +9,7 @@ export interface IFinancingOptionCard {
 }
 
 export interface IGoogleReview {
+  id: string
   author_name: string
   author_url: string
   language: string

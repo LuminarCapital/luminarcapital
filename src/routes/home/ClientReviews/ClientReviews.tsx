@@ -1,20 +1,17 @@
 import { useState } from 'react'
 import classNames from 'classnames'
-import { ReactGoogleReview } from 'react-google-reviews'
 import Slider from 'react-slick'
 import ReviewBox from '@/ui/components/ReviewBox/ReviewBox'
 import Button from '@/ui/components/Button/Button'
 import GoogleIcon from '@/ui/icons/Google'
 import SlickNextArrow from '@/ui/components/Carousel/SlickArrow/SlickNextArrow'
 import SlickPrevArrow from '@/ui/components/Carousel/SlickArrow/SlickPrevArrow'
+import { IGoogleReview } from '@/types'
 import styles from './ClientReviews.module.scss'
 
 interface IClientReviews {
   className?: string
-  data: {
-    success: boolean
-    reviews: ReactGoogleReview[]
-  }
+  data: IGoogleReview[]
 }
 
 const ClientReviews = ({ className, data }: IClientReviews) => {
@@ -55,13 +52,13 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
         <h3 className="h1 section-title text-center">
           Industry Leading Client Success
         </h3>
-        {data.success ? (
+        {data.length > 0 ? (
           <>
             <Slider
               {...settings}
               className={classNames(styles['carousel'], 'reviews-carousel')}
             >
-              {data.reviews.map((review, index) => (
+              {data.map((review, index) => (
                 <ReviewBox
                   key={`google-review-${index}`}
                   data={review}
