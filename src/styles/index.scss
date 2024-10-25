@@ -215,3 +215,14 @@ svg{
 				}
 		}
 }
+
+.board-slider{
+	.slick-slide{
+		height: 100%;
+		padding: 0 16rem;
+		
+			& > div{
+				height: 100%;
+			}
+	}
+}

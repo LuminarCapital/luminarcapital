@@ -39,9 +39,7 @@ const ReviewBox = ({ className, data, isActive }: IReviewBox) => {
         </div>
       </div>
       <div className={styles['box-body']}>
-        <p className={styles['box-body-item']}>
-          Rating: {data.rating} {data.text}
-        </p>
+        <p className={styles['box-body-item']}>{data.text}</p>
       </div>
     </div>
   )

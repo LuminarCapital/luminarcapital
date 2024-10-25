@@ -23,7 +23,7 @@
 			background-color: var(--color-gray-5);
 			
 				@include maxWidth($sm-max){
-					top: 50rem;
+					top: 40rem;
 					align-items: flex-end;
 					justify-content: flex-start;
 					height: 84rem;

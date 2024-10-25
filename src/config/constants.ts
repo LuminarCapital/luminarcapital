@@ -28,17 +28,19 @@ export const AMOUNT_OPTIONS: IOption[] = [
 ]
 
 export const cardsCarouselSettings = {
-  adaptiveHeight: true,
-  variableWidth: true,
+  adaptiveHeight: false,
+  variableWidth: false,
   dots: true,
   arrows: false,
-  centerMode: true,
-  centerPadding: '16rem',
+  centerMode: false,
+  // centerPadding: '16rem',
+  padding: 0,
   slidesToShow: 1,
   slidesToScroll: 1,
   focusOnSelect: true,
   speed: 1000,
-  infinite: true,
+  infinite: false,
+  rows: 1,
 }
 
 const LOCALSTORAGE_HOURS = 48

@@ -19,7 +19,8 @@
 		}
 	
 		@include maxWidth($sm-max){
-			width: calc(100vw - 32rem);
+			//width: calc(100vw - 32rem);
+			width: 100%;
 		}
 	
 		&-title{

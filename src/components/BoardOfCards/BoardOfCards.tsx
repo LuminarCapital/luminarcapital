@@ -17,6 +17,7 @@ const BoardOfCards = ({ className, title, cards = [] }: IBoardOfCards) => {
   const [maxHeightOfCards, setMaxHeightOfCards] = useState<number | 'auto'>(
     'auto',
   )
+  const [trackHeight, setTrackHeight] = useState<number | 'auto'>('auto')
   const maxHeightRef = useRef<number>(0)
   const cardRefs = useRef<Array<HTMLDivElement | null>>([])
 
@@ -59,16 +60,30 @@ const BoardOfCards = ({ className, title, cards = [] }: IBoardOfCards) => {
           <div className={styles['section-cards']}>
             {!isDesktop ? (
               <>
-                <Slider {...cardsCarouselSettings}>
+                <Slider
+                  {...cardsCarouselSettings}
+                  className="board-slider"
+                  onInit={() => {
+                    const track = document.querySelector(
+                      '.board-slider .slick-track',
+                    )
+                    if (track) {
+                      setTrackHeight(track.getBoundingClientRect().height)
+                    }
+                  }}
+                >
                   {cards.map(({ title, description, icon, href }, index) => (
-                    <FinancingOptionCard
-                      key={`financing-card-${index}`}
-                      title={title}
-                      description={description}
-                      icon={icon}
-                      href={href}
-                      className={styles['section-cards-slide']}
-                    />
+                    <div key={`financing-card-${index}`}>
+                      <div style={{ height: trackHeight }}>
+                        <FinancingOptionCard
+                          title={title}
+                          description={description}
+                          icon={icon}
+                          href={href}
+                          className={styles['section-cards-slide']}
+                        />
+                      </div>
+                    </div>
                   ))}
                 </Slider>
               </>

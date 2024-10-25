@@ -40,6 +40,7 @@ const cards = [
 
 const FinancingOptions = ({ className }: IFinancingOptions) => {
   const [isDesktop, setIsDesktop] = useState<boolean>(true)
+  const [trackHeight, setTrackHeight] = useState<number | 'auto'>('auto')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -56,16 +57,30 @@ const FinancingOptions = ({ className }: IFinancingOptions) => {
         <div className={styles['finOptions-cards']}>
           {!isDesktop ? (
             <>
-              <Slider {...cardsCarouselSettings}>
+              <Slider
+                {...cardsCarouselSettings}
+                className="board-slider"
+                onInit={() => {
+                  const track = document.querySelector(
+                    '.board-slider .slick-track',
+                  )
+                  if (track) {
+                    setTrackHeight(track.getBoundingClientRect().height)
+                  }
+                }}
+              >
                 {cards.map(({ title, description, icon, href }, index) => (
-                  <FinancingOptionCard
-                    key={`financing-card-${index}`}
-                    title={title}
-                    description={description}
-                    icon={icon}
-                    href={href}
-                    className={styles['finOptions-cards-slide']}
-                  />
+                  <div key={`financing-card-${index}`}>
+                    <div style={{ height: trackHeight }}>
+                      <FinancingOptionCard
+                        title={title}
+                        description={description}
+                        icon={icon}
+                        href={href}
+                        className={styles['finOptions-cards-slide']}
+                      />
+                    </div>
+                  </div>
                 ))}
               </Slider>
               <FinancingOptionCAT />
