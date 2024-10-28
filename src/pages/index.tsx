@@ -27,7 +27,7 @@ export default function Home({ reviews }: { reviews: IGoogleReview[] }) {
       <HeroHome
         title="Flexible financing options that fuel the growth of small businesses."
         description="Do you find yourself seeking capital to expand your small business? We believe every business should have the opportunity to access the financing they need to grow."
-        banner="/json/main-anim.json"
+        banner="/json/Main_illust.json"
         actions={
           <>
             <Button
