@@ -1,7 +1,7 @@
 import { IOption } from '@/types'
 
 export const QUERY_PARAMETERS = {
-  LIMIT: 9,
+  LIMIT: typeof window !== 'undefined' && window.innerWidth > 990 ? 9 : 6,
   LATEST: 6,
 }
 
