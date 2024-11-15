@@ -51,8 +51,6 @@ yarn build
 <h2 id="configuration">Configuration</h2>
 
 Environment variables in ```.env```
-* ``GOOGLE_MAPS_API_KEY``
-* ``GOOGLE_PLACE_ID``
 * ``WORDPRESS_API_URL``
 * ``SMTP_HOST``
 * ``SMTP_PORT``
