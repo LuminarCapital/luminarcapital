@@ -1,4 +1,5 @@
 import Skeleton from 'react-loading-skeleton'
+import { useEffect, useState } from 'react'
 
 interface IPostsSkeleton {
   className?: string
@@ -6,6 +7,16 @@ interface IPostsSkeleton {
 }
 
 const PostsSkeleton = ({ className, count = 3 }: IPostsSkeleton) => {
+  const [isClient, setIsClient] = useState<boolean>(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null
+  }
+
   return (
     <>
       {Array(count)

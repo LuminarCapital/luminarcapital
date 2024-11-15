@@ -14,6 +14,7 @@ import {
 import { QUERY_PARAMETERS, STATUS } from '@/config/constants'
 import PostsSkeleton from '@/ui/components/skeleton/PostsSkeleton/PostsSkeleton'
 import styles from './Posts.module.scss'
+import { scrollTo } from '@/utils/window/scrollTo'
 
 const Posts = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch()
@@ -42,7 +43,7 @@ const Posts = ({ className }: { className?: string }) => {
       return
     }
 
-    ref.current?.scrollIntoView({ behavior: 'smooth' })
+    scrollTo('posts-filters')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
@@ -70,6 +71,7 @@ const Posts = ({ className }: { className?: string }) => {
     <section
       ref={ref}
       className={classNames(styles['posts'], 'posts', className)}
+      id="posts"
     >
       <div className="content-block">
         <div className={styles['posts-list']}>

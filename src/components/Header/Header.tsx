@@ -112,6 +112,7 @@ const Header = ({ className }: IHeader) => {
 
   return (
     <header
+      id="header"
       className={classNames(
         styles['header'],
         isScrolling ? styles['scrolling'] : null,
