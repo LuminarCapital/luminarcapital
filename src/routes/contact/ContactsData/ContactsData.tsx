@@ -1,4 +1,14 @@
-import { FC, SVGProps, createElement, useCallback, useRef } from 'react'
+'use client'
+
+import {
+  FC,
+  SVGProps,
+  createElement,
+  useCallback,
+  useRef,
+  useState,
+  useEffect,
+} from 'react'
 import classNames from 'classnames'
 import PhoneIcon from '@/ui/icons/Phone'
 import MailIcon from '@/ui/icons/Mail'
@@ -18,16 +28,19 @@ interface IContactsDataItem {
 
 const contacts: IContactsDataItem[] = [
   {
+    href: 'tel:1111111111',
     label: '(111) 111-1111',
     blank: false,
     icon: PhoneIcon,
   },
   {
+    href: 'mailto:info@luminarcapital.com',
     label: 'info@luminarcapital.com',
-    blank: false,
+    blank: true,
     icon: MailIcon,
   },
   {
+    href: 'https://maps.app.goo.gl/XDnwr6xX7NtxSoUn6',
     label: '25 SE 2nd Ave Ste 550 Miami, FL 33131',
     blank: true,
     icon: MarkerIcon,
@@ -78,11 +91,24 @@ const ContactsDataItem = ({ data: contact }: { data: IContactsDataItem }) => {
 }
 
 const ContactsData = ({ className }: IContactsData) => {
+  const [data, setData] = useState<IContactsDataItem[]>(contacts)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth > 990) {
+      setData(
+        contacts.map((contact) => ({
+          ...contact,
+          href: undefined,
+        })),
+      )
+    }
+  }, [])
+
   return (
     <section className={classNames(styles['section'], className)}>
       <div className="content-block">
         <div className={styles['section-panel']}>
-          {contacts.map((contact, index) => (
+          {data.map((contact, index) => (
             <ContactsDataItem data={contact} key={`contact-link-${index}`} />
           ))}
         </div>
