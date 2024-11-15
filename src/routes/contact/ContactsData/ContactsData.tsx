@@ -34,8 +34,8 @@ const contacts: IContactsDataItem[] = [
     icon: PhoneIcon,
   },
   {
-    href: 'mailto:info@luminarcapital.com',
-    label: 'info@luminarcapital.com',
+    href: 'mailto:support@luminarcapital.com',
+    label: 'support@luminarcapital.com',
     blank: true,
     icon: MailIcon,
   },
