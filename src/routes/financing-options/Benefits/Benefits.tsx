@@ -7,6 +7,7 @@ import { ITab } from '@/types'
 import { data } from './data'
 import BenefitCard from '@/ui/components/BenefitCard/BenefitCard'
 import styles from './Benefits.module.scss'
+import { scrollTo } from '@/utils/window/scrollTo'
 
 interface IBenefits {
   className?: string
@@ -47,6 +48,12 @@ const Benefits = ({ className }: IBenefits) => {
     }
   }, [router.query.scroll])
 
+  useEffect(() => {
+    if (router.query.origin && !router.query.scroll) {
+      scrollTo('benefits-description')
+    }
+  }, [router.query.origin])
+
   return (
     <section
       ref={ref}
@@ -62,7 +69,10 @@ const Benefits = ({ className }: IBenefits) => {
         >
           <h2 className="h1">Benefits of Financing Options</h2>
         </div>
-        <div className="section-description text-center">
+        <div
+          className="section-description text-center"
+          id="benefits-description"
+        >
           <p>Click on an option below to learn more!</p>
         </div>
       </div>
