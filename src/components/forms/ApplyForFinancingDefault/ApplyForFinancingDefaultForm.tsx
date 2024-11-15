@@ -20,6 +20,7 @@ import { IOption } from '@/types'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import Skeleton from 'react-loading-skeleton'
 import styles from './ApplyForFinancingDefault.module.scss'
+import { messages } from '@/config/messages'
 
 interface IApplyForFinancingDefault {
   className?: string
@@ -88,7 +89,17 @@ const ApplyForFinancingDefaultForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: EMAIL_SUBJECT.FINANCING })
+          // Send email notification to admin
+          await browserSendEmail({
+            subject: EMAIL_SUBJECT.FINANCING,
+            htmlMessage: messages.admin,
+          })
+          // Send email notification to user
+          await browserSendEmail({
+            to: data.email,
+            subject: EMAIL_SUBJECT.FINANCING,
+            htmlMessage: messages.user,
+          })
 
           setIsSubmittedSuccess(true)
 

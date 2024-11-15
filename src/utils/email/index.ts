@@ -2,6 +2,7 @@ import nodemailer, { TransportOptions } from 'nodemailer'
 import striptags from 'striptags'
 
 export interface ISendEmail {
+  to?: string
   subject: string
   htmlMessage?: string
 }
@@ -15,10 +16,14 @@ const transporter = nodemailer.createTransport({
   },
 } as TransportOptions)
 
-export const sendEmail = async ({ subject, htmlMessage = '' }: ISendEmail) => {
+export const sendEmail = async ({
+  to = process.env.RECIPIENT_EMAIL,
+  subject,
+  htmlMessage = '',
+}: ISendEmail) => {
   return await transporter.sendMail({
     from: process.env.SENDER_EMAIL,
-    to: process.env.RECIPIENT_EMAIL,
+    to,
     subject,
     text: striptags(htmlMessage),
     html: htmlMessage,

@@ -17,6 +17,7 @@ import { schema } from '../ApplyForFinancingDefault/schema'
 import Button from '@/ui/components/Button/Button'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './ApplyForFinancingModalForm.module.scss'
+import { messages } from '@/config/messages'
 
 interface IApplyForFinancingModalForm {
   className?: string
@@ -117,7 +118,17 @@ const ApplyForFinancingModalForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: EMAIL_SUBJECT.FINANCING })
+          // Send email notification to admin
+          await browserSendEmail({
+            subject: EMAIL_SUBJECT.FINANCING,
+            htmlMessage: messages.admin,
+          })
+          // Send email notification to user
+          await browserSendEmail({
+            to: data.email,
+            subject: EMAIL_SUBJECT.FINANCING,
+            htmlMessage: messages.user,
+          })
 
           setIsSubmittedSuccess(true)
 

@@ -12,6 +12,7 @@ import { schema } from '../BecomeAPartnerDefault/schema'
 import Button from '@/ui/components/Button/Button'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from '../ApplyForFinancingModal/ApplyForFinancingModalForm.module.scss'
+import { messages } from '@/config/messages'
 
 interface IApplyForFinancingModalForm {
   className?: string
@@ -106,7 +107,17 @@ const BecomeAPartnerModalForm = ({
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: EMAIL_SUBJECT.PARTNER })
+          // Send email notification to admin
+          await browserSendEmail({
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.admin,
+          })
+          // Send email notification to user
+          await browserSendEmail({
+            to: data.email,
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.user,
+          })
 
           setIsSubmittedSuccess(true)
 

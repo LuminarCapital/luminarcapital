@@ -3,9 +3,10 @@ import { sendEmail } from '@/utils/email'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { subject, htmlMessage } = req.body
+    const { to, subject, htmlMessage } = req.body
 
     const response = await sendEmail({
+      to,
       subject,
       htmlMessage,
     })

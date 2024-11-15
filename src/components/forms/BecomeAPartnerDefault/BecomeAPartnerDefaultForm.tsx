@@ -11,6 +11,7 @@ import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import { schema } from './schema'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './BecomeAPartnerDefault.module.scss'
+import { messages } from '@/config/messages'
 
 interface IBecomeAPartnerDefault {
   className?: string
@@ -69,7 +70,17 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
       )
       .then(async (response) => {
         if (response.data.success && response.status === 200) {
-          await browserSendEmail({ subject: EMAIL_SUBJECT.PARTNER })
+          // Send email notification to admin
+          await browserSendEmail({
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.admin,
+          })
+          // Send email notification to user
+          await browserSendEmail({
+            to: data.email,
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.user,
+          })
 
           setIsSubmittedSuccess(true)
 
