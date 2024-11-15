@@ -20,7 +20,11 @@
 		}
 	
 		&-next{
-			right: 0;
+			right: -32rem;
+			
+				@include maxWidth($md-max){
+					right: 0;
+				}
 			
 				@include maxWidth($sm-max){
 					right: 50%;
@@ -29,7 +33,11 @@
 		}
 	
 		&-prev{
-			left: 0;
+			left: -32rem;
+			
+				@include maxWidth($md-max){
+					left: 0;
+				}
 			
 				@include maxWidth($sm-max){
 					left: 50%;

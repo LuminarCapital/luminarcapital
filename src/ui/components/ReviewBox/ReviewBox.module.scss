@@ -50,10 +50,10 @@
 		&-body{
 				&-item{
 					display: -webkit-box;
-					min-height: 150rem;
+					min-height: 197rem;
 					overflow: hidden;
 					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 6;
+					-webkit-line-clamp: 8;
 					
 						@include maxWidth($sm-max){
 							font: var(--font-body-lg);

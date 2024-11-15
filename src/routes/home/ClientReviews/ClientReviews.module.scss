@@ -10,11 +10,11 @@
 .carousel{
 	margin-top: -8rem;
 	margin-bottom: 52rem;
-	padding: 0 40rem;
+	padding: 0;
 	
 		@include maxWidth($md-max){
 			margin: -8rem -16rem 52rem;
-			padding: 0;
+			padding: 0 16rem;
 		}
 	
 		@include maxWidth($sm-max){
@@ -58,7 +58,7 @@
 		}
 	
 		&-slide{
-			margin: 0 15rem;
+			margin: 0 8rem;
 			
 				@include maxWidth($sm-max){
 					width: calc(100vw - 56rem);
