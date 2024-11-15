@@ -15,6 +15,7 @@
 			padding: 15rem 16rem 7rem;
 			color: var(--color-black);
 			font: var(--font-body-md);
+			background-color: var(--color-white);
 			border: 1rem var(--color-gray-50) solid;
 			border-radius: 8px;
 			transition: border-color var(--transition-duration-button) var(--transition-easing-button);
@@ -23,6 +24,16 @@
 					&:hover{
 						border-color: var(--color-black);
 					}
+				}
+			
+				&:-webkit-autofill {
+					box-shadow:0 0 0 42rem var(--color-white) inset;
+					-webkit-text-fill-color: var(--color-black);
+				}
+				
+				&:-webkit-autofill:focus {
+					box-shadow: 0 0 0 42rem var(--color-white) inset;
+					-webkit-text-fill-color: var(--color-black);
 				}
 			
 				&:focus{
@@ -49,6 +60,14 @@
 		&-area{
 			height: 100rem;
 			resize: none;
+			
+				&:-webkit-autofill {
+					box-shadow:0 0 0 100rem var(--color-white) inset;
+				}
+				
+				&:-webkit-autofill:focus {
+					box-shadow: 0 0 0 100rem var(--color-white) inset;
+				}
 		}
 	
 		&-placeholder{

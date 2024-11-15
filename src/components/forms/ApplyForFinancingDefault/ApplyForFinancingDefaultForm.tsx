@@ -1,5 +1,4 @@
 import { ChangeEvent, useCallback, useState } from 'react'
-import { useRouter } from 'next/router'
 import classNames from 'classnames'
 import Image from 'next/image'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -19,6 +18,7 @@ import SuccessMessage from '@/ui/components/SuccessMesasge/SuccessMessage'
 import SelectField from '@/ui/components/SelectField/SelectField'
 import { IOption } from '@/types'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
+import Skeleton from 'react-loading-skeleton'
 import styles from './ApplyForFinancingDefault.module.scss'
 
 interface IApplyForFinancingDefault {
@@ -38,7 +38,6 @@ interface IFormInput {
 const ApplyForFinancingDefaultForm = ({
   className,
 }: IApplyForFinancingDefault) => {
-  const router = useRouter()
   // Using useForm hook with yupResolver to validate the form based on a schema
   const {
     register,
@@ -116,7 +115,6 @@ const ApplyForFinancingDefaultForm = ({
         // Automatically hide the success message after 8 seconds
         setTimeout(() => {
           setIsSubmittedSuccess(false)
-          router.reload()
         }, 8000)
       })
   }
@@ -185,24 +183,40 @@ const ApplyForFinancingDefaultForm = ({
               onBlur={handleBlur}
               autoComplete="off"
             />
-            <SelectField
-              className={styles['form-body-grid-item']}
-              options={AMOUNT_OPTIONS}
-              placeholder="Amount of financing requested"
-              onChange={(newValue) =>
-                handleSelectChange(newValue, 'amount_of_financing_requested')
-              }
-              error={errors.amount_of_financing_requested?.message}
-            />
-            <SelectField
-              className={styles['form-body-grid-item']}
-              options={AMOUNT_OPTIONS}
-              placeholder="What's your average monthly sales?"
-              onChange={(newValue) =>
-                handleSelectChange(newValue, 'average_of_monthly_sales')
-              }
-              error={errors.average_of_monthly_sales?.message}
-            />
+            {!isSubmittedSuccess ? (
+              <>
+                <SelectField
+                  className={styles['form-body-grid-item']}
+                  options={AMOUNT_OPTIONS}
+                  placeholder="Amount of financing requested"
+                  onChange={(newValue) =>
+                    handleSelectChange(
+                      newValue,
+                      'amount_of_financing_requested',
+                    )
+                  }
+                  error={errors.amount_of_financing_requested?.message}
+                />
+                <SelectField
+                  className={styles['form-body-grid-item']}
+                  options={AMOUNT_OPTIONS}
+                  placeholder="What's your average monthly sales?"
+                  onChange={(newValue) =>
+                    handleSelectChange(newValue, 'average_of_monthly_sales')
+                  }
+                  error={errors.average_of_monthly_sales?.message}
+                />
+              </>
+            ) : (
+              <>
+                <div className={styles['form-body-grid-item']}>
+                  <Skeleton height="40rem" />
+                </div>
+                <div className={styles['form-body-grid-item']}>
+                  <Skeleton height="40rem" />
+                </div>
+              </>
+            )}
           </div>
 
           <TextAreaField

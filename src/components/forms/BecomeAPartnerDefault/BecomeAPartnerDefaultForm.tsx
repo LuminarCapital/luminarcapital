@@ -124,7 +124,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
               error={field.error}
               isFocused={isFocused[field.name as keyof IFormInput]}
               onBlur={handleBlur}
-              autoComplete="off"
+              autoComplete={`new-${field.name}`}
             />
           ))}
           <Button

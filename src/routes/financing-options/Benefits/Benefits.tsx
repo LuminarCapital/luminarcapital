@@ -52,6 +52,7 @@ const Benefits = ({ className }: IBenefits) => {
     if (router.query.origin && !router.query.scroll) {
       scrollTo('benefits-description')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query.origin])
 
   return (
