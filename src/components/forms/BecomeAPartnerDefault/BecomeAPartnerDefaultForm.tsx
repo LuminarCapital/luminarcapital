@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -29,6 +29,8 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
     register,
     handleSubmit,
     getValues,
+    setValue,
+    trigger,
     formState: { errors },
     reset,
   } = useForm<IFormInput>({
@@ -95,6 +97,15 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
       })
   }
 
+  const handleChange = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      const { name } = e.target
+      setValue(name as keyof IFormInput, e.target.value)
+      await trigger(name as keyof IFormInput)
+    },
+    [setValue, trigger],
+  )
+
   // Array of field configurations. Each object contains the field's name, placeholder text, and any error messages.
   const fields: { name: string; placeholder: string; error?: string }[] = [
     { name: 'name', placeholder: 'Full Name', error: errors.name?.message },
@@ -125,6 +136,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
               isFocused={isFocused[field.name as keyof IFormInput]}
               onBlur={handleBlur}
               autoComplete={`new-${field.name}`}
+              onChange={handleChange}
             />
           ))}
           <Button

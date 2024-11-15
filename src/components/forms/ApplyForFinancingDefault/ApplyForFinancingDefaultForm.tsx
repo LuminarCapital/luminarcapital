@@ -47,6 +47,7 @@ const ApplyForFinancingDefaultForm = ({
     reset,
     setValue,
     clearErrors,
+    trigger,
   } = useForm<IFormInput>({
     resolver: yupResolver(schema),
   })
@@ -119,6 +120,15 @@ const ApplyForFinancingDefaultForm = ({
       })
   }
 
+  const handleChange = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      const { name } = e.target
+      setValue(name as keyof IFormInput, e.target.value)
+      await trigger(name as keyof IFormInput)
+    },
+    [setValue, trigger],
+  )
+
   const handleSelectChange = useCallback(
     (
       newValue: SingleValue<IOption> | MultiValue<IOption>,
@@ -155,6 +165,7 @@ const ApplyForFinancingDefaultForm = ({
               isFocused={isFocused['name']}
               onBlur={handleBlur}
               autoComplete="off"
+              onChange={handleChange}
             />
             <TextField
               {...register('business_name')}
@@ -164,6 +175,7 @@ const ApplyForFinancingDefaultForm = ({
               isFocused={isFocused['business_name']}
               onBlur={handleBlur}
               autoComplete="off"
+              onChange={handleChange}
             />
             <TextField
               {...register('phone')}
@@ -173,6 +185,7 @@ const ApplyForFinancingDefaultForm = ({
               isFocused={isFocused['phone']}
               onBlur={handleBlur}
               autoComplete="off"
+              onChange={handleChange}
             />
             <TextField
               {...register('email')}
@@ -182,6 +195,7 @@ const ApplyForFinancingDefaultForm = ({
               isFocused={isFocused['email']}
               onBlur={handleBlur}
               autoComplete="off"
+              onChange={handleChange}
             />
             {!isSubmittedSuccess ? (
               <>
@@ -224,6 +238,7 @@ const ApplyForFinancingDefaultForm = ({
             placeholder="Describe your business objectives!"
             isFocused={isFocused.business_objectives}
             onBlur={handleBlur}
+            autoComplete="new-business_objectives"
           />
           <Button
             className={styles['form-action']}
