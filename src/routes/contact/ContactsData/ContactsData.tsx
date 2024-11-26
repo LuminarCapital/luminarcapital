@@ -50,26 +50,26 @@ const contacts: IContactsDataItem[] = [
 const ContactsDataItem = ({ data: contact }: { data: IContactsDataItem }) => {
   const labelRef = useRef<HTMLSpanElement | null>(null)
 
-  const handleCopy = useCallback(async (value: string) => {
-    if (navigator.clipboard) {
-      try {
-        await navigator.clipboard.writeText(value)
-
-        if (labelRef.current) {
-          const range = document.createRange()
-          range.selectNodeContents(labelRef.current)
-
-          const sel = window.getSelection()
-          if (sel) {
-            sel.removeAllRanges()
-            sel.addRange(range)
-          }
-        }
-      } catch (err) {
-        console.error('Failed to copy text: ', err)
-      }
-    }
-  }, [])
+  // const handleCopy = useCallback(async (value: string) => {
+  //   if (navigator.clipboard) {
+  //     try {
+  //       await navigator.clipboard.writeText(value)
+  //
+  //       if (labelRef.current) {
+  //         const range = document.createRange()
+  //         range.selectNodeContents(labelRef.current)
+  //
+  //         const sel = window.getSelection()
+  //         if (sel) {
+  //           sel.removeAllRanges()
+  //           sel.addRange(range)
+  //         }
+  //       }
+  //     } catch (err) {
+  //       console.error('Failed to copy text: ', err)
+  //     }
+  //   }
+  // }, [])
 
   return (
     <a
@@ -79,7 +79,7 @@ const ContactsDataItem = ({ data: contact }: { data: IContactsDataItem }) => {
     >
       <span
         className={styles['link-icon']}
-        onClick={() => handleCopy(contact.label)}
+        // onClick={() => handleCopy(contact.label)}
       >
         {createElement(contact.icon)}
       </span>
@@ -94,14 +94,14 @@ const ContactsData = ({ className }: IContactsData) => {
   const [data, setData] = useState<IContactsDataItem[]>(contacts)
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth > 990) {
-      setData(
-        contacts.map((contact) => ({
-          ...contact,
-          href: undefined,
-        })),
-      )
-    }
+    // if (typeof window !== 'undefined' && window.innerWidth > 990) {
+    //   setData(
+    //     contacts.map((contact) => ({
+    //       ...contact,
+    //       href: undefined,
+    //     })),
+    //   )
+    // }
   }, [])
 
   return (
