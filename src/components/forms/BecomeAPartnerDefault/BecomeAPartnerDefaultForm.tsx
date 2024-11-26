@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 import Image from 'next/image'
 import classNames from 'classnames'
 import { useForm, SubmitHandler } from 'react-hook-form'
@@ -48,7 +48,6 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
     email: false,
     company_name: false,
     phone: false,
-    password: false,
   })
 
   // Function that triggers on blur (losing focus). It updates the focus state based on whether the field has a value.
@@ -63,51 +62,51 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
   // Function that handles form submission
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log('data ', data)
-    // setIsSubmitting(true)
+    setIsSubmitting(true)
 
-    // axios
-    //   .post(
-    //     `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-partner`,
-    //     data,
-    //   )
-    //   .then(async (response) => {
-    //     if (response.data.success && response.status === 200) {
-    //       // Send email notification to admin
-    //       await browserSendEmail({
-    //         subject: EMAIL_SUBJECT.PARTNER,
-    //         htmlMessage: messages.admin,
-    //       })
-    //       // Send email notification to user
-    //       await browserSendEmail({
-    //         to: data.email,
-    //         subject: EMAIL_SUBJECT.PARTNER,
-    //         htmlMessage: messages.user,
-    //       })
-    //
-    //       setIsSubmittedSuccess(true)
-    //
-    //       setTimeout(() => {
-    //         reset()
-    //         setIsFocused({
-    //           name: false,
-    //           email: false,
-    //           company_name: false,
-    //           phone: false,
-    //         })
-    //       }, 1000)
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     // display error message
-    //     setSubmittedError(err.response.data.message)
-    //     // clear error message
-    //     setTimeout(() => setSubmittedError(null), 3000)
-    //   })
-    //   .finally(() => {
-    //     setIsSubmitting(false)
-    //     // hide success message
-    //     setTimeout(() => setIsSubmittedSuccess(false), 5000)
-    //   })
+    axios
+      .post(
+        `${process.env.WORDPRESS_API_URL!}/${WORDPRESS_API_PATHS.save}/save-partner`,
+        data,
+      )
+      .then(async (response) => {
+        if (response.data.success && response.status === 200) {
+          // Send email notification to admin
+          await browserSendEmail({
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.admin,
+          })
+          // Send email notification to user
+          await browserSendEmail({
+            to: data.email,
+            subject: EMAIL_SUBJECT.PARTNER,
+            htmlMessage: messages.user,
+          })
+
+          setIsSubmittedSuccess(true)
+
+          setTimeout(() => {
+            reset()
+            setIsFocused({
+              name: false,
+              email: false,
+              company_name: false,
+              phone: false,
+            })
+          }, 1000)
+        }
+      })
+      .catch((err) => {
+        // display error message
+        setSubmittedError(err.response.data.message)
+        // clear error message
+        setTimeout(() => setSubmittedError(null), 3000)
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+        // hide success message
+        setTimeout(() => setIsSubmittedSuccess(false), 5000)
+      })
   }
 
   const handleChange = useCallback(
