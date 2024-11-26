@@ -1,5 +1,7 @@
-import Skeleton from 'react-loading-skeleton'
 import { useEffect, useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import classNames from 'classnames'
+import styles from './PostsSkeleton.module.scss'
 
 interface IPostsSkeleton {
   className?: string
@@ -22,11 +24,13 @@ const PostsSkeleton = ({ className, count = 3 }: IPostsSkeleton) => {
       {Array(count)
         .fill(null)
         .map((_, index) => (
-          <div key={`post-skeleton-${index}`} className="col-md-6 col-lg-4">
+          <div
+            key={`post-skeleton-${index}`}
+            className="col-xs-12 col-md-6 col-lg-4 col-gutter-lr"
+          >
             <Skeleton
               borderRadius={10}
-              height="448rem"
-              className={className}
+              className={classNames(styles['skeleton'], className)}
               baseColor="#EDEFF7"
             />
           </div>

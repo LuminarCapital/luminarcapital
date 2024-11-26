@@ -43,7 +43,7 @@ const Posts = ({ className }: { className?: string }) => {
       return
     }
 
-    scrollTo('posts-filters')
+    setTimeout(() => scrollTo('posts-filters'), 500)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
@@ -59,11 +59,13 @@ const Posts = ({ className }: { className?: string }) => {
 
   const handlePageChange = useCallback(
     (event: ChangeEvent<unknown>, newPage: number) => {
+      event.preventDefault()
       dispatch(setPage(newPage))
     },
     [dispatch],
   )
 
+  const isDataLoading = status === STATUS.PENDING || status === STATUS.IDLE
   const isDataLoaded = posts.length > 0 && status === STATUS.FULFILLED
   const isEmptyData = posts.length === 0 && status === STATUS.FULFILLED
 
@@ -76,6 +78,9 @@ const Posts = ({ className }: { className?: string }) => {
       <div className="content-block">
         <div className={styles['posts-list']}>
           <div className="row">
+            {isDataLoading ? (
+              <PostsSkeleton count={QUERY_PARAMETERS.LIMIT} />
+            ) : null}
             {isDataLoaded ? (
               posts.map((post) => (
                 <div
