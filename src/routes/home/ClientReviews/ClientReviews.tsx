@@ -25,7 +25,7 @@ const ClientReviews = ({ className, data }: IClientReviews) => {
     nextArrow: <SlickNextArrow />,
     prevArrow: <SlickPrevArrow />,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3500,
     pauseOnHover: true,
     pauseOnFocus: true,
     responsive: [

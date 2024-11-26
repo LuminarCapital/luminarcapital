@@ -127,7 +127,7 @@ const ApplyForFinancingDefaultForm = ({
         // Automatically hide the success message after 8 seconds
         setTimeout(() => {
           setIsSubmittedSuccess(false)
-        }, 8000)
+        }, 5000)
       })
   }
 
