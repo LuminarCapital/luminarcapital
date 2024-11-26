@@ -29,11 +29,21 @@
 				&:-webkit-autofill {
 					box-shadow:0 0 0 42rem var(--color-white) inset;
 					-webkit-text-fill-color: var(--color-black);
+					
+						& ~ .textField-placeholder{
+							top: 7rem;
+							font-size: 8rem;
+						}
 				}
 				
 				&:-webkit-autofill:focus {
 					box-shadow: 0 0 0 42rem var(--color-white) inset;
 					-webkit-text-fill-color: var(--color-black);
+					
+						& ~ .textField-placeholder{
+							top: 7rem;
+							font-size: 8rem;
+						}
 				}
 			
 				&:focus{
@@ -97,4 +107,10 @@
 					top: 100%;
 				}
 		}
+}
+
+@keyframes onAutoFillStart {
+}
+
+@keyframes onAutoFillCancel {
 }

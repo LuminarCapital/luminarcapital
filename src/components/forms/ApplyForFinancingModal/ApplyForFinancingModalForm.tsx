@@ -253,7 +253,6 @@ const ApplyForFinancingModalForm = ({
                 error={errors.name?.message}
                 isFocused={isFocused['name']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
               <TextField
@@ -263,7 +262,6 @@ const ApplyForFinancingModalForm = ({
                 error={errors.business_name?.message}
                 isFocused={isFocused['business_name']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
             </div>
@@ -280,7 +278,6 @@ const ApplyForFinancingModalForm = ({
                 error={errors.phone?.message}
                 isFocused={isFocused['phone']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
               <TextField
@@ -290,7 +287,6 @@ const ApplyForFinancingModalForm = ({
                 error={errors.email?.message}
                 isFocused={isFocused['email']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
             </div>

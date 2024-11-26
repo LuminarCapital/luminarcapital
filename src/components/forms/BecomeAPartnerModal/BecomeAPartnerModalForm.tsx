@@ -183,7 +183,6 @@ const BecomeAPartnerModalForm = ({
                 error={errors.company_name?.message}
                 isFocused={isFocused['company_name']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
             </div>
@@ -200,7 +199,6 @@ const BecomeAPartnerModalForm = ({
                 error={errors.name?.message}
                 isFocused={isFocused['name']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
             </div>
@@ -217,17 +215,16 @@ const BecomeAPartnerModalForm = ({
                 error={errors.phone?.message}
                 isFocused={isFocused['phone']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
               <TextField
                 {...register('email')}
+                type="email"
                 className={styles['form-body-grid-item']}
                 placeholder="Email"
                 error={errors.email?.message}
                 isFocused={isFocused['email']}
                 onBlur={handleBlur}
-                autoComplete="off"
                 onChange={handleChange}
               />
             </div>

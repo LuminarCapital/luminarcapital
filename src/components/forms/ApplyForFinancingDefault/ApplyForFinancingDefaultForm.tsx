@@ -175,7 +175,6 @@ const ApplyForFinancingDefaultForm = ({
               error={errors.name?.message}
               isFocused={isFocused['name']}
               onBlur={handleBlur}
-              autoComplete="off"
               onChange={handleChange}
             />
             <TextField
@@ -185,7 +184,6 @@ const ApplyForFinancingDefaultForm = ({
               error={errors.business_name?.message}
               isFocused={isFocused['business_name']}
               onBlur={handleBlur}
-              autoComplete="off"
               onChange={handleChange}
             />
             <TextField
@@ -195,7 +193,6 @@ const ApplyForFinancingDefaultForm = ({
               error={errors.phone?.message}
               isFocused={isFocused['phone']}
               onBlur={handleBlur}
-              autoComplete="off"
               onChange={handleChange}
             />
             <TextField
@@ -205,7 +202,6 @@ const ApplyForFinancingDefaultForm = ({
               error={errors.email?.message}
               isFocused={isFocused['email']}
               onBlur={handleBlur}
-              autoComplete="off"
               onChange={handleChange}
             />
             {!isSubmittedSuccess ? (
@@ -249,7 +245,6 @@ const ApplyForFinancingDefaultForm = ({
             placeholder="Describe your business objectives!"
             isFocused={isFocused.business_objectives}
             onBlur={handleBlur}
-            autoComplete="new-business_objectives"
           />
           <Button
             className={styles['form-action']}
