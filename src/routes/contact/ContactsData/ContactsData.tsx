@@ -1,14 +1,6 @@
 'use client'
 
-import {
-  FC,
-  SVGProps,
-  createElement,
-  useCallback,
-  useRef,
-  useState,
-  useEffect,
-} from 'react'
+import { FC, SVGProps, createElement, useRef, useState, useEffect } from 'react'
 import classNames from 'classnames'
 import PhoneIcon from '@/ui/icons/Phone'
 import MailIcon from '@/ui/icons/Mail'
@@ -91,7 +83,7 @@ const ContactsDataItem = ({ data: contact }: { data: IContactsDataItem }) => {
 }
 
 const ContactsData = ({ className }: IContactsData) => {
-  const [data, setData] = useState<IContactsDataItem[]>(contacts)
+  const [data] = useState<IContactsDataItem[]>(contacts)
 
   useEffect(() => {
     // if (typeof window !== 'undefined' && window.innerWidth > 990) {

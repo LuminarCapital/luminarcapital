@@ -61,7 +61,6 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
 
   // Function that handles form submission
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log('data ', data)
     setIsSubmitting(true)
 
     axios
@@ -74,13 +73,13 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
           // Send email notification to admin
           await browserSendEmail({
             subject: EMAIL_SUBJECT.PARTNER,
-            htmlMessage: messages.admin,
+            htmlMessage: messages.admin(data),
           })
           // Send email notification to user
           await browserSendEmail({
             to: data.email,
             subject: EMAIL_SUBJECT.PARTNER,
-            htmlMessage: messages.user,
+            htmlMessage: messages.user(),
           })
 
           setIsSubmittedSuccess(true)

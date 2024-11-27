@@ -121,13 +121,13 @@ const ApplyForFinancingModalForm = ({
           // Send email notification to admin
           await browserSendEmail({
             subject: EMAIL_SUBJECT.FINANCING,
-            htmlMessage: messages.admin,
+            htmlMessage: messages.admin(data),
           })
           // Send email notification to user
           await browserSendEmail({
             to: data.email,
             subject: EMAIL_SUBJECT.FINANCING,
-            htmlMessage: messages.user,
+            htmlMessage: messages.user(),
           })
 
           setIsSubmittedSuccess(true)
