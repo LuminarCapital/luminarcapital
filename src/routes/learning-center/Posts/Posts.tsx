@@ -43,7 +43,7 @@ const Posts = ({ className }: { className?: string }) => {
       return
     }
 
-    setTimeout(() => scrollTo('posts-filters'), 500)
+    setTimeout(() => scrollTo('posts-filters'), 50)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
