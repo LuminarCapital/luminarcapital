@@ -22,7 +22,10 @@ export const sendEmail = async ({
   htmlMessage = '',
 }: ISendEmail) => {
   return await transporter.sendMail({
-    from: process.env.SENDER_EMAIL,
+    from: {
+      name: process.env.SENDER_NAME!,
+      address: process.env.SENDER_EMAIL!,
+    },
     to,
     subject,
     text: striptags(htmlMessage),
