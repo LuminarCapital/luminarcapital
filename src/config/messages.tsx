@@ -38,14 +38,14 @@ export const messages: { [key: string]: MessageValue } = {
   },
   user: () => {
     return `
-  <h2 style="font-family: Arial, Helvetica, sans-serif;">Hello!</h2>
+  <h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em;">Hello!</h3>
   <p style="font-family: Arial, Helvetica, sans-serif;">Thank you for completing the form on our website.</p>
   <p style="font-family: Arial, Helvetica, sans-serif;">We have successfully received your inquiry and it is being reviewed by our team.</p>
  
   <p style="font-family: Arial, Helvetica, sans-serif;">One of our financing specialists will reach out to discuss your request further and provide any necessary information.</p>
   <p style="font-family: Arial, Helvetica, sans-serif; ">We truly appreciate your interest in our services and we look forward to assisting you!</p>
   <p style="font-family: Arial, Helvetica, sans-serif;">Best regards,</p>
-  <h2 style="font-family: Arial, Helvetica, sans-serif;"><b>Luminar Capital Team</b></h2>
+  <h3 style="font-family: Arial, Helvetica, sans-serif; font-size: 1.3em;"><b>Luminar Capital Team</b></h3>
   `
   },
 }
