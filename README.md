@@ -4,7 +4,7 @@
 
 **Station - Office**
 
-**Manager - Anastasiia Boichuk**
+**Manager - Kateryna Syrota**
 
 ## Table of contents
 - **[Introduction](#introduction)**
