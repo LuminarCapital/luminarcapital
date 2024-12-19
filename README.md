@@ -58,6 +58,7 @@ Environment variables in ```.env```
 * ``SMTP_PASS``
 * ``RECIPIENT_EMAIL``
 * ``SENDER_EMAIL``
+* ``SENDER_NAME``
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/**/*.ts](http://localhost:3000/api/**/*.ts). This endpoint can be edited in `pages/api/**/*.ts`.
 
