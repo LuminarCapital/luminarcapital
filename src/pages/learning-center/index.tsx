@@ -1,15 +1,17 @@
 import Head from 'next/head'
 import HeroSimple from '@/components/HeroSimple/HeroSimple'
-import Filters from '@/routes/learning-center/Filters/Filters'
-import Posts from '@/routes/learning-center/Posts/Posts'
-import { ICategory } from '@/types'
+// import Filters from '@/routes/learning-center/Filters/Filters'
+// import Posts from '@/routes/learning-center/Posts/Posts'
+// import { ICategory } from '@/types'
 import { getCategories } from '@/utils/axios/getCategories'
+import InformBox from '@/ui/components/InformBox/InformBox'
 
-interface ILearningCenter {
-  categories: ICategory[]
-}
+// interface ILearningCenter {
+//   categories: ICategory[]
+// }
 
-export default function LearningCenter({ categories }: ILearningCenter) {
+// export default function LearningCenter({ categories }: ILearningCenter) {
+export default function LearningCenter() {
   return (
     <>
       <Head>
@@ -23,8 +25,12 @@ export default function LearningCenter({ categories }: ILearningCenter) {
         title="Luminar Learning Center"
         description="There are many options when it comes to financing for your business. We offer resources that can help take the complexity out of the process to ensure you find the best product suited for your needs."
       />
-      <Filters categories={categories} />
-      <Posts />
+      <InformBox
+        title="Coming Soon!"
+        description="Exciting things are on hte way - stay tuned!"
+      />
+      {/*<Filters categories={categories} />*/}
+      {/*<Posts />*/}
     </>
   )
 }
