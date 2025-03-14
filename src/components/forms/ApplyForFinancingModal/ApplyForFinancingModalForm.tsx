@@ -18,6 +18,7 @@ import Button from '@/ui/components/Button/Button'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './ApplyForFinancingModalForm.module.scss'
 import { messages } from '@/config/messages'
+import PPMessage from '@/ui/components/PPMessage/PPMessage'
 
 interface IApplyForFinancingModalForm {
   className?: string
@@ -289,6 +290,7 @@ const ApplyForFinancingModalForm = ({
                 onBlur={handleBlur}
                 onChange={handleChange}
               />
+              <PPMessage />
             </div>
           </div>
         </Slider>

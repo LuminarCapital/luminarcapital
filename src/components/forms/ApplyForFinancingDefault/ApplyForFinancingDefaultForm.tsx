@@ -21,6 +21,7 @@ import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import Skeleton from 'react-loading-skeleton'
 import styles from './ApplyForFinancingDefault.module.scss'
 import { messages } from '@/config/messages'
+import PPMessage from '@/ui/components/PPMessage/PPMessage'
 
 interface IApplyForFinancingDefault {
   className?: string
@@ -246,6 +247,7 @@ const ApplyForFinancingDefaultForm = ({
             isFocused={isFocused.business_objectives}
             onBlur={handleBlur}
           />
+          <PPMessage />
           <Button
             className={styles['form-action']}
             type="submit"

@@ -20,8 +20,8 @@ interface IContactsDataItem {
 
 const contacts: IContactsDataItem[] = [
   {
-    href: 'tel:1111111111',
-    label: '(111) 111-1111',
+    href: 'tel:3053070190',
+    label: '(305) 307-0190',
     blank: false,
     icon: PhoneIcon,
   },
@@ -33,7 +33,7 @@ const contacts: IContactsDataItem[] = [
   },
   {
     href: 'https://maps.app.goo.gl/XDnwr6xX7NtxSoUn6',
-    label: '25 SE 2nd Ave Ste 550 Miami, FL 33131',
+    label: '25 SE 2nd Ave Ste 550-789 Miami, FL 33131',
     blank: true,
     icon: MarkerIcon,
   },

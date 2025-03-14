@@ -12,6 +12,7 @@ import { schema } from './schema'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from './BecomeAPartnerDefault.module.scss'
 import { messages } from '@/config/messages'
+import PPMessage from '@/ui/components/PPMessage/PPMessage'
 
 interface IBecomeAPartnerDefault {
   className?: string
@@ -149,6 +150,7 @@ const BecomeAPartnerDefaultForm = ({ className }: IBecomeAPartnerDefault) => {
               onChange={handleChange}
             />
           ))}
+          <PPMessage />
           <Button
             className={styles['form-action']}
             type="submit"

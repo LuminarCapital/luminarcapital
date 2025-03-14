@@ -13,6 +13,7 @@ import Button from '@/ui/components/Button/Button'
 import { browserSendEmail } from '@/utils/email/bowserSendEmail'
 import styles from '../ApplyForFinancingModal/ApplyForFinancingModalForm.module.scss'
 import { messages } from '@/config/messages'
+import PPMessage from '@/ui/components/PPMessage/PPMessage'
 
 interface IApplyForFinancingModalForm {
   className?: string
@@ -78,6 +79,7 @@ const BecomeAPartnerModalForm = ({
     },
     dots: true,
     dotsClass: classNames(styles['form-slider-dots'], 'modal-slider-dots'),
+    adaptiveHeight: true,
   }
 
   const handleChange = useCallback(
@@ -227,6 +229,7 @@ const BecomeAPartnerModalForm = ({
                 onBlur={handleBlur}
                 onChange={handleChange}
               />
+              <PPMessage />
             </div>
           </div>
         </Slider>

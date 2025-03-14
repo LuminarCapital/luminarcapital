@@ -27,7 +27,7 @@ export default function LearningCenter() {
       />
       <InformBox
         title="Coming Soon!"
-        description="Exciting things are on hte way - stay tuned!"
+        description="Exciting things are on the way - stay tuned!"
       />
       {/*<Filters categories={categories} />*/}
       {/*<Posts />*/}
