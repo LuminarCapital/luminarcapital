@@ -32,6 +32,19 @@ Your use of our Site and provision of Personal Information online constitutes ac
 	<li>To our vendors, who may use the information to further improve their database services to us.</li>
 </ul>
 <p>If, at any time, you would like to stop receiving these promotional e-mails, you may follow the opt-out instructions contained in any such e-mail. Please note that it may take up to 10 business days for us to process opt-out requests. If you opt-out of receiving emails or promotions from us, we still may send you e-mails about your account, your application or any products or services you have requested or received from us, or for other customer service purposes.</p>
+<h4>Text / SMS Marketing</h4>
+<p>If you choose to opt-in to SMS communications from Luminar Capital, you will receive text messages at the mobile number you provide. These messages might be automated and might include promotional offers, coupons, and/or information related to Luminar Capital or our affiliated restaurants, as well as information related to your orders and account.</p>
+<h5>Consent to Receive Automated Messages</h5>
+<p>You understand that consent to receive automated messages is not a condition of purchase or use of Luminar Capital services. Messages may include but are not limited to, order confirmations, updates, and special offers.</p>
+<h5>Confidentiality</h5>
+<p>We will maintain the confidentiality of your mobile number. Your mobile number will not be shared with third parties for their own marketing purposes. However, for operational purposes, your name and mobile number may be shared with our service providers who assist in the delivery of our SMS communications. These providers use your personal information solely to carry out the services they provide to Luminar Capital.</p>
+<h5>Frequency of Messages</h5>
+<p>Message frequency may vary based on your orders, account activity, and ongoing promotions. You will receive messages relevant to your transactions and occasional promotional updates.</p>
+<h5>Opt-Out and Support Options</h5>
+<p>You may opt out of receiving text messages at any time by texting "STOP". Upon receipt of your opt-out request, you will be unsubscribed and will no longer receive text messages from us. A confirmation message will be sent to confirm your that you have unsubscribed. Should you wish to re-subscribe, you may text "START' to receive SMS messages again.</p>
+<p>For assistance with the messaging service, text "HELP" or contact <a href="mailto:support@luminarcapital.com">support@luminarcapital.com</a>.</p>
+<p>Wireless Carrier Rates and Services</p>
+<p>Wireless carrier message and data rates may apply. Wireless carriers are not liable for delayed or undelivered messages.</p>
 <h4>Cookies And Third-Party Analytics</h4>
 <p>A cookie is a text file stored on a site visitor’s hard drive to help us improve your access to our Site and identify repeat visitors to our Site. Usage of a cookie is in no way linked to any personally identifiable information, though we can associate a cookie with any identifying information that is or has been provided to us while visiting our Site. We or our third-party service providers use cookies that remain on your computer for a specified period of time or until they are deleted (persistent cookies). These cookies record clickstream information (data reporting the URLs, or names of the pages, on our Site that have been visited). We may also use cookies that exist only temporarily during an online session (session cookies). These cookies allow us to identify you temporarily as you move through the Site. We also use cookies in the restricted client and sales representative limited-access portions of our Site. Most browsers allow users to refuse cookies, but doing so may impede the functionality of some portions of our Site.</p>
 <h4>Social Media Widgets</h4>
