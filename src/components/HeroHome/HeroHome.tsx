@@ -41,7 +41,7 @@ const HeroHome = ({
                   <h1>{title}</h1>
                 </div>
                 <div className={styles['heroDefault-description']}>
-                  <p>{description}</p>
+                  <p className="description" >{description}</p>
                 </div>
                 <div className={styles['heroDefault-actions']}>{actions}</div>
               </div>
